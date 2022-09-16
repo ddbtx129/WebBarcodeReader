@@ -97,12 +97,12 @@
 
         Quagga.onDetected((result) => {
             const code = result.codeResult.code;
-            if (/^4[5|9]/.test(code)) {
+            //if (/^4[5|9]/.test(code)) {
                 document.getElementById('code').value = code;
                 modal.style.display = 'none';
                 document.body.style.overflow = '';
                 Quagga.stop();
-            }
+        //    }
         });
     </script>
 </body>
