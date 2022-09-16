@@ -16,6 +16,7 @@
         <script>
             var DetectedCount = 0, DetectedCode = "";
             var video, tmp, tmp_ctx, jan, prev, prev_ctx, w, h, mw, mh, x1, y1;
+            var id;
             window.addEventListener('load', function (event) {
                 video = document.createElement('video');
                 video.setAttribute("autoplay", "");
@@ -36,7 +37,7 @@
                     function (stream) {
                         video.srcObject = stream;
                         //0.5秒毎にスキャンする
-                        setTimeout(Scan, 500, true);
+                        id = setTimeout(Scan, 500, true);
                     }
                 ).catch( //許可されなかった場合
                     function (err) { jan.value += err + '\n'; }
@@ -84,7 +85,7 @@
                         }
                         reader.readAsDataURL(blob);
                     });
-                    setTimeout(Scan, 50, false);
+                    s clearTimeout(id);
                 }
 
                 Quagga.onDetected(function (result) {
