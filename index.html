@@ -77,8 +77,7 @@
                 }
                 reader.readAsDataURL(blob);
             });
-        //    setTimeout(Scan, 50, false);
-            clearTimeout(id);
+            setTimeout(Scan, 50, false);
         }
 
         Quagga.onDetected(function (result) {
@@ -95,6 +94,8 @@
                 jan.scrollTop = jan.scrollHeight;
                 DetectedCode = '';
                 DetectedCount = 0;
+                Quagga.stop();
+                clearTimeout(id);
             }
         });
     });
