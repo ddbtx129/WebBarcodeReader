@@ -95,15 +95,32 @@
             );
         });
 
-        Quagga.onDetected((result) => {
-            const code = result.codeResult.code;
-            //if (/^4[5|9]/.test(code)) {
-                document.getElementById('code').value = code;
-                modal.style.display = 'none';
-                document.body.style.overflow = '';
-                Quagga.stop();
-        //    }
+
+        Quagga.onDetected(function (result) {
+            //読み取り誤差が多いため、3回連続で同じ値だった場合に成功とする
+            if (DetectedCode == result.codeResult.code) {
+                DetectedCount++;
+            } else {
+                DetectedCount = 0;
+                DetectedCode = result.codeResult.code;
+            }
+            if (DetectedCount >= 3) {
+                console.log(result.codeResult.code);
+                jan.value += result.codeResult.code + '\n';
+                jan.scrollTop = jan.scrollHeight;
+                DetectedCode = '';
+                DetectedCount = 0;
+            }
         });
+        //Quagga.onDetected((result) => {
+        //    const code = result.codeResult.code;
+        //    //if (/^4[5|9]/.test(code)) {
+        //        document.getElementById('code').value = code;
+        //        modal.style.display = 'none';
+        //        document.body.style.overflow = '';
+        //        Quagga.stop();
+        ////    }
+        //});
     </script>
 </body>
 </html>
