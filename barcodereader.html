@@ -47,7 +47,7 @@
     <textarea id="code"></textarea>
     <br />
     <button id="btn">カメラでバーコードを読み込む</button>
-    <div id="scanarea" class="scanarea"><canvas id="preview"></canvas></div>
+<!--    <div id="scanarea" class="scanarea"><canvas id="preview"></canvas></div>-->
 
     <script>
 
@@ -60,7 +60,15 @@
 
         btn.addEventListener('click', () => {
 
-            var scanarea = document.getElementById('scanarea');
+
+            var scanarea = document.createElement('div');
+            scanarea.id = "scanarea";
+            scanarea.className = "scanarea";
+            document.appendChild(scanarea);
+
+            var preview = document.createElement('canvas');
+            preview.id = "preview";
+            scanarea.appendChild(preview);
 
             var DetectedCount = 0, DetectedCode = "";
             var video, tmp, tmp_ctx, value, prev, prev_ctx, w, h, mw, mh, x1, y1;
@@ -175,6 +183,8 @@
                     video.stop();
                     video.srcObject = null;
                     video.remove();
+
+                    scanarea.remove();
                 }
             });
         });
