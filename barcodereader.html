@@ -37,7 +37,8 @@
 
 </head>
 <body>
-    <textarea id="jan"></textarea>
+
+    <textarea id="code"></textarea>
     <button id="btn">カメラでバーコードを読み込む</button>
     <div id="scanarea" class="scanarea"><canvas id="preview"></canvas></div>
 
@@ -63,7 +64,7 @@
             prev_ctx = prev.getContext("2d");
             tmp = document.createElement('canvas');
             tmp_ctx = tmp.getContext("2d");
-            jan = document.getElementById("jan");
+            value = document.getElementById("code");
 
             //カメラ使用の許可ダイアログが表示される
             navigator.mediaDevices.getUserMedia(
@@ -76,7 +77,11 @@
                     id = setTimeout(Scan, 500, true);
                 }
             ).catch( //許可されなかった場合
-                function (err) { jan.value += err + '\n'; }
+                function (err) {
+                    scanarea.style.display = 'none';
+                    document.body.style.overflow = '';
+                    value.value += err + '\n';
+                }
             );
 
             function Scan(first) {
@@ -140,11 +145,12 @@
                 }
                 if (DetectedCount >= 3) {
                     console.log(result.codeResult.code);
-                    jan.value += result.codeResult.code;
+                    value.value += result.codeResult.code;
                     //jan.scrollTop = jan.scrollHeight;
                     DetectedCode = '';
                     DetectedCount = 0;
-                    document.getElementById("scanarea").style.display = 'none';
+                    scanarea.style.display = 'none';
+                    document.body.style.overflow = '';
                     clearTimeout(id);
                 }
             });
