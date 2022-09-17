@@ -39,6 +39,15 @@
             height: 100%;
             background: rgba(0, 0, 0, 0.8);
         }
+        .text {
+            position: fixed;
+            bottom: 1rem;
+            left: 0;
+            width: 100%;
+            margin-top: 1rem;
+            color: #fff;
+            text-align: center;
+        }
     </style>
     <script src="js/quagga.min.js"></script>
 
@@ -47,7 +56,7 @@
 
     <textarea id="code" style="display: none"></textarea>
     <br />
-    <button id="btn" style="display: inline">カメラでバーコードを読み込む</button>
+    <button id="btn" style="display: inline">バーコードを読み込む</button>
     <button id="reset" style="display: none">リセット</button>
 
     <script>
@@ -76,6 +85,11 @@
             var preview = document.createElement('canvas');
             preview.id = "preview";
             scanarea.appendChild(preview);
+
+            var info = document.createElement('p');
+            info.className = "text";
+            info.innerHTML = "カメラにバーコードを写してください。";
+            scanarea.appendChild(info);
 
             var DetectedCount = 0, DetectedCode = "";
             var video, tmp, tmp_ctx, value, prev, prev_ctx, w, h, mw, mh, x1, y1;
