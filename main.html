@@ -6,8 +6,11 @@
     <!-- quaggaJSの読み込み -->
     <script src="js/quagga.min.js"></script>
     <script>
+
         var DetectedCount = 0, DetectedCode = "";
         var video, tmp, tmp_ctx, jan, prev, prev_ctx, w, h, mw, mh, x1, y1;
+        var id;
+
         window.addEventListener('load', function (event) {
             video = document.createElement('video');
             video.setAttribute("autoplay", "");
@@ -28,7 +31,7 @@
                 function (stream) {
                     video.srcObject = stream;
                     //0.5秒毎にスキャンする
-                    setTimeout(Scan, 500, true);
+                    id = setTimeout(Scan, 500, true);
                 }
             ).catch( //許可されなかった場合
                 function (err) { jan.value += err + '\n'; }
@@ -50,6 +53,7 @@
                     x1 = (w - mw) / 2;
                     y1 = (h - mh) / 2;
                 }
+
                 prev_ctx.drawImage(video, 0, 0, w, h);
                 prev_ctx.beginPath();
                 prev_ctx.strokeStyle = "rgb(255,0,0)";
@@ -81,7 +85,7 @@
                     }
                     reader.readAsDataURL(blob);
                 });
-                setTimeout(Scan, 50, false);
+                id = setTimeout(Scan, 50, false);
             }
 
             Quagga.onDetected(function (result) {
@@ -94,10 +98,12 @@
                 }
                 if (DetectedCount >= 3) {
                     console.log(result.codeResult.code);
-                    jan.value += result.codeResult.code + '\n';
-                    jan.scrollTop = jan.scrollHeight;
+                    jan.value += result.codeResult.code;
+                    //jan.scrollTop = jan.scrollHeight;
                     DetectedCode = '';
                     DetectedCount = 0;
+                    document.getElementById("preview").style.display = 'none';
+                    clearTimeout(id);
                 }
             });
         });
@@ -105,6 +111,6 @@
 </head>
 <body>
     <div><canvas id="preview"></canvas></div>
-    <textarea id="jan" rows="8" cols="40"></textarea>
+    <textarea id="jan" rows="1" cols="40"></textarea>
 </body>
 </html>
