@@ -54,12 +54,17 @@
         var btn = document.getElementById('btn');
         var scanarea = document.getElementById('scanarea');
 
-        var DetectedCount = 0, DetectedCode = "";
-        var preview;
-        var video, tmp, tmp_ctx, jan, prev, prev_ctx, w, h, mw, mh, x1, y1;
-        var id;
+        //var DetectedCount = 0, DetectedCode = "";
+        //var preview;
+        //var video, tmp, tmp_ctx, jan, prev, prev_ctx, w, h, mw, mh, x1, y1;
+        //var id;
 
         btn.addEventListener('click', () => {
+
+            var DetectedCount = 0, DetectedCode = "";
+            var preview;
+            var video, tmp, tmp_ctx, jan, prev, prev_ctx, w, h, mw, mh, x1, y1;
+            var id;
 
             preview = document.createElement("canvas");
             preview.id = "preview";
