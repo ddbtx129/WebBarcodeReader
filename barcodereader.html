@@ -186,9 +186,10 @@
                     console.log(result.codeResult.code);
 
                     value.style.display = "inline";
+                    reset.style.display = "inline";
 
                     value.value = result.codeResult.code;
-                    //jan.scrollTop = jan.scrollHeight;
+
                     DetectedCode = '';
                     DetectedCount = 0;
                     scanarea.style.display = 'none';
@@ -201,10 +202,9 @@
 
                     video.stop();
                     video.srcObject = null;
-                    video.remove();
 
+                    video.remove();
                     scanarea.remove();
-                    reset.style.display = "inline";
                 }
             });
         });
