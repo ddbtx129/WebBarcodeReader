@@ -46,20 +46,32 @@
 
     <textarea id="code"></textarea>
     <br />
-    <button id="btn">カメラでバーコードを読み込む</button>
+    <button id="btn" style="display: inline">カメラでバーコードを読み込む</button>
+    <button id="reset" style="display: none">リセット</button>
 <!--    <div id="scanarea" class="scanarea"><canvas id="preview"></canvas></div>-->
 
     <script>
 
         var btn = document.getElementById('btn');
+        var reset = document.getElementById('reset');
+
         //var scanarea = document.getElementById('scanarea');
 
         //var DetectedCount = 0, DetectedCode = "";
         //var video, tmp, tmp_ctx, value, prev, prev_ctx, w, h, mw, mh, x1, y1;
         //var id;
 
+        reset.addEventListener('click', () => {
+
+            btn.style.display = "inline";
+            reset.style.display = "none";
+
+            location.reload();
+        });
+
         btn.addEventListener('click', () => {
 
+            btn.style.display = "none";
 
             var scanarea = document.createElement('div');
             scanarea.id = "scanarea";
@@ -185,6 +197,7 @@
                     video.remove();
 
                     scanarea.remove();
+                    reset.style.display = "inline";
                 }
             });
         });
