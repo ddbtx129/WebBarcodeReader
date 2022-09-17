@@ -53,7 +53,7 @@
         btn.addEventListener('click', () => {
 
             scanarea.style.display = 'block';
-            document.style.overflow = 'hidden';
+            //document.style.overflow = 'hidden';
 
             video = document.createElement('video');
             video.setAttribute("autoplay", "");
@@ -79,8 +79,8 @@
             ).catch( //許可されなかった場合
                 function (err) {
                     scanarea.style.display = 'none';
-                    document.body.style.overflow = '';
-                    value.value += err + '\n';
+                    //document.body.style.overflow = '';
+                    value.value += err;
                 }
             );
 
@@ -150,7 +150,7 @@
                     DetectedCode = '';
                     DetectedCount = 0;
                     scanarea.style.display = 'none';
-                    document.body.style.overflow = '';
+                    //document.body.style.overflow = '';
                     clearTimeout(id);
                 }
             });
