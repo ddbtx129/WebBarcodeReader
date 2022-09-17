@@ -56,7 +56,6 @@
 
             scanarea.style.display = 'block';
             //document.style.overflow = 'hidden';
-            value.value = "";
 
             video = document.createElement('video');
             video.setAttribute("autoplay", "");
@@ -68,6 +67,8 @@
             tmp = document.createElement('canvas');
             tmp_ctx = tmp.getContext("2d");
             value = document.getElementById("code");
+
+            value.value = "";
 
             //カメラ使用の許可ダイアログが表示される
             navigator.mediaDevices.getUserMedia(
