@@ -26,6 +26,7 @@
         }
         button{
             margin-left: 12px;
+            font-size: x-large;
         }
 
         .scanarea {
@@ -48,18 +49,11 @@
     <br />
     <button id="btn" style="display: inline">カメラでバーコードを読み込む</button>
     <button id="reset" style="display: none">リセット</button>
-<!--    <div id="scanarea" class="scanarea"><canvas id="preview"></canvas></div>-->
 
     <script>
 
         var btn = document.getElementById('btn');
         var reset = document.getElementById('reset');
-
-        //var scanarea = document.getElementById('scanarea');
-
-        //var DetectedCount = 0, DetectedCode = "";
-        //var video, tmp, tmp_ctx, value, prev, prev_ctx, w, h, mw, mh, x1, y1;
-        //var id;
 
         reset.addEventListener('click', () => {
 
@@ -88,7 +82,6 @@
             var id;
 
             scanarea.style.display = 'block';
-            //document.style.overflow = 'hidden';
 
             video = document.createElement('video');
             video.setAttribute("autoplay", "");
@@ -189,24 +182,28 @@
                     reset.style.display = "inline";
 
                     value.value = result.codeResult.code;
-
-                    DetectedCode = '';
-                    DetectedCount = 0;
-                    scanarea.style.display = 'none';
-
-                    clearTimeout(id);
-
-                    Quagga.stop();
-
-                    tmp.remove();
-
-                    video.stop();
-                    video.srcObject = null;
-
-                    video.remove();
-                    scanarea.remove();
+                    displayreset();
                 }
             });
+
+            function displayreset() {
+
+                DetectedCode = '';
+                DetectedCount = 0;
+                scanarea.style.display = 'none';
+
+                clearTimeout(id);
+
+                Quagga.stop();
+
+                tmp.remove();
+
+                video.stop();
+                video.srcObject = null;
+
+                video.remove();
+                scanarea.remove();
+            }
         });
     </script>
 
