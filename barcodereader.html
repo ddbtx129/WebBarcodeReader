@@ -73,6 +73,7 @@
         btn.addEventListener('click', () => {
 
             btn.style.display = "none";
+            value.style.display = "none";
 
             var scanarea = document.createElement('div');
             scanarea.id = "scanarea";
@@ -115,7 +116,8 @@
             ).catch( //許可されなかった場合
                 function (err) {
                     scanarea.style.display = 'none';
-                    //document.body.style.overflow = '';
+
+                    value.style.display = "inline";
                     value.value = err;
                 }
             );
