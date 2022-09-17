@@ -47,31 +47,24 @@
     <textarea id="code"></textarea>
     <br />
     <button id="btn">カメラでバーコードを読み込む</button>
-    <div id="scanarea" class="scanarea"></div>
+    <div id="scanarea" class="scanarea"><canvas id="preview"></canvas></div>
 
     <script>
 
         var btn = document.getElementById('btn');
-        var scanarea = document.getElementById('scanarea');
+        //var scanarea = document.getElementById('scanarea');
 
         //var DetectedCount = 0, DetectedCode = "";
-        //var preview;
-        //var video, tmp, tmp_ctx, jan, prev, prev_ctx, w, h, mw, mh, x1, y1;
+        //var video, tmp, tmp_ctx, value, prev, prev_ctx, w, h, mw, mh, x1, y1;
         //var id;
 
         btn.addEventListener('click', () => {
 
-            location.reload();
+            var scanarea = document.getElementById('scanarea');
 
             var DetectedCount = 0, DetectedCode = "";
-            var preview;
-            var video, tmp, tmp_ctx, jan, prev, prev_ctx, w, h, mw, mh, x1, y1;
+            var video, tmp, tmp_ctx, value, prev, prev_ctx, w, h, mw, mh, x1, y1;
             var id;
-
-            preview = document.createElement("canvas");
-            preview.id = "preview";
-
-            scanarea.appendChild(preview);
 
             scanarea.style.display = 'block';
             //document.style.overflow = 'hidden';
@@ -86,13 +79,12 @@
             tmp = document.createElement('canvas');
             tmp_ctx = tmp.getContext("2d");
             value = document.getElementById("code");
-
             value.value = "";
-
+            
             //カメラ使用の許可ダイアログが表示される
             navigator.mediaDevices.getUserMedia(
                 //マイクはオフ, カメラの設定   背面カメラを希望する 640×480を希望する
-                { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": 640 }, "height": { "ideal": 480 } } }
+                { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": document.width }, "height": { "ideal": document.height } } }
             ).then( //許可された場合
                 function (stream) {
                     video.srcObject = stream;
@@ -173,14 +165,16 @@
                     DetectedCode = '';
                     DetectedCount = 0;
                     scanarea.style.display = 'none';
-                    //document.body.style.overflow = '';
+
                     clearTimeout(id);
 
-                    tmp.remove();
-                    video.remove();
-                    preview.remove();
-
                     Quagga.stop();
+
+                    tmp.remove();
+
+                    video.stop();
+                    video.srcObject = null;
+                    video.remove();
                 }
             });
         });
