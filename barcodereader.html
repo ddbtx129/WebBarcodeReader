@@ -45,6 +45,7 @@
     <div id="scanarea" class="scanarea"><canvas id="preview"></canvas></div>
 
     <script>
+
         var btn = document.getElementById('btn');
         var scanarea = document.getElementById('scanarea');
 
@@ -84,7 +85,7 @@
                 function (err) {
                     scanarea.style.display = 'none';
                     //document.body.style.overflow = '';
-                    value.value += err;
+                    value.value = err;
                 }
             );
 
@@ -159,6 +160,10 @@
 
                     tmp.remove();
                     video.remove();
+
+                    var preview = document.getElementById('preview');
+                    while (preview.lastChild){
+                        preview.removeChild(preview.lastChild);
                 }
             });
         });
