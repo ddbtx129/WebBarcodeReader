@@ -44,7 +44,7 @@
 </head>
 <body>
 
-    <textarea id="code"></textarea>
+    <textarea id="code" style="display: none"></textarea>
     <br />
     <button id="btn" style="display: inline">カメラでバーコードを読み込む</button>
     <button id="reset" style="display: none">リセット</button>
@@ -65,6 +65,7 @@
 
             btn.style.display = "inline";
             reset.style.display = "none";
+            document.getElementById("code").style.display = "none";
 
             location.reload();
         });
@@ -180,6 +181,9 @@
                 }
                 if (DetectedCount >= 3) {
                     console.log(result.codeResult.code);
+
+                    value.style.display = "inline";
+
                     value.value = result.codeResult.code;
                     //jan.scrollTop = jan.scrollHeight;
                     DetectedCode = '';
