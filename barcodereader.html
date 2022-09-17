@@ -54,6 +54,7 @@
 
             scanarea.style.display = 'block';
             //document.style.overflow = 'hidden';
+            value.value = "";
 
             video = document.createElement('video');
             video.setAttribute("autoplay", "");
@@ -91,7 +92,7 @@
                     h = video.videoHeight;
                     //画面上の表示サイズ
                     prev.style.width = (w * 0.75) + "px";
-                    prev.style.height = (h * 0.5) + "px";
+                    prev.style.height = (h * 0.75) + "px";
                     //内部のサイズ
                     prev.setAttribute("width", w);
                     prev.setAttribute("height", h);
@@ -145,7 +146,7 @@
                 }
                 if (DetectedCount >= 3) {
                     console.log(result.codeResult.code);
-                    value.value += result.codeResult.code;
+                    value.value = result.codeResult.code;
                     //jan.scrollTop = jan.scrollHeight;
                     DetectedCode = '';
                     DetectedCount = 0;
