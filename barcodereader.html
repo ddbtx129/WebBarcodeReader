@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.1, maximum-scale=4,user-scalable=yes">
-    <!-- quaggaJSの読み込み -->
+
     <style>
         textarea {
             resize: none;
@@ -28,12 +28,13 @@
 
 </head>
 <body>
-        <textarea id="jan"></textarea>
-        <button id="btn">カメラでバーコードを読み込む</button>
+    <textarea id="jan"></textarea>
+    <button id="btn">カメラでバーコードを読み込む</button>
     <div id="scanarea" class="scanarea"><canvas id="preview"></canvas></div>
 
     <script>
         var btn = document.getElementById('btn');
+        var scanarea = document.getElementById('scanarea');
 
         var DetectedCount = 0, DetectedCode = "";
         var video, tmp, tmp_ctx, jan, prev, prev_ctx, w, h, mw, mh, x1, y1;
@@ -41,7 +42,7 @@
 
         btn.addEventListener('click', () => {
 
-            document.getElementById('scanarea').style.overflow = 'block';
+            scanarea.style.display = 'block';
             document.style.overflow = 'hidden';
 
             video = document.createElement('video');
