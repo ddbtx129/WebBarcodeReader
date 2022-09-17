@@ -65,18 +65,13 @@
                     reader.onload = function () {
                         let config = {
                             decoder: {
-                                readers: ["code_128_reader",
+                                readers: [
                                     "ean_reader",
                                     "ean_8_reader",
                                     "code_39_reader",
                                     "code_39_vin_reader",
-                                    "codabar_reader",
-                                    "upc_reader",
-                                    "upc_e_reader",
-                                    "i2of5_reader",
-                                    "2of5_reader",
-                                    "code_93_reader"],
-                                multiple: true, //同時に複数のバーコードを解析しない
+                                    "code_93_reader"
+                                ]
                             },
                             locator: { patchSize: "large", halfSample: false },
                             locate: false,
