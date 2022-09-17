@@ -73,7 +73,6 @@
         btn.addEventListener('click', () => {
 
             btn.style.display = "none";
-            value.style.display = "none";
 
             var scanarea = document.createElement('div');
             scanarea.id = "scanarea";
@@ -102,7 +101,8 @@
             tmp_ctx = tmp.getContext("2d");
             value = document.getElementById("code");
             value.value = "";
-            
+            value.style.display = "none";
+
             //カメラ使用の許可ダイアログが表示される
             navigator.mediaDevices.getUserMedia(
                 //マイクはオフ, カメラの設定   背面カメラを希望する 640×480を希望する
