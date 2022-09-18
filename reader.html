@@ -63,20 +63,14 @@
     <body>
 
         <div style="text-align: center; width: 100%;">
-            <table style="text-align: center; width: 100%">
-                <tr>
-                    <td>
-                        <button id="barcode" style="display: inline;">バーコードを読み込む</button>
-                        <textarea readonly id="code" style="display: none"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <button id="qrcode" style="display: inline;">ＱＲコードを読み込む</button>
-                        <button id="reset" style="display: none">リセット</button>
-                    </td>
-                </tr>
-            </table>
+            <div>
+                <textarea readonly id="code" style="display: none"></textarea>
+                <button id="barcode" style="display: inline;">バーコードを読み込む</button>
+            </div>
+            <div>
+                <button id="qrcode" style="display: inline;">ＱＲコードを読み込む</button>
+                <button id="reset" style="display: none">リセット</button>
+            </div>
         </div>
 
         <script src="js/reader.js"></script>
