@@ -196,7 +196,7 @@ qrcode.addEventListener('click', () => {
     info.innerHTML = "カメラにバーコードを写してください。";
     scanarea.appendChild(info);
 
-    var video, tmp, tmp_ctx, valuie, prev, prev_ctx, w, h, m, x1, y1;
+    var video, tmp, tmp_ctx, value, prev, prev_ctx, w, h, m, x1, y1;
 
     scanarea.style.display = 'inline';
 
@@ -212,7 +212,7 @@ qrcode.addEventListener('click', () => {
     tmp = document.createElement('canvas');
     tmp_ctx = tmp.getContext("2d");
 
-    valuie = document.getElementById("code");
+    value = document.getElementById("code");
     value.value = "";
 
     value.style.height = "72px";
