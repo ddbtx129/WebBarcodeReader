@@ -1,12 +1,12 @@
 ﻿var barcode = document.getElementById('barcode');
 var qrcode = document.getElementById('qrcode');
 var reset = document.getElementById('reset');
-var anser = document.getElementById('anser');
-var button = document.getElementById('button');
+var id;
 
 reset.addEventListener('click', () => {
 
     barcode.style.display = "inline";
+    qrcode.style.display = "inline";
     reset.style.display = "none";
     document.getElementById("code").style.display = "none";
 
@@ -15,7 +15,8 @@ reset.addEventListener('click', () => {
 
 barcode.addEventListener('click', () => {
 
-    button.style.display = "none";
+    barcode.style.display = "none";
+    qrcode.style.display = "none";
 
     var scanarea = document.createElement('div');
     scanarea.id = "scanarea";
@@ -38,7 +39,6 @@ barcode.addEventListener('click', () => {
     window.alert(4);
 
     var DetectedCount = 0, DetectedCode = "";
-    var id;
 
     video = document.createElement('video');
     video.id = "video";
@@ -160,11 +160,13 @@ barcode.addEventListener('click', () => {
 
     function displayreset() {
 
+        scanarea.style.display = 'none';
+
+        value.style.display = "inline";
+        reset.style.display = "inline";
+
         DetectedCode = '';
         DetectedCount = 0;
-
-        button.style.display = "inline";
-        scanarea.style.display = 'none';
 
         tmp.remove();
 
