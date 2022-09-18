@@ -216,7 +216,7 @@ qrcode.addEventListener('click', () => {
     value = document.getElementById("code");
     value.value = "";
 
-    value.style.width = "420px";
+    value.style.width = "360px";
     value.style.height = "108px";
     value.style.display = "none";
     value.style.textAlign = "left";
