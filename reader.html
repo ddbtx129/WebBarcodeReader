@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.1, maximum-scale=4,user-scalable=yes">
-    <title>バーコードリーダー　v0.288 β</title>
+    <title>バーコードリーダー　v0.29 β</title>
     <style>
         * {
             box-sizing: border-box;
@@ -124,6 +124,15 @@
             ).then( //許可された場合
                 function (stream) {
                     video.srcObject = stream;
+                    //選択された幅高さ
+                    w = video.videoWidth;
+                    h = video.videoHeight;
+                    //画面上の表示サイズ
+                    prev.style.width = (w * SizeRate) + "px";
+                    prev.style.height = (h * SizeRate) + "px";
+                    //内部のサイズ
+                    prev.setAttribute("width", w);
+                    prev.setAttribute("height", h);
                     //0.5秒毎にスキャンする
                     id = setTimeout(Scan, 500, true);
                 }
@@ -138,32 +147,49 @@
             );
 
             function Scan(first) {
+
+                var SizeRate = 0.7;
+                var ScanRate = [0.8, 0.3];
+
                 if (first) {
-                    //選択された幅高さ
-                    w = video.videoWidth;
-                    h = video.videoHeight;
-                    //画面上の表示サイズ
-                    prev.style.width = (w * 0.7) + "px";
-                    prev.style.height = (h * 0.7) + "px";
-                    //内部のサイズ
-                    prev.setAttribute("width", w);
-                    prev.setAttribute("height", h);
-                    mw = w * 0.8;
-                    mh = w * 0.25;
-                    x1 = (w - mw) / 2;
-                    y1 = (h - mh) / 2;
+                    ////選択された幅高さ
+                    //w = video.videoWidth;
+                    //h = video.videoHeight;
+                    ////画面上の表示サイズ
+                    //prev.style.width = (w * SizeRate) + "px";
+                    //prev.style.height = (h * SizeRate) + "px";
+                    ////内部のサイズ
+                    //prev.setAttribute("width", w);
+                    //prev.setAttribute("height", h);
+
+                    //mw = w * ScanRate[0];
+                    //mh = w * ScanRate[1];
+
+                    //x1 = (w - mw) / 2;
+                    //y1 = (h - mh) / 2;
+
+                    //x1 = (w - (w * ScanRate[0])) / 2;
+                    //y1 = (h - (w * ScanRate[1])) / 2;
                 }
 
                 prev_ctx.drawImage(video, 0, 0, w, h);
                 prev_ctx.beginPath();
                 prev_ctx.strokeStyle = "rgb(255,0,0)";
                 prev_ctx.lineWidth = 2;
-                prev_ctx.rect(x1, y1, mw, mh);
+                //prev_ctx.rect(x1, y1, mw, mh);
+                prev_ctx.rect(((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2), (w * ScanRate[0]), (w * ScanRate[1]));
                 prev_ctx.stroke();
 
-                tmp.setAttribute("width", mw);
-                tmp.setAttribute("height", mh);
-                tmp_ctx.drawImage(prev, x1, y1, mw, mh, 0, 0, mw, mh);
+                //tmp.setAttribute("width", mw);
+                //tmp.setAttribute("height", mh);
+                //tmp_ctx.drawImage(prev, x1, y1, mw, mh, 0, 0, mw, mh);
+                tmp.setAttribute("width", (w * ScanRate[0]));
+                tmp.setAttribute("height", (w * ScanRate[1]));
+                tmp_ctx.drawImage(prev,
+                                ((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2),
+                                (w * ScanRate[0]), (w * ScanRate[1]),
+                                0, 0,
+                                (w * ScanRate[0]), (w * ScanRate[1]));
 
                 tmp.toBlob(function (blob) {
                     let reader = new FileReader();
