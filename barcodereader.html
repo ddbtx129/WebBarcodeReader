@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.1, maximum-scale=4,user-scalable=yes">
-    <title>バーコードリーダー　v0.23 β</title>
+    <title>バーコードリーダー　v0.25 β</title>
     <style>
         * {
             box-sizing: border-box;
@@ -17,14 +17,13 @@
 
         textarea {
             margin-top: 12px;
-            margin-left: 12px;
-            margin-right: 12px;
             resize: none;
-            width: 75%;
+            width: 50%;
             height: 24px;
             overflow: hidden;
-            font-size: larger;
+            font-size: x-large;
             text-align: center;
+            justify-content: center;
         }
         button{
             margin-left: 12px;
@@ -59,7 +58,7 @@
 </head>
 <body>
     <div style="text-align: center;">
-        <textarea id="code" style="display: none"></textarea>
+        <textarea id="code" style="display: inline;"></textarea>
         <br />
         <button id="btn" style="display: inline">バーコードを読み込む</button>
         <button id="reset" style="display: none">リセット</button>
