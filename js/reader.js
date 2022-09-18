@@ -21,19 +21,21 @@ barcode.addEventListener('click', () => {
     scanarea.id = "scanarea";
     scanarea.className = "scanarea";
     document.body.appendChild(scanarea);
-
+    window.alert(1);
     var preview = document.createElement('canvas');
     preview.id = "preview";
     scanarea.appendChild(preview);
-
+    window.alert(2);
     var info = document.createElement('p');
     info.className = "text";
     info.innerHTML = "カメラにバーコードを写してください。";
     scanarea.appendChild(info);
+    window.alert(3);
 
     var video, tmp, tmp_ctx, value, prev, prev_ctx, w, h, mw, mh, x1, y1;
 
-    scanarea.style.display = 'block';
+    scanarea.style.display = 'inline';
+    window.alert(4);
 
     var DetectedCount = 0, DetectedCode = "";
     var id;
