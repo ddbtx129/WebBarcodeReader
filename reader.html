@@ -124,15 +124,6 @@
             ).then( //許可された場合
                 function (stream) {
                     video.srcObject = stream;
-                    //選択された幅高さ
-                    w = video.videoWidth;
-                    h = video.videoHeight;
-                    //画面上の表示サイズ
-                    prev.style.width = (w * SizeRate) + "px";
-                    prev.style.height = (h * SizeRate) + "px";
-                    //内部のサイズ
-                    prev.setAttribute("width", w);
-                    prev.setAttribute("height", h);
                     //0.5秒毎にスキャンする
                     id = setTimeout(Scan, 500, true);
                 }
@@ -149,18 +140,18 @@
             function Scan(first) {
 
                 var SizeRate = 0.7;
-                var ScanRate = [0.8, 0.3];
+                var ScanRate = new Array(0.8, 0.3);
 
                 if (first) {
-                    ////選択された幅高さ
-                    //w = video.videoWidth;
-                    //h = video.videoHeight;
-                    ////画面上の表示サイズ
-                    //prev.style.width = (w * SizeRate) + "px";
-                    //prev.style.height = (h * SizeRate) + "px";
-                    ////内部のサイズ
-                    //prev.setAttribute("width", w);
-                    //prev.setAttribute("height", h);
+                    //選択された幅高さ
+                    w = video.videoWidth;
+                    h = video.videoHeight;
+                    //画面上の表示サイズ
+                    prev.style.width = (w * SizeRate) + "px";
+                    prev.style.height = (h * SizeRate) + "px";
+                    //内部のサイズ
+                    prev.setAttribute("width", w);
+                    prev.setAttribute("height", h);
 
                     //mw = w * ScanRate[0];
                     //mh = w * ScanRate[1];
