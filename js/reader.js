@@ -285,7 +285,7 @@ qrcode.addEventListener('click', () => {
             displayreset();
         }
 
-    //    setTimeout(Scan, 200);
+        id = setTimeout(Scan, 200);
     }
 
     function displayreset() {
