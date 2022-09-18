@@ -54,6 +54,7 @@ barcode.addEventListener('click', () => {
     value = document.getElementById("code");
     value.value = "";
 
+    value.style.width = "300px";
     value.style.height = "36px";
     value.style.display = "none";
     value.style.overflow = "hidden";
@@ -215,10 +216,11 @@ qrcode.addEventListener('click', () => {
     value = document.getElementById("code");
     value.value = "";
 
-    value.style.height = "72px";
+    value.style.width = "420px";
+    value.style.height = "108px";
     value.style.display = "none";
     value.style.textAlign = "left";
-    value.style.overflow = "auto";
+    value.style.overflow = "scroll";
 
     //カメラ使用の許可ダイアログが表示される
     navigator.mediaDevices.getUserMedia(
