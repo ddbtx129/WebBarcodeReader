@@ -230,7 +230,14 @@ qrcode.addEventListener('click', () => {
             id = setTimeout(Scan, 500);
         }
     ).catch( //許可されなかった場合
-        function (err) { value.innerHTML = value.innerHTML + err + '\n'; }
+        function (err) {
+            scanarea.style.display = 'none';
+
+            value.style.display = "inline";
+            reset.style.display = "inline";
+
+            value.innerHTML = err;
+        }
     );
 
     function Scan() {
