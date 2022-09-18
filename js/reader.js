@@ -26,17 +26,15 @@ barcode.addEventListener('click', () => {
     var preview = document.createElement('canvas');
     preview.id = "preview";
     scanarea.appendChild(preview);
-    window.alert(2);
 
     info.className = "text";
     info.innerHTML = "カメラにバーコードを写してください。";
     scanarea.appendChild(info);
 
     var video, tmp, tmp_ctx, value, prev, prev_ctx, w, h, mw, mh, x1, y1;
+    var DetectedCount = 0, DetectedCode = "";
 
     scanarea.style.display = 'inline';
-
-    var DetectedCount = 0, DetectedCode = "";
 
     video = document.createElement('video');
     video.id = "video";
@@ -176,7 +174,6 @@ barcode.addEventListener('click', () => {
     }
 });
 
-
 qrcode.addEventListener('click', () => {
 
     barcode.style.display = "none";
@@ -218,6 +215,7 @@ qrcode.addEventListener('click', () => {
     value.style.height = "72px";
     value.style.display = "none";
     value.style.textAlign = "left";
+    value.style.overflow = "auto";
 
     //カメラ使用の許可ダイアログが表示される
     navigator.mediaDevices.getUserMedia(
