@@ -17,16 +17,17 @@
             }
 
             textarea {
-                margin-top: 12px;
+                margin-top: 24px;
                 resize: none;
                 width: 300px;
                 height: 36px;
-                overflow: hidden;
                 font-size: xx-large;
                 text-align: center;
+                overflow: hidden;
                 justify-content: center;
             }
             button{
+                margin-top: 24px;
                 margin-left: 12px;
                 font-size: x-large;
             }
@@ -54,18 +55,29 @@
                 text-align: center;
             }
         </style>
-        <script src="js/quagga.min.js"></script>
+
+        <script src="js/barcode/quagga.min.js"></script>
+        <script src="js/qrcode/jsQR.js"></script>
 
     </head>
+
     <body>
 
         <div style="text-align: center; width: 100%;">
-            <textarea readonly id="code" style="display: none;"></textarea>
-            <br />
-            <button id="btn" style="display: inline">バーコードを読み込む</button>
-            <button id="reset" style="display: none">リセット</button>
+            <div id ="anser" style="display: none;">
+                <div><textarea readonly id="code"></textarea></div>
+                <div><button id="reset">リセット</button></div>
+            </div>
+
+            <div id ="button" style="display: inline">
+                <div><button id="barcode">バーコードを読み込む</button></div>
+                <div><button id="qrcode">ＱＲコードを読み込む</button></div>
+            </div>
+
         </div>
+
         <script src="js/reader.js"></script>
+        
         <div style="position: absolute; width: 100%; bottom : 12px; left: 0px;">© 2022 Tetsuya Iida</div>
 
     </body>
