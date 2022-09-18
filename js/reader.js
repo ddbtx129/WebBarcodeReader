@@ -27,6 +27,7 @@ barcode.addEventListener('click', () => {
     preview.id = "preview";
     scanarea.appendChild(preview);
 
+    var info = document.createElement('p');
     info.className = "text";
     info.innerHTML = "カメラにバーコードを写してください。";
     scanarea.appendChild(info);
