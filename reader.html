@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.1, maximum-scale=4,user-scalable=yes">
-    <title>バーコードリーダー　v0.291 β</title>
+    <title>バーコードリーダー　v0.292 β</title>
     <style>
         * {
             box-sizing: border-box;
@@ -157,7 +157,7 @@
                 prev_ctx.drawImage(video, 0, 0, w, h);
                 prev_ctx.beginPath();
                 prev_ctx.strokeStyle = "rgb(255,0,0)";
-                prev_ctx.lineWidth = 2;
+                prev_ctx.lineWidth = 4;
                 prev_ctx.rect(((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2), (w * ScanRate[0]), (w * ScanRate[1]));
                 prev_ctx.stroke();
 
