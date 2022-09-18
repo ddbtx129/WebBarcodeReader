@@ -29,7 +29,8 @@ barcode.addEventListener('click', () => {
 
     var info = document.createElement('p');
     info.className = "text";
-    info.innerHTML = "カメラにバーコードを写してください。";
+    info.innerHTML = "カメラにバーコードを\n写してください。";
+    info.style.fontWeight = "600";
     scanarea.appendChild(info);
 
     var video, tmp, tmp_ctx, value, prev, prev_ctx, w, h, mw, mh, x1, y1;
@@ -191,7 +192,8 @@ qrcode.addEventListener('click', () => {
 
     var info = document.createElement('p');
     info.className = "text";
-    info.innerHTML = "カメラにバーコードを写してください。";
+    info.innerHTML = "カメラにバーコードを\n写してください。";
+    info.style.fontWeight = "600";
     scanarea.appendChild(info);
 
     var video, tmp, tmp_ctx, value, prev, prev_ctx, w, h, m, x1, y1;
