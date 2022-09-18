@@ -222,7 +222,7 @@ qrcode.addEventListener('click', () => {
     //カメラ使用の許可ダイアログが表示される
     navigator.mediaDevices.getUserMedia(
         //マイクはオフ, カメラの設定   できれば背面カメラ    できれば640×480
-        { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": 720 }, "height": { "ideal": 480 } } }
+        { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": 1280 }, "height": { "ideal": 720 } } }
     ).then( //許可された場合
         function (stream) {
             video.srcObject = stream;
@@ -235,8 +235,7 @@ qrcode.addEventListener('click', () => {
 
             value.style.display = "inline";
             reset.style.display = "inline";
-
-            value.innerHTML = err;
+            value.value = err;
         }
     );
 
