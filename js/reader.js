@@ -68,16 +68,6 @@ barcode.addEventListener('click', () => {
         { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": 1080 }, "height": { "ideal": 720 } } }
     ).then( //許可された場合
         function (stream) {
-
-            var turn = document.createElement('button');
-            turn.className = "turn";
-            turn.innerHTML = "戻る";
-            scanarea.appendChild(turn);
-
-            turn.onclick = function () {
-                location.reload();
-            };
-
             video.srcObject = stream;
             //0.5秒毎にスキャンする
             id = setTimeout(Scan, 500, true);
@@ -91,6 +81,18 @@ barcode.addEventListener('click', () => {
             value.value = err;
         }
     );
+
+    video.Elem.addEventListener('playing', function () {
+
+        var turn = document.createElement('button');
+        turn.className = "turn";
+        turn.innerHTML = "戻る";
+        scanarea.appendChild(turn);
+
+        turn.onclick = function () {
+            location.reload();
+        };
+    });
 
     function Scan(first) {
 
@@ -264,16 +266,6 @@ qrcode.addEventListener('click', () => {
         { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": 1080 }, "height": { "ideal": 720 } } }
     ).then( //許可された場合
         function (stream) {
-
-            var turn = document.createElement('button');
-            turn.className = "turn";
-            turn.innerHTML = "戻る";
-            scanarea.appendChild(turn);
-
-            turn.onclick = function () {
-                location.reload();
-            };
-
             video.srcObject = stream;
             //0.5秒後にスキャンする
             id = setTimeout(Scan, 500);
@@ -287,6 +279,18 @@ qrcode.addEventListener('click', () => {
             value.value = err;
         }
     );
+
+    video.Elem.addEventListener('playing', function () {
+
+        var turn = document.createElement('button');
+        turn.className = "turn";
+        turn.innerHTML = "戻る";
+        scanarea.appendChild(turn);
+
+        turn.onclick = function () {
+            location.reload();
+        };
+    });
 
     function Scan() {
 
