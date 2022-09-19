@@ -64,7 +64,7 @@ barcode.addEventListener('click', () => {
     //カメラ使用の許可ダイアログが表示される
     navigator.mediaDevices.getUserMedia(
         //マイクはオフ, カメラの設定   背面カメラを希望する 640×480を希望する
-        { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": 756 }, "height": { "ideal": 504 } } }
+        { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": 1280 }, "height": { "ideal": 720 } } }
     ).then( //許可された場合
         function (stream) {
             video.srcObject = stream;
@@ -83,7 +83,7 @@ barcode.addEventListener('click', () => {
 
     function Scan(first) {
 
-        var SizeRate = 0.7;
+        var SizeRate = 0.415;
         var ScanRate = new Array(0.6, 0.25);
 
         if (first) {
