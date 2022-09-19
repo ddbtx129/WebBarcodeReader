@@ -82,18 +82,6 @@ barcode.addEventListener('click', () => {
         }
     );
 
-    video.Elem.addEventListener('playing', function () {
-
-        var turn = document.createElement('button');
-        turn.className = "turn";
-        turn.innerHTML = "戻る";
-        scanarea.appendChild(turn);
-
-        turn.onclick = function () {
-            location.reload();
-        };
-    });
-
     function Scan(first) {
 
         var SizeRate = 0.5;
@@ -109,6 +97,15 @@ barcode.addEventListener('click', () => {
             //内部のサイズ
             prev.setAttribute("width", w);
             prev.setAttribute("height", h);
+
+            var turn = document.createElement('button');
+            turn.className = "turn";
+            turn.innerHTML = "戻る";
+            scanarea.appendChild(turn);
+
+            turn.onclick = function () {
+                location.reload();
+            };
         }
 
         prev_ctx.drawImage(video, 0, 0, w, h);
@@ -268,7 +265,7 @@ qrcode.addEventListener('click', () => {
         function (stream) {
             video.srcObject = stream;
             //0.5秒後にスキャンする
-            id = setTimeout(Scan, 500);
+            id = setTimeout(Scan, 500, true);
         }
     ).catch( //許可されなかった場合
         function (err) {
@@ -280,19 +277,19 @@ qrcode.addEventListener('click', () => {
         }
     );
 
-    video.Elem.addEventListener('playing', function () {
+    function Scan(first) {
 
-        var turn = document.createElement('button');
-        turn.className = "turn";
-        turn.innerHTML = "戻る";
-        scanarea.appendChild(turn);
+        if (first) {
 
-        turn.onclick = function () {
-            location.reload();
-        };
-    });
+            var turn = document.createElement('button');
+            turn.className = "turn";
+            turn.innerHTML = "戻る";
+            scanarea.appendChild(turn);
 
-    function Scan() {
+            turn.onclick = function () {
+                location.reload();
+            };
+        }
 
         //選択された幅高さ
         w = video.videoWidth;
@@ -337,7 +334,7 @@ qrcode.addEventListener('click', () => {
             displayreset();
         }
 
-        id = setTimeout(Scan, 200);
+        id = setTimeout(Scan, 200, false);
     }
 
     function displayreset() {
