@@ -34,6 +34,19 @@ barcode.addEventListener('click', () => {
     info.style.marginBottom = "50px";
     scanarea.appendChild(info);
 
+    var turn = document.createElement('button');
+    scanarea.appendChild(turn);
+
+    turn.onclick = function () {
+        DetectedCode = '';
+        DetectedCount = 0;
+
+        Quagga.stop();
+        clearTimeout(id);
+
+        displayreset();
+    };
+
     var video, tmp, tmp_ctx, value, prev, prev_ctx, w, h, mw, mh, x1, y1;
     var DetectedCount = 0, DetectedCode = "";
 
