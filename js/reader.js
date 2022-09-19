@@ -39,35 +39,6 @@ barcode.addEventListener('click', () => {
     info.style.marginBottom = "50px";
     scanarea.appendChild(info);
 
-    turn.onclick = function () {
-        DetectedCode = '';
-        DetectedCount = 0;
-
-        Quagga.stop();
-        clearTimeout(id);
-
-        scanarea.style.display = 'none';
-
-        DetectedCode = '';
-        DetectedCount = 0;
-
-        tmp.remove();
-
-        video.stop();
-        video.srcObject = null;
-
-        video.remove();
-        scanarea.remove();
-
-        barcode.style.display = "inline";
-        qrcode.style.display = "inline";
-        reset.style.display = "none";
-
-        document.getElementById("code").style.display = "none";
-
-        location.reload();
-    };
-
     var video, tmp, tmp_ctx, value, prev, prev_ctx, w, h, mw, mh, x1, y1;
     var DetectedCount = 0, DetectedCode = "";
 
@@ -94,6 +65,34 @@ barcode.addEventListener('click', () => {
     value.style.display = "none";
     value.style.overflow = "hidden";
     value.style.textAlign = "center";
+
+    turn.onclick = function () {
+        DetectedCode = '';
+        DetectedCount = 0;
+
+        Quagga.stop();
+        clearTimeout(id);
+
+        scanarea.style.display = 'none';
+
+        DetectedCode = '';
+        DetectedCount = 0;
+
+        tmp.remove();
+
+        video.stop();
+        video.srcObject = null;
+
+        video.remove();
+        scanarea.remove();
+
+        barcode.style.display = "inline";
+        qrcode.style.display = "inline";
+        reset.style.display = "none";
+        value.style.display = "none";
+
+        location.reload();
+    };
 
     //カメラ使用の許可ダイアログが表示される
     navigator.mediaDevices.getUserMedia(
@@ -254,35 +253,6 @@ qrcode.addEventListener('click', () => {
     turn.innerHTML = "戻る";
     scanarea.appendChild(turn);
 
-    turn.onclick = function () {
-        DetectedCode = '';
-        DetectedCount = 0;
-
-        Quagga.stop();
-        clearTimeout(id);
-
-        scanarea.style.display = 'none';
-
-        DetectedCode = '';
-        DetectedCount = 0;
-
-        tmp.remove();
-
-        video.stop();
-        video.srcObject = null;
-
-        video.remove();
-        scanarea.remove();
-
-        barcode.style.display = "inline";
-        qrcode.style.display = "inline";
-        reset.style.display = "none";
-
-        document.getElementById("code").style.display = "none";
-
-        location.reload();
-    };
-
     var info = document.createElement('p');
     info.className = "text";
     info.innerHTML = "カメラにバーコードを写してください。";
@@ -314,6 +284,30 @@ qrcode.addEventListener('click', () => {
     value.style.display = "none";
     value.style.textAlign = "left";
     value.style.overflow = "scroll";
+
+    turn.onclick = function () {
+        clearTimeout(id);
+
+        scanarea.style.display = 'none';
+
+        DetectedCode = '';
+        DetectedCount = 0;
+
+        tmp.remove();
+
+        video.stop();
+        video.srcObject = null;
+
+        video.remove();
+        scanarea.remove();
+
+        barcode.style.display = "inline";
+        qrcode.style.display = "inline";
+        reset.style.display = "none";
+        value.style.display = "none";
+
+        location.reload();
+    };
 
     //カメラ使用の許可ダイアログが表示される
     navigator.mediaDevices.getUserMedia(
