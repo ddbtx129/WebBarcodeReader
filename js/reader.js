@@ -27,6 +27,11 @@ barcode.addEventListener('click', () => {
     preview.id = "preview";
     scanarea.appendChild(preview);
 
+    var turn = document.createElement('button');
+    turn.className = "turn";
+    turn.innerHTML = "戻る";
+    scanarea.appendChild(turn);
+
     var info = document.createElement('p');
     info.className = "text";
     info.innerHTML = "カメラにバーコードを写してください。";
@@ -34,8 +39,6 @@ barcode.addEventListener('click', () => {
     info.style.marginBottom = "50px";
     scanarea.appendChild(info);
 
-    var turn = document.createElement('button');
-    scanarea.appendChild(turn);
 
     turn.onclick = function () {
         DetectedCode = '';
