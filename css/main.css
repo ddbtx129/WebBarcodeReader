@@ -23,6 +23,17 @@ body {
     background: rgba(0, 0, 0, 0.8);
 }
 
+turn {
+    position: fixed;
+    bottom: 2rem;
+    left: 0;
+    width: 100%;
+    margin-top: 5px;
+    font-size: larger;
+    color: #fff;
+    text-align: center;
+}
+
 .text {
     position: fixed;
     bottom: 1rem;
