@@ -246,6 +246,8 @@ qrcode.addEventListener('click', () => {
 
     function Scan() {
 
+        var SizeRate = 0.7;
+        
         //選択された幅高さ
         w = video.videoWidth;
         h = video.videoHeight;
@@ -258,7 +260,8 @@ qrcode.addEventListener('click', () => {
         prev.setAttribute("width", w);
         prev.setAttribute("height", h);
 
-        if (w > h) { m = h * 0.5; } else { m = w * 0.5; }
+        //if (w > h) { m = h * 0.5; } else { m = w * 0.5; }
+        if (w > h) { m = h * SizeRate; } else { m = w * SizeRate; }
 
         x1 = (w - m) / 2;
         y1 = (h - m) / 2;
