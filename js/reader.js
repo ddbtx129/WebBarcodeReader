@@ -67,29 +67,29 @@ barcode.addEventListener('click', () => {
     value.style.textAlign = "center";
 
     turn.onclick = function () {
-        DetectedCode = '';
-        DetectedCount = 0;
+        //DetectedCode = '';
+        //DetectedCount = 0;
 
-        Quagga.stop();
-        clearTimeout(id);
+        //Quagga.stop();
+        //clearTimeout(id);
 
-        scanarea.style.display = 'none';
+        //scanarea.style.display = 'none';
 
-        DetectedCode = '';
-        DetectedCount = 0;
+        //DetectedCode = '';
+        //DetectedCount = 0;
 
-        tmp.remove();
+        //tmp.remove();
 
-        video.stop();
-        video.srcObject = null;
+        //video.stop();
+        //video.srcObject = null;
 
-        video.remove();
-        scanarea.remove();
+        //video.remove();
+        //scanarea.remove();
 
-        barcode.style.display = "inline";
-        qrcode.style.display = "inline";
-        reset.style.display = "none";
-        value.style.display = "none";
+        //barcode.style.display = "inline";
+        //qrcode.style.display = "inline";
+        //reset.style.display = "none";
+        //value.style.display = "none";
 
         location.reload();
     };
