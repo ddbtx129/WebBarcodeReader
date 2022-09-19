@@ -84,7 +84,7 @@ barcode.addEventListener('click', () => {
     function Scan(first) {
 
         var SizeRate = 0.7;
-        var ScanRate = new Array(0.5, 0.3);
+        var ScanRate = new Array(0.7, 0.28);
 
         if (first) {
             //選択された幅高さ
@@ -258,7 +258,7 @@ qrcode.addEventListener('click', () => {
         prev.setAttribute("width", w);
         prev.setAttribute("height", h);
 
-        if (w > h) { m = h * 0.6; } else { m = w * 0.6; }
+        if (w > h) { m = h * 0.7; } else { m = w * 0.7; }
 
         x1 = (w - m) / 2;
         y1 = (h - m) / 2;
