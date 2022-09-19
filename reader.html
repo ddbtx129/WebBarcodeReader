@@ -15,19 +15,6 @@
                 width: 100%;
                 text-align: center;
             }
-
-            textarea {
-                margin-top: 24px;
-                resize: none;
-                font-size: xx-large;
-                text-align: center;
-                justify-content: center;
-            }
-            button{
-                margin-top: 24px;
-                margin-left: 12px;
-                font-size: x-large;
-            }
             .video{
                 margin-top: 8px;
             }
@@ -50,6 +37,26 @@
                 color: #fff;
                 text-align: center;
             }
+            
+            textarea {
+                margin-top: 24px;
+                resize: none;
+                font-size: xx-large;
+                text-align: center;
+                justify-content: center;
+            }
+
+            button{
+                font-size: x-large;
+            }
+            .scan-button {
+                margin-top: 24px;
+                margin-left: 12px;
+            }
+            .reset-button{
+                margin-top: 12px;
+                margin-left: 12px;
+            }
         </style>
 
         <script src="js/barcode/quagga.min.js"></script>
@@ -62,11 +69,11 @@
         <div style="text-align: center; width: 100%;">
             <div>
                 <textarea readonly id="code" style="display: none"></textarea>
-                <button id="barcode" style="display: inline;">バーコードを読み込む</button>
+                <button id="barcode" class="scan-button" style="display: inline;">バーコードを読み込む</button>
             </div>
             <div>
-                <button id="qrcode" style="display: inline;">ＱＲコードを読み込む</button>
-                <button id="reset" style="display: none">リセット</button>
+                <button id="qrcode" class="scan-button" style="display: inline;">ＱＲコードを読み込む</button>
+                <button id="reset" class="reset-button" style="display: none">リセット</button>
             </div>
         </div>
 
