@@ -27,10 +27,6 @@ barcode.addEventListener('click', () => {
     preview.id = "preview";
     scanarea.appendChild(preview);
 
-    var turn = document.createElement('button');
-    turn.className = "turn";
-    turn.innerHTML = "戻る";
-    scanarea.appendChild(turn);
 
     var info = document.createElement('p');
     info.className = "text";
@@ -66,40 +62,22 @@ barcode.addEventListener('click', () => {
     value.style.overflow = "hidden";
     value.style.textAlign = "center";
 
-    turn.onclick = function () {
-        //DetectedCode = '';
-        //DetectedCount = 0;
-
-        //Quagga.stop();
-        //clearTimeout(id);
-
-        //scanarea.style.display = 'none';
-
-        //DetectedCode = '';
-        //DetectedCount = 0;
-
-        //tmp.remove();
-
-        //video.stop();
-        //video.srcObject = null;
-
-        //video.remove();
-        //scanarea.remove();
-
-        //barcode.style.display = "inline";
-        //qrcode.style.display = "inline";
-        //reset.style.display = "none";
-        //value.style.display = "none";
-
-        location.reload();
-    };
-
     //カメラ使用の許可ダイアログが表示される
     navigator.mediaDevices.getUserMedia(
         //マイクはオフ, カメラの設定   背面カメラを希望する 640×480を希望する
         { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": 1080 }, "height": { "ideal": 720 } } }
     ).then( //許可された場合
         function (stream) {
+
+            var turn = document.createElement('button');
+            turn.className = "turn";
+            turn.innerHTML = "戻る";
+            scanarea.appendChild(turn);
+
+            turn.onclick = function () {
+                location.reload();
+            };
+
             video.srcObject = stream;
             //0.5秒毎にスキャンする
             id = setTimeout(Scan, 500, true);
@@ -248,11 +226,6 @@ qrcode.addEventListener('click', () => {
     preview.id = "preview";
     scanarea.appendChild(preview);
 
-    var turn = document.createElement('button');
-    turn.className = "turn";
-    turn.innerHTML = "戻る";
-    scanarea.appendChild(turn);
-
     var info = document.createElement('p');
     info.className = "text";
     info.innerHTML = "カメラにバーコードを写してください。";
@@ -285,36 +258,22 @@ qrcode.addEventListener('click', () => {
     value.style.textAlign = "left";
     value.style.overflow = "scroll";
 
-    turn.onclick = function () {
-        //clearTimeout(id);
-
-        //scanarea.style.display = 'none';
-
-        //DetectedCode = '';
-        //DetectedCount = 0;
-
-        //tmp.remove();
-
-        //video.stop();
-        //video.srcObject = null;
-
-        //video.remove();
-        //scanarea.remove();
-
-        //barcode.style.display = "inline";
-        //qrcode.style.display = "inline";
-        //reset.style.display = "none";
-        //value.style.display = "none";
-
-        location.reload();
-    };
-
     //カメラ使用の許可ダイアログが表示される
     navigator.mediaDevices.getUserMedia(
         //マイクはオフ, カメラの設定   できれば背面カメラ    できれば640×480
         { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": 1080 }, "height": { "ideal": 720 } } }
     ).then( //許可された場合
         function (stream) {
+
+            var turn = document.createElement('button');
+            turn.className = "turn";
+            turn.innerHTML = "戻る";
+            scanarea.appendChild(turn);
+
+            turn.onclick = function () {
+                location.reload();
+            };
+
             video.srcObject = stream;
             //0.5秒後にスキャンする
             id = setTimeout(Scan, 500);
