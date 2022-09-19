@@ -190,13 +190,13 @@ barcode.addEventListener('click', () => {
         }
         if (DetectedCount >= 3) {
 
-            Quagga.stop();
-            clearTimeout(id);
+            //Quagga.stop();
+            //clearTimeout(id);
 
             //console.log(result.codeResult.code);
 
             value.value = result.codeResult.code;
-            displayreset();
+            //displayreset();
         }
     });
 
