@@ -260,8 +260,7 @@ qrcode.addEventListener('click', () => {
         prev.setAttribute("width", w);
         prev.setAttribute("height", h);
 
-        //if (w > h) { m = h * 0.5; } else { m = w * 0.5; }
-        if (w > h) { m = h * SizeRate; } else { m = w * SizeRate; }
+        if (w > h) { m = h * 0.7; } else { m = w * 0.7; }
 
         x1 = (w - m) / 2;
         y1 = (h - m) / 2;
