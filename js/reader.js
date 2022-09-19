@@ -1,7 +1,41 @@
 ﻿var barcode = document.getElementById('barcode');
 var qrcode = document.getElementById('qrcode');
 var reset = document.getElementById('reset');
-var id;
+var scanarea, id;
+
+window.addEventListener('load', function (event) {
+
+    scanarea = document.createElement('div');
+    scanarea.id = "scanarea";
+    scanarea.className = "scanarea";
+    document.body.appendChild(scanarea);
+
+    var preview = document.createElement('canvas');
+    preview.id = "preview";
+    scanarea.appendChild(preview);
+
+    var info = document.createElement('p');
+    info.className = "text";
+    info.innerHTML = "カメラにバーコードを写してください。";
+    info.style.fontWeight = "1200";
+    info.style.marginBottom = "50px";
+    scanarea.appendChild(info);
+
+    var turn = document.createElement('button');
+    turn.className = "turn";
+    turn.innerHTML = "戻る";
+    scanarea.appendChild(turn);
+
+    scanarea.style.display = 'none';
+
+    turn.onclick = function () {
+        barcode.style.display = "inline";
+        qrcode.style.display = "inline";
+        reset.style.display = "none";
+        document.getElementById("code").style.display = "none";
+        //    location.reload();
+    };
+});
 
 reset.addEventListener('click', () => {
 
@@ -9,6 +43,7 @@ reset.addEventListener('click', () => {
     qrcode.style.display = "inline";
     reset.style.display = "none";
     document.getElementById("code").style.display = "none";
+    scanarea.style.display = 'none';
 
     //location.reload();
 });
@@ -18,22 +53,21 @@ barcode.addEventListener('click', () => {
     barcode.style.display = "none";
     qrcode.style.display = "none";
 
-    var scanarea = document.createElement('div');
-    scanarea.id = "scanarea";
-    scanarea.className = "scanarea";
-    document.body.appendChild(scanarea);
+    //var scanarea = document.createElement('div');
+    //scanarea.id = "scanarea";
+    //scanarea.className = "scanarea";
+    //document.body.appendChild(scanarea);
 
-    var preview = document.createElement('canvas');
-    preview.id = "preview";
-    scanarea.appendChild(preview);
+    //var preview = document.createElement('canvas');
+    //preview.id = "preview";
+    //scanarea.appendChild(preview);
 
-
-    var info = document.createElement('p');
-    info.className = "text";
-    info.innerHTML = "カメラにバーコードを写してください。";
-    info.style.fontWeight = "1200";
-    info.style.marginBottom = "50px";
-    scanarea.appendChild(info);
+    //var info = document.createElement('p');
+    //info.className = "text";
+    //info.innerHTML = "カメラにバーコードを写してください。";
+    //info.style.fontWeight = "1200";
+    //info.style.marginBottom = "50px";
+    //scanarea.appendChild(info);
 
     var video, tmp, tmp_ctx, value, prev, prev_ctx, w, h, mw, mh, x1, y1;
     var DetectedCount = 0, DetectedCode = "";
@@ -103,14 +137,18 @@ barcode.addEventListener('click', () => {
             prev.setAttribute("width", w);
             prev.setAttribute("height", h);
 
-            var turn = document.createElement('button');
-            turn.className = "turn";
-            turn.innerHTML = "戻る";
-            scanarea.appendChild(turn);
+            //var turn = document.createElement('button');
+            //turn.className = "turn";
+            //turn.innerHTML = "戻る";
+            //scanarea.appendChild(turn);
 
-            turn.onclick = function () {
-                location.reload();
-            };
+            //turn.onclick = function () {
+            //    barcode.style.display = "inline";
+            //    qrcode.style.display = "inline";
+            //    reset.style.display = "none";
+            //    document.getElementById("code").style.display = "none";
+            ////    location.reload();
+            //};
         }
 
         prev_ctx.drawImage(video, 0, 0, w, h);
@@ -192,6 +230,7 @@ barcode.addEventListener('click', () => {
             clearTimeout(id);
 
             value.value = result.codeResult.code;
+
             displayreset();
         }
     });
@@ -206,13 +245,13 @@ barcode.addEventListener('click', () => {
         DetectedCode = '';
         DetectedCount = 0;
 
-        tmp.remove();
+        //tmp.remove();
 
-        video.stop();
-        video.srcObject = null;
+        //video.stop();
+        //video.srcObject = null;
 
-        video.remove();
-        scanarea.remove();
+        //video.remove();
+    //    scanarea.remove();
     }
 });
 
@@ -221,7 +260,7 @@ qrcode.addEventListener('click', () => {
     barcode.style.display = "none";
     qrcode.style.display = "none";
 
-    var scanarea = document.createElement('div');
+    scanarea = document.createElement('div');
     scanarea.id = "scanarea";
     scanarea.className = "scanarea";
     document.body.appendChild(scanarea);
