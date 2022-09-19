@@ -83,7 +83,7 @@ barcode.addEventListener('click', () => {
 
     function Scan(first) {
 
-        var SizeRate = 0.45;
+        var SizeRate = 0.475;
         var ScanRate = new Array(0.6, 0.25);
 
         if (first) {
