@@ -39,7 +39,6 @@ barcode.addEventListener('click', () => {
     info.style.marginBottom = "50px";
     scanarea.appendChild(info);
 
-
     turn.onclick = function () {
         DetectedCode = '';
         DetectedCount = 0;
@@ -47,7 +46,26 @@ barcode.addEventListener('click', () => {
         Quagga.stop();
         clearTimeout(id);
 
-        displayreset();
+        scanarea.style.display = 'none';
+
+        DetectedCode = '';
+        DetectedCount = 0;
+
+        tmp.remove();
+
+        video.stop();
+        video.srcObject = null;
+
+        video.remove();
+        scanarea.remove();
+
+        barcode.style.display = "inline";
+        qrcode.style.display = "inline";
+        reset.style.display = "none";
+
+        document.getElementById("code").style.display = "none";
+
+        location.reload();
     };
 
     var video, tmp, tmp_ctx, value, prev, prev_ctx, w, h, mw, mh, x1, y1;
@@ -230,6 +248,40 @@ qrcode.addEventListener('click', () => {
     var preview = document.createElement('canvas');
     preview.id = "preview";
     scanarea.appendChild(preview);
+
+    var turn = document.createElement('button');
+    turn.className = "turn";
+    turn.innerHTML = "戻る";
+    scanarea.appendChild(turn);
+
+    turn.onclick = function () {
+        DetectedCode = '';
+        DetectedCount = 0;
+
+        Quagga.stop();
+        clearTimeout(id);
+
+        scanarea.style.display = 'none';
+
+        DetectedCode = '';
+        DetectedCount = 0;
+
+        tmp.remove();
+
+        video.stop();
+        video.srcObject = null;
+
+        video.remove();
+        scanarea.remove();
+
+        barcode.style.display = "inline";
+        qrcode.style.display = "inline";
+        reset.style.display = "none";
+
+        document.getElementById("code").style.display = "none";
+
+        location.reload();
+    };
 
     var info = document.createElement('p');
     info.className = "text";
