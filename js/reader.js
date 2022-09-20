@@ -72,6 +72,7 @@ barcode.addEventListener('click', () => {
 
     video = document.createElement('video');
     video.id = "video";
+    video.className = "Rotate0";
     video.setAttribute("autoplay", "");
     video.setAttribute("muted", "");
     video.setAttribute("playsinline", "");
@@ -98,7 +99,6 @@ barcode.addEventListener('click', () => {
         { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": VideoSize[1] }, "height": { "ideal": VideoSize[0] } } }
     ).then( //許可された場合
         function (stream) {
-            window.alert(1);
             video.srcObject = stream;
             //0.5秒毎にスキャンする
             id = setTimeout(Scan, 500, true);
@@ -120,9 +120,11 @@ barcode.addEventListener('click', () => {
         var SizeRate = 0.5;
         var ScanRate = new Array(0.6, 0.25);
 
-        video.style.transform = "rotate(90deg)";
-
         if (first) {
+
+            if (video.videoWidth > video.videoHeight) {
+                video.className = "Rotate90";
+            }
             //選択された幅高さ
             w = video.videoWidth;
             h = video.videoHeight;
