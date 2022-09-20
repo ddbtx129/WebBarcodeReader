@@ -231,10 +231,9 @@ barcode.addEventListener('click', () => {
 
     function displayreset() {
 
+        video.stop();
         Quagga.stop();
         clearTimeout(id);
-
-        video[0].stop();
 
         DetectedCode = '';
         DetectedCount = 0;
