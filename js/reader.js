@@ -2,7 +2,7 @@
 var barcode = document.getElementById('barcode');
 var qrcode = document.getElementById('qrcode');
 var reset = document.getElementById('reset');
-var scanarea, id;
+var scanarea, turn, id;
 
 window.addEventListener('load', function (event) {
 
@@ -21,6 +21,12 @@ window.addEventListener('load', function (event) {
     info.style.fontWeight = "1200";
     info.style.marginBottom = "50px";
     scanarea.appendChild(info);
+
+    turn = document.createElement('button');
+    turn.className = "turn";
+    turn.innerHTML = "戻る";
+    turn.style.display = "none";
+    scanarea.appendChild(turn);
 
     scanarea.style.display = 'none';
 });
@@ -83,12 +89,6 @@ barcode.addEventListener('click', () => {
     value.style.display = "none";
     value.style.overflow = "hidden";
     value.style.textAlign = "center";
-
-    var turn = document.createElement('button');
-    turn.className = "turn";
-    turn.innerHTML = "戻る";
-    turn.style.display = "none";
-    scanarea.appendChild(turn);
 
     //カメラ使用の許可ダイアログが表示される
     navigator.mediaDevices.getUserMedia(
