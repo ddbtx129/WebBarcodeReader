@@ -218,6 +218,7 @@ barcode.addEventListener('click', () => {
         if (DetectedCount >= 3) {
 
             value.value = result.codeResult.code;
+            video.stop();
 
             displayreset();
 
@@ -231,7 +232,6 @@ barcode.addEventListener('click', () => {
 
     function displayreset() {
 
-        video.stop();
         Quagga.stop();
         clearTimeout(id);
 
