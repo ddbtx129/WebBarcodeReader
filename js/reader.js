@@ -25,7 +25,7 @@ window.addEventListener('load', function (event) {
     var turn = document.createElement('button');
     turn.className = "turn";
     turn.innerHTML = "戻る";
-    turn.style.display = "none";
+    turn.style.display = "inline";
     scanarea.appendChild(turn);
 
     scanarea.style.display = 'none';
@@ -104,9 +104,10 @@ barcode.addEventListener('click', () => {
         { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": 1080 }, "height": { "ideal": 720 } } }
     ).then( //許可された場合
         function (stream) {
-            window.alert(1);
+
             video.videoWidth = 1080;
             video.videoHeight = 720;
+
             video.srcObject = stream;
             //0.5秒毎にスキャンする
             id = setTimeout(Scan, 500, true);
@@ -116,7 +117,6 @@ barcode.addEventListener('click', () => {
             scanarea.style.display = 'none';
             barcode.style.display = "none";
             qrcode.style.display = "none";
-
             value.style.display = "inline";
             reset.style.display = "inline";
 
@@ -140,7 +140,6 @@ barcode.addEventListener('click', () => {
             prev.setAttribute("width", w);
             prev.setAttribute("height", h);
 
-            turn.style.display = "inline";
 
             //var turn = document.createElement('button');
             //turn.className = "turn";
