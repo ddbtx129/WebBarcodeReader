@@ -94,7 +94,6 @@ barcode.addEventListener('click', () => {
     value.style.textAlign = "center";
 
     var options = { audio: false, video: { facingMode: "environment", width: { ideal: VideoSize[1] }, height: { ideal: VideoSize[0] } }};
-    syncVideo(video, options);
 
     //カメラ使用の許可ダイアログが表示される
     navigator.mediaDevices.getUserMedia(
