@@ -44,7 +44,7 @@ reset.addEventListener('click', () => {
 
 barcode.addEventListener('click', () => {
 
-    var VideoSize = new Array(720, 1080);
+    var VideoSize = new Array(640, 480);
 
     barcode.style.display = "none";
     qrcode.style.display = "none";
