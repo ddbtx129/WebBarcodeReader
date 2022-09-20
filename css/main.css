@@ -66,3 +66,15 @@ button {
     margin-top: 24px;
     margin-left: 12px;
 }
+
+video.Rotate0 {
+    -webkit-transform: rotate(0deg);
+}
+
+video.Rotate90 {
+    -webkit-transform: rotate(45deg);
+}
+
+video.Rotate270 {
+    -webkit-transform: rotate(270deg);
+}
