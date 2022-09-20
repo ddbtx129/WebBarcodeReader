@@ -93,16 +93,18 @@ barcode.addEventListener('click', () => {
     value.style.overflow = "hidden";
     value.style.textAlign = "center";
 
-    var constraints = { audio: false, video: { facingMode: "environment", width: { ideal: VideoSize[1] }, height: { ideal: VideoSize[0] } }};
+    var options = { audio: false, video: { facingMode: "environment", width: { ideal: VideoSize[1] }, height: { ideal: VideoSize[0] } }};
+    syncVideo(video, options);
 
     //カメラ使用の許可ダイアログが表示される
     navigator.mediaDevices.getUserMedia(
         //マイクはオフ, カメラの設定   背面カメラを希望する 640×480を希望する
-    //    { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": VideoSize[1] }, "height": { "ideal": VideoSize[0] } } }
-        constraints
+        // { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": VideoSize[1] }, "height": { "ideal": VideoSize[0] } } }
+        options
     ).then( //許可された場合
         function (stream) {
             video.srcObject = stream;
+            video.setAttribute("playsinline", true);
             //0.5秒毎にスキャンする
             id = setTimeout(Scan, 500, true);
         }
@@ -127,7 +129,8 @@ barcode.addEventListener('click', () => {
 
             if (video.videoWidth > video.videoHeight) {
                 window.alert(video.videoWidth + ":" + video.videoHeight);
-                video.className = "Rotate90";
+            //    video.className = "Rotate90";
+                video.srcObject = stream;
             }
             //選択された幅高さ
             w = video.videoWidth;
