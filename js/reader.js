@@ -127,14 +127,14 @@ barcode.addEventListener('click', () => {
 
             //window.alert(video.videoWidth);
             //window.alert(video.videoHeight);
-
+            
             if (video.videoWidth > video.videoHeight) {
                 video.videoHeight = 1080;
                 video.videoWidth = 720;
             }
             //選択された幅高さ
-            w = 1080;
-            h = 720;
+            w = 720;
+            h = 1080;
             //画面上の表示サイズ
             prev.style.width = (w * SizeRate) + "px";
             prev.style.height = (h * SizeRate) + "px";
@@ -143,7 +143,6 @@ barcode.addEventListener('click', () => {
             prev.setAttribute("height", h);
 
             turn.style.display = "inline";
-
 
             turn.onclick = function () {
                 displayreset();
