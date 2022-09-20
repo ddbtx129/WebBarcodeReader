@@ -120,6 +120,8 @@ barcode.addEventListener('click', () => {
         var SizeRate = 0.5;
         var ScanRate = new Array(0.6, 0.25);
 
+        video.style.transform = "rotate(90deg)";
+
         if (first) {
             //選択された幅高さ
             w = video.videoWidth;
