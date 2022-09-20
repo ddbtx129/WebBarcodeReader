@@ -93,17 +93,16 @@ barcode.addEventListener('click', () => {
     value.style.overflow = "hidden";
     value.style.textAlign = "center";
 
-    var options = { audio: false, video: { facingMode: "environment", width: { ideal: VideoSize[1] }, height: { ideal: VideoSize[0] } }};
+    //マイクはオフ, カメラの設定   背面カメラを希望する 640×480を希望する
+    var options = { audio: false, video: { facingMode: "environment", width: { ideal: VideoSize[0] }, height: { ideal: VideoSize[1] } }};
 
     //カメラ使用の許可ダイアログが表示される
     navigator.mediaDevices.getUserMedia(
-        //マイクはオフ, カメラの設定   背面カメラを希望する 640×480を希望する
         // { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": VideoSize[1] }, "height": { "ideal": VideoSize[0] } } }
         options
     ).then( //許可された場合
         function (stream) {
             video.srcObject = stream;
-            video.setAttribute("playsinline", true);
             //0.5秒毎にスキャンする
             id = setTimeout(Scan, 500, true);
         }
@@ -124,16 +123,12 @@ barcode.addEventListener('click', () => {
         var SizeRate = 0.5;
         var ScanRate = new Array(0.6, 0.25);
 
-        if (video.videoWidth > video.videoHeight) {
-            first = true;
-        }
-
         if (first) {
 
             //選択された幅高さ
             w = video.videoWidth;
             h = video.videoHeight;
-            window.alert(video.videoWidth + ":" + video.videoHeight);
+            //window.alert(video.videoWidth + ":" + video.videoHeight);
             //画面上の表示サイズ
             prev.style.width = (w * SizeRate) + "px";
             prev.style.height = (h * SizeRate) + "px";
@@ -193,30 +188,30 @@ barcode.addEventListener('click', () => {
         id = setTimeout(Scan, 50, false);
     }
 
-    Quagga.onProcessed(function (result) {
-        const drawingCtx = Quagga.canvas.ctx.overlay;
-        const drawingCanvas = Quagga.canvas.dom.overlay;
+    //Quagga.onProcessed(function (result) {
+    //    const drawingCtx = Quagga.canvas.ctx.overlay;
+    //    const drawingCanvas = Quagga.canvas.dom.overlay;
 
-        if (result) {
-            // 検出中の緑の線の枠
-            if (result.boxes) {
-                drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute("width")), parseInt(drawingCanvas.getAttribute("height")));
-                result.boxes.filter(function (box) {
-                    return box !== result.box;
-                }).forEach(function (box) {
-                    Quagga.ImageDebug.drawPath(box, { x: 0, y: 1 }, drawingCtx, { color: "green", lineWidth: 2 });
-                });
-            }
-            // 読込中の青枠
-            if (result.box) {
-                Quagga.ImageDebug.drawPath(result.box, { x: 0, y: 1 }, drawingCtx, { color: "#00F", lineWidth: 2 });
-            }
-            // 検出完了時の赤線
-            if (result.codeResult && result.codeResult.code) {
-                Quagga.ImageDebug.drawPath(result.line, { x: 'x', y: 'y' }, drawingCtx, { color: 'red', lineWidth: 3 });
-            }
-        }
-    });
+    //    if (result) {
+    //        // 検出中の緑の線の枠
+    //        if (result.boxes) {
+    //            drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute("width")), parseInt(drawingCanvas.getAttribute("height")));
+    //            result.boxes.filter(function (box) {
+    //                return box !== result.box;
+    //            }).forEach(function (box) {
+    //                Quagga.ImageDebug.drawPath(box, { x: 0, y: 1 }, drawingCtx, { color: "green", lineWidth: 2 });
+    //            });
+    //        }
+    //        // 読込中の青枠
+    //        if (result.box) {
+    //            Quagga.ImageDebug.drawPath(result.box, { x: 0, y: 1 }, drawingCtx, { color: "#00F", lineWidth: 2 });
+    //        }
+    //        // 検出完了時の赤線
+    //        if (result.codeResult && result.codeResult.code) {
+    //            Quagga.ImageDebug.drawPath(result.line, { x: 'x', y: 'y' }, drawingCtx, { color: 'red', lineWidth: 3 });
+    //        }
+    //    }
+    //});
 
     Quagga.onDetected(function (result) {
         //読み取り誤差が多いため、3回連続で同じ値だった場合に成功とする
