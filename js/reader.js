@@ -119,7 +119,7 @@ barcode.addEventListener('click', () => {
 
     function Scan(first) {
 
-        window.alert(3);
+
 
         var SizeRate = 0.5;
         var ScanRate = new Array(0.6, 0.25);
@@ -136,7 +136,7 @@ barcode.addEventListener('click', () => {
             prev.setAttribute("height", h);
 
             turn.style.display = "inline";
-
+        window.alert(3);
             turn.onclick = function () {
                 displayreset();
                 barcode.style.display = "inline";
