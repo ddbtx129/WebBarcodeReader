@@ -126,7 +126,7 @@ barcode.addEventListener('click', () => {
         if (first) {
 
             if (video.videoWidth > video.videoHeight) {
-                window.alert(1);
+                window.alert(video.videoWidth + ":" + video.videoHeight);
                 video.className = "Rotate90";
             }
             //選択された幅高さ
