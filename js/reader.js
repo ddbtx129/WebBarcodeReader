@@ -2,7 +2,7 @@
 var barcode = document.getElementById('barcode');
 var qrcode = document.getElementById('qrcode');
 var reset = document.getElementById('reset');
-var scanarea, id;
+var scanarea, turn, id;
 
 window.addEventListener('load', function (event) {
 
@@ -22,10 +22,10 @@ window.addEventListener('load', function (event) {
     info.style.marginBottom = "50px";
     scanarea.appendChild(info);
 
-    var turn = document.createElement('button');
+    turn = document.createElement('button');
     turn.className = "turn";
     turn.innerHTML = "戻る";
-    turn.style.display = "inline";
+    turn.style.display = "none";
     scanarea.appendChild(turn);
 
     scanarea.style.display = 'none';
@@ -140,6 +140,7 @@ barcode.addEventListener('click', () => {
             prev.setAttribute("width", w);
             prev.setAttribute("height", h);
 
+            turn.style.display = "inline";
 
             //var turn = document.createElement('button');
             //turn.className = "turn";
