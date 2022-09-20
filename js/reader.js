@@ -132,6 +132,7 @@ barcode.addEventListener('click', () => {
             //選択された幅高さ
             w = video.videoWidth;
             h = video.videoHeight;
+            window.alert(video.videoWidth + ":" + video.videoHeight);
             //画面上の表示サイズ
             prev.style.width = (w * SizeRate) + "px";
             prev.style.height = (h * SizeRate) + "px";
