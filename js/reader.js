@@ -1,4 +1,4 @@
-﻿displayreset()var value = document.getElementById("code");
+var value = document.getElementById("code");
 var barcode = document.getElementById('barcode');
 var qrcode = document.getElementById('qrcode');
 var reset = document.getElementById('reset');
