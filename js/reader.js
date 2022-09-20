@@ -98,7 +98,7 @@ barcode.addEventListener('click', () => {
         function (stream) {
             video.videoWidth = 1080;
             video.videoHeight = 720;
-
+            window.alert(video.videoWidth, video.videoHeight);
             video.srcObject = stream;
             //0.5秒毎にスキャンする
             id = setTimeout(Scan, 500, true);
