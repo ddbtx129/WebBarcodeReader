@@ -93,7 +93,7 @@ barcode.addEventListener('click', () => {
     value.style.overflow = "hidden";
     value.style.textAlign = "center";
 
-    var constraints = { audio: false, video: { facingMode: environment, width: { ideal: VideoSize[1] }, height: { ideal: VideoSize[0] } }};
+    var constraints = { audio: false, video: { facingMode: "environment", width: { ideal: VideoSize[1] }, height: { ideal: VideoSize[0] } }};
 
     //カメラ使用の許可ダイアログが表示される
     navigator.mediaDevices.getUserMedia(
