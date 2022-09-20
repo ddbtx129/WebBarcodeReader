@@ -1,4 +1,4 @@
-var value = document.getElementById("code");
+﻿var value = document.getElementById("code");
 var barcode = document.getElementById('barcode');
 var qrcode = document.getElementById('qrcode');
 var reset = document.getElementById('reset');
@@ -28,17 +28,7 @@ window.addEventListener('load', function (event) {
     turn.style.display = "none";
     scanarea.appendChild(turn);
 
-
     scanarea.style.display = 'none';
-
-    turn.onclick = function () {
-        displayreset();
-        barcode.style.display = "inline";
-        qrcode.style.display = "inline";
-        reset.style.display = "none";
-        value.style.display = "none";
-        scanarea.style.display = 'none';
-    };
 });
 
 reset.addEventListener('click', () => {
@@ -143,6 +133,15 @@ barcode.addEventListener('click', () => {
             prev.setAttribute("height", h);
 
             turn.style.display = "inline";
+
+            turn.onclick = function () {
+                displayreset();
+                barcode.style.display = "inline";
+                qrcode.style.display = "inline";
+                reset.style.display = "none";
+                value.style.display = "none";
+                scanarea.style.display = 'none';
+            };
         }
 
         prev_ctx.drawImage(video, 0, 0, w, h);
