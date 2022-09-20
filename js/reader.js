@@ -120,13 +120,9 @@ barcode.addEventListener('click', () => {
         var ScanRate = new Array(0.6, 0.25);
 
         if (first) {
-            if (video.videoWidth > video.videoHeight) {
-                video.videoWidth = VideoSize[0];
-                video.videoHeight = VideoSize[1];
-            }
             //選択された幅高さ
-            w = VideoSize[0];
-            h = VideoSize[1];
+            w = video.videoWidth;
+            h = video.videoHeight;
             //画面上の表示サイズ
             prev.style.width = (w * SizeRate) + "px";
             prev.style.height = (h * SizeRate) + "px";
@@ -238,7 +234,7 @@ barcode.addEventListener('click', () => {
         Quagga.stop();
         clearTimeout(id);
 
-        tmp.clearRect(0, 0, tmp.style.width, tmp.style.height);
+        tmp_ctx.clearRect(0, 0, canvas.width, canvas.height);
 
         DetectedCode = '';
         DetectedCount = 0;
