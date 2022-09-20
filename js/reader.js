@@ -119,22 +119,22 @@ barcode.addEventListener('click', () => {
 
         if (first) {
 
-            window.alert(prev.style.Width);
-            window.alert(prev.style.Height);
+            //window.alert(prev.style.Width);
+            //window.alert(prev.style.Height);
 
-            window.alert(video.style.Width);
-            window.alert(video.style.Height);
+            //window.alert(video.style.Width);
+            //window.alert(video.style.Height);
 
-            window.alert(video.videoWidth);
-            window.alert(video.videoHeight);
+            //window.alert(video.videoWidth);
+            //window.alert(video.videoHeight);
 
             if (video.videoWidth > video.videoHeight) {
                 video.videoHeight = 1080;
                 video.videoWidth = 720;
             }
             //選択された幅高さ
-            w = video.videoWidth;
-            h = video.videoHeight;
+            w = 1080;
+            h = 720;
             //画面上の表示サイズ
             prev.style.width = (w * SizeRate) + "px";
             prev.style.height = (h * SizeRate) + "px";
