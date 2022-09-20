@@ -61,7 +61,7 @@ barcode.addEventListener('click', () => {
     var DetectedCount = 0, DetectedCode = "";
 
     scanarea.style.display = 'inline';
-    window.alert(1);
+
     video = document.createElement('video');
     video.id = "video";
     video.setAttribute("autoplay", "");
@@ -96,8 +96,6 @@ barcode.addEventListener('click', () => {
         { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": 1080 }, "height": { "ideal": 720 } } }
     ).then( //許可された場合
         function (stream) {
-            window.alert(2);
-
             video.videoWidth = 1080;
             video.videoHeight = 720;
 
@@ -119,8 +117,6 @@ barcode.addEventListener('click', () => {
 
     function Scan(first) {
 
-
-
         var SizeRate = 0.5;
         var ScanRate = new Array(0.6, 0.25);
 
@@ -136,7 +132,7 @@ barcode.addEventListener('click', () => {
             prev.setAttribute("height", h);
 
             turn.style.display = "inline";
-        window.alert(3);
+
             turn.onclick = function () {
                 displayreset();
                 barcode.style.display = "inline";
@@ -243,9 +239,7 @@ barcode.addEventListener('click', () => {
         DetectedCount = 0;
         video.remove();
         tmp.remove();
-        tmp_ctx = null;
         prev.remove();
-        prev_ctx = null;
         //tmp.remove();
 
         //video.stop();
