@@ -1,24 +1,12 @@
-﻿var barcode = document.getElementById('barcode');
+﻿var value = document.getElementById("code");
+var barcode = document.getElementById('barcode');
 var qrcode = document.getElementById('qrcode');
 var reset = document.getElementById('reset');
-var id;
+var scanarea, id;
 
-reset.addEventListener('click', () => {
+window.addEventListener('load', function (event) {
 
-    barcode.style.display = "inline";
-    qrcode.style.display = "inline";
-    reset.style.display = "none";
-    document.getElementById("code").style.display = "none";
-
-    location.reload();
-});
-
-barcode.addEventListener('click', () => {
-
-    barcode.style.display = "none";
-    qrcode.style.display = "none";
-
-    var scanarea = document.createElement('div');
+    scanarea = document.createElement('div');
     scanarea.id = "scanarea";
     scanarea.className = "scanarea";
     document.body.appendChild(scanarea);
@@ -27,7 +15,6 @@ barcode.addEventListener('click', () => {
     preview.id = "preview";
     scanarea.appendChild(preview);
 
-
     var info = document.createElement('p');
     info.className = "text";
     info.innerHTML = "カメラにバーコードを写してください。";
@@ -35,7 +22,56 @@ barcode.addEventListener('click', () => {
     info.style.marginBottom = "50px";
     scanarea.appendChild(info);
 
-    var video, tmp, tmp_ctx, value, prev, prev_ctx, w, h, mw, mh, x1, y1;
+    var turn = document.createElement('button');
+    turn.className = "turn";
+    turn.innerHTML = "戻る";
+    turn.style.display = "none";
+    scanarea.appendChild(turn);
+
+    scanarea.style.display = 'none';
+
+    turn.onclick = function () {
+        barcode.style.display = "inline";
+        qrcode.style.display = "inline";
+        reset.style.display = "none";
+        value.style.display = "none";
+        scanarea.style.display = 'none';
+    };
+});
+
+reset.addEventListener('click', () => {
+
+    barcode.style.display = "inline";
+    qrcode.style.display = "inline";
+    reset.style.display = "none";
+    value.style.display = "none";
+    scanarea.style.display = 'none';
+
+    //location.reload();
+});
+
+barcode.addEventListener('click', () => {
+
+    barcode.style.display = "none";
+    qrcode.style.display = "none";
+
+    //var scanarea = document.createElement('div');
+    //scanarea.id = "scanarea";
+    //scanarea.className = "scanarea";
+    //document.body.appendChild(scanarea);
+
+    //var preview = document.createElement('canvas');
+    //preview.id = "preview";
+    //scanarea.appendChild(preview);
+
+    //var info = document.createElement('p');
+    //info.className = "text";
+    //info.innerHTML = "カメラにバーコードを写してください。";
+    //info.style.fontWeight = "1200";
+    //info.style.marginBottom = "50px";
+    //scanarea.appendChild(info);
+
+    var video, tmp, tmp_ctx, prev, prev_ctx, w, h, mw, mh, x1, y1;
     var DetectedCount = 0, DetectedCode = "";
 
     scanarea.style.display = 'inline';
@@ -53,7 +89,7 @@ barcode.addEventListener('click', () => {
     tmp = document.createElement('canvas');
     tmp_ctx = tmp.getContext("2d");
 
-    value = document.getElementById("code");
+    //value = document.getElementById("code");
     value.value = "";
 
     value.style.width = "300px";
@@ -68,6 +104,9 @@ barcode.addEventListener('click', () => {
         { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": 1080 }, "height": { "ideal": 720 } } }
     ).then( //許可された場合
         function (stream) {
+            window.alert(1);
+            video.videoWidth = 1080;
+            video.videoHeight = 720;
             video.srcObject = stream;
             //0.5秒毎にスキャンする
             id = setTimeout(Scan, 500, true);
@@ -75,9 +114,12 @@ barcode.addEventListener('click', () => {
     ).catch( //許可されなかった場合
         function (err) {
             scanarea.style.display = 'none';
+            barcode.style.display = "none";
+            qrcode.style.display = "none";
 
             value.style.display = "inline";
             reset.style.display = "inline";
+
             value.value = err;
         }
     );
@@ -98,14 +140,20 @@ barcode.addEventListener('click', () => {
             prev.setAttribute("width", w);
             prev.setAttribute("height", h);
 
-            var turn = document.createElement('button');
-            turn.className = "turn";
-            turn.innerHTML = "戻る";
-            scanarea.appendChild(turn);
+            turn.style.display = "inline";
 
-            turn.onclick = function () {
-                location.reload();
-            };
+            //var turn = document.createElement('button');
+            //turn.className = "turn";
+            //turn.innerHTML = "戻る";
+            //scanarea.appendChild(turn);
+
+            //turn.onclick = function () {
+            //    barcode.style.display = "inline";
+            //    qrcode.style.display = "inline";
+            //    reset.style.display = "none";
+            //    document.getElementById("code").style.display = "none";
+            ////    location.reload();
+            //};
         }
 
         prev_ctx.drawImage(video, 0, 0, w, h);
@@ -187,6 +235,7 @@ barcode.addEventListener('click', () => {
             clearTimeout(id);
 
             value.value = result.codeResult.code;
+
             displayreset();
         }
     });
@@ -194,20 +243,21 @@ barcode.addEventListener('click', () => {
     function displayreset() {
 
         scanarea.style.display = 'none';
-
+        barcode.style.display = "none";
+        qrcode.style.display = "none";
         value.style.display = "inline";
         reset.style.display = "inline";
 
         DetectedCode = '';
         DetectedCount = 0;
 
-        tmp.remove();
+        //tmp.remove();
 
-        video.stop();
-        video.srcObject = null;
+        //video.stop();
+        //video.srcObject = null;
 
-        video.remove();
-        scanarea.remove();
+        //video.remove();
+    //    scanarea.remove();
     }
 });
 
@@ -216,7 +266,7 @@ qrcode.addEventListener('click', () => {
     barcode.style.display = "none";
     qrcode.style.display = "none";
 
-    var scanarea = document.createElement('div');
+    scanarea = document.createElement('div');
     scanarea.id = "scanarea";
     scanarea.className = "scanarea";
     document.body.appendChild(scanarea);
