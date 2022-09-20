@@ -11,7 +11,7 @@
 
     <body>
 
-        <div id="main" style="text-align: center; width: 100%;">
+        <div id="main" style="text-align: center; width: 100%; display: none;">
             <div>
                 <textarea readonly id="code" style="display: none"></textarea>
                 <button id="barcode" class="scan-button" style="display: inline;">バーコードを読み込む</button>
@@ -21,10 +21,16 @@
                 <button id="reset" class="reset-button" style="display: none">リセット</button>
             </div>
         </div>
+        <div id="scanarea" class="scanarea" style="text-align: center; display: inline;">
+            <canvas id="preview"></canvas>
+            <div id="interactive" class="viewport"></div>
+            <button id="turn" class="turn" style="display: inline;">戻る</button>
+            <p style="font-weight: bold; margin-bottom: 50px">カメラにバーコードを写してください。</p>
+        </div>
+                
+        <div style="position: absolute; width: 100%; bottom : 12px; left: 0px;">© 2022 Tetsuya Iida</div>
 
         <script src="js/reader.js"></script>
-        
-        <div style="position: absolute; width: 100%; bottom : 12px; left: 0px;">© 2022 Tetsuya Iida</div>
 
     </body>
 
