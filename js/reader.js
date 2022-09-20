@@ -2,7 +2,7 @@
 var barcode = document.getElementById('barcode');
 var qrcode = document.getElementById('qrcode');
 var reset = document.getElementById('reset');
-var scanarea, turn, id;
+var scanarea, id;
 
 window.addEventListener('load', function (event) {
 
@@ -21,12 +21,6 @@ window.addEventListener('load', function (event) {
     info.style.fontWeight = "1200";
     info.style.marginBottom = "50px";
     scanarea.appendChild(info);
-
-    turn = document.createElement('button');
-    turn.className = "turn";
-    turn.innerHTML = "戻る";
-    turn.style.display = "none";
-    scanarea.appendChild(turn);
 
     scanarea.style.display = 'none';
 });
@@ -67,7 +61,7 @@ barcode.addEventListener('click', () => {
     var DetectedCount = 0, DetectedCode = "";
 
     scanarea.style.display = 'inline';
-
+    window.alert(1);
     video = document.createElement('video');
     video.id = "video";
     video.setAttribute("autoplay", "");
@@ -90,12 +84,19 @@ barcode.addEventListener('click', () => {
     value.style.overflow = "hidden";
     value.style.textAlign = "center";
 
+    var turn = document.createElement('button');
+    turn.className = "turn";
+    turn.innerHTML = "戻る";
+    turn.style.display = "none";
+    scanarea.appendChild(turn);
+
     //カメラ使用の許可ダイアログが表示される
     navigator.mediaDevices.getUserMedia(
         //マイクはオフ, カメラの設定   背面カメラを希望する 640×480を希望する
         { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": 1080 }, "height": { "ideal": 720 } } }
     ).then( //許可された場合
         function (stream) {
+            window.alert(2);
 
             video.videoWidth = 1080;
             video.videoHeight = 720;
@@ -117,6 +118,8 @@ barcode.addEventListener('click', () => {
     );
 
     function Scan(first) {
+
+        window.alert(3);
 
         var SizeRate = 0.5;
         var ScanRate = new Array(0.6, 0.25);
