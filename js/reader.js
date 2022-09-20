@@ -1,4 +1,4 @@
-﻿var value = document.getElementById("code");
+﻿displayreset()var value = document.getElementById("code");
 var barcode = document.getElementById('barcode');
 var qrcode = document.getElementById('qrcode');
 var reset = document.getElementById('reset');
@@ -28,9 +28,11 @@ window.addEventListener('load', function (event) {
     turn.style.display = "none";
     scanarea.appendChild(turn);
 
+
     scanarea.style.display = 'none';
 
     turn.onclick = function () {
+        displayreset();
         barcode.style.display = "inline";
         qrcode.style.display = "inline";
         reset.style.display = "none";
@@ -41,13 +43,13 @@ window.addEventListener('load', function (event) {
 
 reset.addEventListener('click', () => {
 
+    clearTimeout(id);
+
     barcode.style.display = "inline";
     qrcode.style.display = "inline";
     reset.style.display = "none";
     value.style.display = "none";
     scanarea.style.display = 'none';
-
-    //location.reload();
 });
 
 barcode.addEventListener('click', () => {
@@ -105,6 +107,9 @@ barcode.addEventListener('click', () => {
     ).then( //許可された場合
         function (stream) {
 
+            video.videoWidth = 1080;
+            video.videoHeight = 720;
+
             video.srcObject = stream;
             //0.5秒毎にスキャンする
             id = setTimeout(Scan, 500, true);
@@ -127,9 +132,6 @@ barcode.addEventListener('click', () => {
         var ScanRate = new Array(0.6, 0.25);
 
         if (first) {
-            video.videoWidth = 1080;
-            video.videoHeight = 720;
-
             //選択された幅高さ
             w = video.videoWidth;
             h = video.videoHeight;
@@ -141,19 +143,6 @@ barcode.addEventListener('click', () => {
             prev.setAttribute("height", h);
 
             turn.style.display = "inline";
-
-            //var turn = document.createElement('button');
-            //turn.className = "turn";
-            //turn.innerHTML = "戻る";
-            //scanarea.appendChild(turn);
-
-            //turn.onclick = function () {
-            //    barcode.style.display = "inline";
-            //    qrcode.style.display = "inline";
-            //    reset.style.display = "none";
-            //    document.getElementById("code").style.display = "none";
-            ////    location.reload();
-            //};
         }
 
         prev_ctx.drawImage(video, 0, 0, w, h);
@@ -231,26 +220,30 @@ barcode.addEventListener('click', () => {
         }
         if (DetectedCount >= 3) {
 
-            Quagga.stop();
-            clearTimeout(id);
-
             value.value = result.codeResult.code;
 
             displayreset();
+
+            scanarea.style.display = 'none';
+            barcode.style.display = "none";
+            qrcode.style.display = "none";
+            value.style.display = "inline";
+            reset.style.display = "inline";
         }
     });
 
     function displayreset() {
 
-        scanarea.style.display = 'none';
-        barcode.style.display = "none";
-        qrcode.style.display = "none";
-        value.style.display = "inline";
-        reset.style.display = "inline";
+        Quagga.stop();
+        clearTimeout(id);
 
         DetectedCode = '';
         DetectedCount = 0;
-
+        video.remove();
+        tmp.remove();
+        tmp_ctx.remove();
+        prev.remove();
+        prev_ctx.remove();
         //tmp.remove();
 
         //video.stop();
