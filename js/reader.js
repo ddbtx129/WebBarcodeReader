@@ -44,6 +44,8 @@ reset.addEventListener('click', () => {
 
 barcode.addEventListener('click', () => {
 
+    var VideoSize = new Array(720, 1080);
+
     barcode.style.display = "none";
     qrcode.style.display = "none";
 
@@ -93,7 +95,7 @@ barcode.addEventListener('click', () => {
     //カメラ使用の許可ダイアログが表示される
     navigator.mediaDevices.getUserMedia(
         //マイクはオフ, カメラの設定   背面カメラを希望する 640×480を希望する
-        { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": 1080 }, "height": { "ideal": 720 } } }
+        { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": VideoSize[1] }, "height": { "ideal": VideoSize[0] } } }
     ).then( //許可された場合
         function (stream) {
             video.srcObject = stream;
@@ -118,23 +120,13 @@ barcode.addEventListener('click', () => {
         var ScanRate = new Array(0.6, 0.25);
 
         if (first) {
-
-            //window.alert(prev.style.Width);
-            //window.alert(prev.style.Height);
-
-            //window.alert(video.style.Width);
-            //window.alert(video.style.Height);
-
-            //window.alert(video.videoWidth);
-            //window.alert(video.videoHeight);
-            
             if (video.videoWidth > video.videoHeight) {
-                video.videoHeight = 1080;
-                video.videoWidth = 720;
+                video.videoWidth = VideoSize[0];
+                video.videoHeight = VideoSize[1];
             }
             //選択された幅高さ
-            w = 720;
-            h = 1080;
+            w = VideoSize[0];
+            h = VideoSize[1];
             //画面上の表示サイズ
             prev.style.width = (w * SizeRate) + "px";
             prev.style.height = (h * SizeRate) + "px";
@@ -245,6 +237,8 @@ barcode.addEventListener('click', () => {
 
         Quagga.stop();
         clearTimeout(id);
+
+        tmp.clearRect(0, 0, canvas.width, canvas.height);
 
         DetectedCode = '';
         DetectedCount = 0;
