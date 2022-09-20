@@ -239,7 +239,6 @@ barcode.addEventListener('click', () => {
         DetectedCount = 0;
         video.remove();
         tmp.remove();
-        prev.remove();
         //tmp.remove();
 
         //video.stop();
