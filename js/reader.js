@@ -118,6 +118,16 @@ barcode.addEventListener('click', () => {
         var ScanRate = new Array(0.6, 0.25);
 
         if (first) {
+
+            window.alert(prev.style.Width);
+            window.alert(prev.style.Height);
+
+            window.alert(video.style.Width);
+            window.alert(video.style.Height);
+
+            window.alert(video.videoWidth);
+            window.alert(video.videoHeight);
+
             if (video.videoWidth > video.videoHeight) {
                 video.videoHeight = 1080;
                 video.videoWidth = 720;
@@ -134,11 +144,6 @@ barcode.addEventListener('click', () => {
 
             turn.style.display = "inline";
 
-            window.alert(video.Width);
-            window.alert(video.Height);
-
-            window.alert(video.videoWidth);
-            window.alert(video.videoHeight);
 
             turn.onclick = function () {
                 displayreset();
