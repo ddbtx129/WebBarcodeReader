@@ -93,10 +93,13 @@ barcode.addEventListener('click', () => {
     value.style.overflow = "hidden";
     value.style.textAlign = "center";
 
+    var constraints = { audio: false, video: { facingMode: environment, width: { ideal: VideoSize[1] }, height: { ideal: VideoSize[0] } }};
+
     //カメラ使用の許可ダイアログが表示される
     navigator.mediaDevices.getUserMedia(
         //マイクはオフ, カメラの設定   背面カメラを希望する 640×480を希望する
-        { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": VideoSize[1] }, "height": { "ideal": VideoSize[0] } } }
+    //    { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": VideoSize[1] }, "height": { "ideal": VideoSize[0] } } }
+        constraints
     ).then( //許可された場合
         function (stream) {
             video.srcObject = stream;
