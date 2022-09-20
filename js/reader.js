@@ -104,6 +104,7 @@ barcode.addEventListener('click', () => {
         { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": 1080 }, "height": { "ideal": 720 } } }
     ).then( //許可された場合
         function (stream) {
+            window.alert(1);
             video.videoWidth = 1080;
             video.videoHeight = 720;
             video.srcObject = stream;
