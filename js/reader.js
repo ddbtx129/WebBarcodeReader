@@ -131,8 +131,8 @@ barcode.addEventListener('click', () => {
             prev.setAttribute("height", h);
 
             turn.style.display = "inline";
-            window.alert(document.body.width);
-            window.alert(document.body.height);
+            window.alert(document.getElementById("main").width);
+            window.alert(document.getElementById("main").height);
             window.alert(video.videoWidth);
             window.alert(video.videoHeight);
 
