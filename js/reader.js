@@ -6,29 +6,29 @@ var scanarea, turn, id;
 
 window.addEventListener('load', function (event) {
 
-    scanarea = document.createElement('div');
-    scanarea.id = "scanarea";
-    scanarea.className = "scanarea";
-    document.body.appendChild(scanarea);
+    //scanarea = document.createElement('div');
+    //scanarea.id = "scanarea";
+    //scanarea.className = "scanarea";
+    //document.body.appendChild(scanarea);
 
-    var preview = document.createElement('canvas');
-    preview.id = "preview";
-    scanarea.appendChild(preview);
+    //var preview = document.createElement('canvas');
+    //preview.id = "preview";
+    //scanarea.appendChild(preview);
 
-    var info = document.createElement('p');
-    info.className = "text";
-    info.innerHTML = "カメラにバーコードを写してください。";
-    info.style.fontWeight = "1200";
-    info.style.marginBottom = "50px";
-    scanarea.appendChild(info);
+    //var info = document.createElement('p');
+    //info.className = "text";
+    //info.innerHTML = "カメラにバーコードを写してください。";
+    //info.style.fontWeight = "1200";
+    //info.style.marginBottom = "50px";
+    //scanarea.appendChild(info);
 
-    turn = document.createElement('button');
-    turn.className = "turn";
-    turn.innerHTML = "戻る";
-    turn.style.display = "none";
-    scanarea.appendChild(turn);
+    //turn = document.createElement('button');
+    //turn.className = "turn";
+    //turn.innerHTML = "戻る";
+    //turn.style.display = "none";
+    //scanarea.appendChild(turn);
 
-    scanarea.style.display = 'none';
+    //scanarea.style.display = 'none';
 });
 
 reset.addEventListener('click', () => {
