@@ -18,8 +18,11 @@ p.info {
     position: absolute;
     color: #FFF;
     font-weight: bold;
-    bottom: 20px;
-    margin-bottom: 10px;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
 }
 
 div.scanarea {
@@ -68,11 +71,12 @@ button {
 .turn {
     position: absolute;
     bottom: 50px;
-    left: 0;
-    width: 50px;
-    margin-top: 5px;
-    margin-bottom: 30px; 
+    width: 120px;
     font-size: larger;
     color: #fff;
     text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
 }
