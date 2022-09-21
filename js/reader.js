@@ -6,7 +6,7 @@ var scanarea = document.getElementById('scanarea');
 var turn = document.getElementById('turn');
 var id;
 
-window.addEventListener('load', function (event) {
+//window.addEventListener('load', function (event) {
 
     //scanarea = document.createElement('div');
     //scanarea.id = "scanarea";
@@ -31,21 +31,10 @@ window.addEventListener('load', function (event) {
     //scanarea.appendChild(turn);
 
     //scanarea.style.display = 'none';
-});
+//});
 
-reset.addEventListener('click', () => {
-
-    clearTimeout(id);
-
-    barcode.style.display = "inline";
-    qrcode.style.display = "inline";
-    reset.style.display = "none";
-    value.style.display = "none";
-    scanarea.style.display = 'none';
-});
-
-barcode.addEventListener('click', () => {
-
+//barcode.addEventListener('click', () => {
+ window.addEventListener('load', function (event) {
     var VideoSize = new Array(720, 1080);
 
     barcode.style.display = "none";
@@ -398,4 +387,15 @@ qrcode.addEventListener('click', () => {
         video.remove();
         scanarea.remove();
     }
+});
+
+reset.addEventListener('click', () => {
+
+    clearTimeout(id);
+
+    barcode.style.display = "inline";
+    qrcode.style.display = "inline";
+    reset.style.display = "none";
+    value.style.display = "none";
+    scanarea.style.display = 'none';
 });
