@@ -15,9 +15,11 @@ body {
 }
 
 p.info {
+    position: absolute;
     color: #FFF;
     font-weight: bold;
-    margin-bottom: 10px
+    bottom: 10px;
+    margin-bottom: 10px;
 }
 
 div.scanarea {
@@ -64,8 +66,8 @@ button {
 }
 
 .turn {
-    position: fixed;
-    bottom: 1rem;
+    position: absolute;
+    bottom: 30px;
     left: 0;
     width: 100%;
     margin-top: 5px;
