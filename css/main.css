@@ -20,6 +20,7 @@ p.info {
     font-weight: bold;
     bottom: 30px;
     left: 50%;
+    width: 100%;
     transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
@@ -70,7 +71,7 @@ button {
 
 .turn {
     position: absolute;
-    bottom: 50px;
+    bottom: 80px;
     width: 120px;
     font-size: larger;
     color: #000;
