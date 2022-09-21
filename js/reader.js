@@ -192,11 +192,17 @@ barcode.addEventListener('click', () => {
         Quagga.stop();
         clearTimeout(id);
 
-        videostream.getTracks().forEach(function (track) {
-            if (track.readyState == 'live' && track.kind === 'video') {
-                track.stop();
-            }
-        })
+        const tracks = videostream.getVideoTracks();
+        for (let i = 0; i < tracks.length; i++) {
+            tracks[i].stop();
+        }
+
+        prev_ctx.clearRect(0, 0, w, h);
+        tmp_ctx.clearRect(
+            ((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2),
+            (w * ScanRate[0]), (w * ScanRate[1]),
+            0, 0,
+            (w * ScanRate[0]), (w * ScanRate[1]));
 
         DetectedCode = '';
         DetectedCount = 0;
