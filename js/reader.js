@@ -22,6 +22,10 @@ var turnButton = {
     }
 };
 
+window.onload = function() {
+    turnButton.objArrangement();
+};
+
 window.addEventListener("orientationchange", function () {
     flg = true;
     turnButton.objArrangement();
