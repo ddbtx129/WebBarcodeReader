@@ -32,9 +32,8 @@ var id;
 
     //scanarea.style.display = 'none';
 //});
-
-//barcode.addEventListener('click', () => {
- window.addEventListener('load', function (event) {
+//window.addEventListener('load', function (event) {
+barcode.addEventListener('click', () => {
     var VideoSize = new Array(1080, 720);
 
     barcode.style.display = "none";
@@ -119,7 +118,7 @@ var id;
             //選択された幅高さ
             w = video.videoWidth;
             h = video.videoHeight;
-            window.alert(scanarea.style.width);
+            window.alert(scanarea.width);
             //画面上の表示サイズ
             prev.style.width = (w * SizeRate) + "px";
             prev.style.height = (h * SizeRate) + "px";
@@ -178,31 +177,6 @@ var id;
         });
         id = setTimeout(Scan, 50, false);
     }
-
-    //Quagga.onProcessed(function (result) {
-    //    const drawingCtx = Quagga.canvas.ctx.overlay;
-    //    const drawingCanvas = Quagga.canvas.dom.overlay;
-
-    //    if (result) {
-    //        // 検出中の緑の線の枠
-    //        if (result.boxes) {
-    //            drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute("width")), parseInt(drawingCanvas.getAttribute("height")));
-    //            result.boxes.filter(function (box) {
-    //                return box !== result.box;
-    //            }).forEach(function (box) {
-    //                Quagga.ImageDebug.drawPath(box, { x: 0, y: 1 }, drawingCtx, { color: "green", lineWidth: 2 });
-    //            });
-    //        }
-    //        // 読込中の青枠
-    //        if (result.box) {
-    //            Quagga.ImageDebug.drawPath(result.box, { x: 0, y: 1 }, drawingCtx, { color: "#00F", lineWidth: 2 });
-    //        }
-    //        // 検出完了時の赤線
-    //        if (result.codeResult && result.codeResult.code) {
-    //            Quagga.ImageDebug.drawPath(result.line, { x: 'x', y: 'y' }, drawingCtx, { color: 'red', lineWidth: 3 });
-    //        }
-    //    }
-    //});
 
     Quagga.onDetected(function (result) {
         //読み取り誤差が多いため、3回連続で同じ値だった場合に成功とする
