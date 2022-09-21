@@ -6,54 +6,14 @@ var scanarea = document.getElementById('scanarea');
 var turn = document.getElementById('turn');
 var id;
 
-//window.addEventListener('load', function (event) {
-
-    //scanarea = document.createElement('div');
-    //scanarea.id = "scanarea";
-    //scanarea.className = "scanarea";
-    //document.body.appendChild(scanarea);
-
-    //var preview = document.createElement('canvas');
-    //preview.id = "preview";
-    //scanarea.appendChild(preview);
-
-    //var info = document.createElement('p');
-    //info.className = "text";
-    //info.innerHTML = "カメラにバーコードを写してください。";
-    //info.style.fontWeight = "1200";
-    //info.style.marginBottom = "50px";
-    //scanarea.appendChild(info);
-
-    //turn = document.createElement('button');
-    //turn.className = "turn";
-    //turn.innerHTML = "戻る";
-    //turn.style.display = "none";
-    //scanarea.appendChild(turn);
-
-    //scanarea.style.display = 'none';
-//});
-//window.addEventListener('load', function (event) {
 barcode.addEventListener('click', () => {
-    var VideoSize = new Array(1080, 720);
+    var VideoSize = new Array(640, 480);
+    var SizeRate = 0.5;
+    var ScanRate = new Array(0.6, 0.25);
 
     barcode.style.display = "none";
     qrcode.style.display = "none";
-
-    //var scanarea = document.createElement('div');
-    //scanarea.id = "scanarea";
-    //scanarea.className = "scanarea";
-    //document.body.appendChild(scanarea);
-
-    //var preview = document.createElement('canvas');
-    //preview.id = "preview";
-    //scanarea.appendChild(preview);
-
-    //var info = document.createElement('p');
-    //info.className = "text";
-    //info.innerHTML = "カメラにバーコードを写してください。";
-    //info.style.fontWeight = "1200";
-    //info.style.marginBottom = "50px";
-    //scanarea.appendChild(info);
+    turn.style.display = "none";
 
     var video, tmp, tmp_ctx, prev, prev_ctx, w, h, mw, mh, x1, y1;
     var DetectedCount = 0, DetectedCode = "";
@@ -88,11 +48,11 @@ barcode.addEventListener('click', () => {
 
     //カメラ使用の許可ダイアログが表示される
     navigator.mediaDevices.getUserMedia(
-        // { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": VideoSize[1] }, "height": { "ideal": VideoSize[0] } } }
         options
     ).then( //許可された場合
         function (stream) {
             video.srcObject = stream;
+            turn.style.display = "inline";
             //0.5秒毎にスキャンする
             id = setTimeout(Scan, 500, true);
         }
@@ -108,12 +68,18 @@ barcode.addEventListener('click', () => {
         }
     );
 
+    turn.onclick = function () {
+        displayreset();
+        barcode.style.display = "inline";
+        qrcode.style.display = "inline";
+        reset.style.display = "none";
+        value.style.display = "none";
+        scanarea.style.display = 'none';
+    };
+
     function Scan(first) {
 
-        var SizeRate = 0.5;
-        var ScanRate = new Array(0.6, 0.25);
-
-        if (first) {
+        //if (first) {
 
             //選択された幅高さ
             w = video.videoWidth;
@@ -126,17 +92,7 @@ barcode.addEventListener('click', () => {
             prev.setAttribute("width", w);
             prev.setAttribute("height", h);
 
-            turn.style.display = "inline";
-
-            turn.onclick = function () {
-                displayreset();
-                barcode.style.display = "inline";
-                qrcode.style.display = "inline";
-                reset.style.display = "none";
-                value.style.display = "none";
-                scanarea.style.display = 'none';
-            };
-        }
+        //}
 
         prev_ctx.drawImage(video, 0, 0, w, h);
         prev_ctx.beginPath();
