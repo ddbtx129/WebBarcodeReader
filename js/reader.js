@@ -56,8 +56,6 @@ barcode.addEventListener('click', () => {
     ).then( //許可された場合
         function (stream) {
             video.srcObject = stream;
-            console.log(typeof prev_ctx);
-            console.log(typeof tmp_ctx);
             //0.5秒毎にスキャンする
             id = setTimeout(Scan, 500, true);
         }
@@ -158,8 +156,6 @@ barcode.addEventListener('click', () => {
         });
 
         id = setTimeout(Scan, 50, flg);
-
-        prev_ctx.clearRect(0, 0, prev_ctx.width, prev_ctx.height);
     }
 
     Quagga.onDetected(function (result) {
