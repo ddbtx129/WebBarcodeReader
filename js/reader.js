@@ -75,12 +75,16 @@ barcode.addEventListener('click', () => {
         scanarea.style.display = 'none';
     };
 
+    var flg = false;
+
     function Scan(first) {
 
-        var flg = false;
+        flg = first;
 
-        if (video.videoWidth != w)
+        if (video.videoWidth != w) {
+            window.alert(1);
             flg = true;
+        }
 
         if (first) {
 
@@ -152,7 +156,8 @@ barcode.addEventListener('click', () => {
             }
             reader.readAsDataURL(blob);
         });
-        id = setTimeout(Scan, 500, flg);
+
+        id = setTimeout(Scan, 50, flg);
     }
 
     Quagga.onDetected(function (result) {
@@ -314,7 +319,7 @@ qrcode.addEventListener('click', () => {
             displayreset();
         }
 
-        id = setTimeout(Scan, 200, false);
+        id = setTimeout(Scan, 50, false);
     }
 
     function displayreset() {
