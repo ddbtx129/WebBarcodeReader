@@ -9,20 +9,22 @@ var id;
 var flg = false;
 
 var turnButton = {
-    if (window.innerWidth > window.innerHeight) {
-        document.getElementById('turn').style.bottom = "80px"
-        document.getElementById('turn').style.left = "50%"
-        document.getElementById('info').style.bottom = "30px"
-    } else {
-        document.getElementById('turn').style.bottom = "150px"
-        document.getElementById('turn').style.left = "60px"
-        document.getElementById('info').style.bottom = "20px"
+    objArrangement : function() {
+        if (window.innerWidth > window.innerHeight) {
+            document.getElementById('turn').style.bottom = "80px"
+            document.getElementById('turn').style.left = "50%"
+            document.getElementById('info').style.bottom = "30px"
+        } else {
+            document.getElementById('turn').style.bottom = "150px"
+            document.getElementById('turn').style.left = "60px"
+            document.getElementById('info').style.bottom = "20px"
+        }
     }
 };
 
 window.addEventListener("orientationchange", function () {
     flg = true;
-    this.turnButton();
+    turnButton.objArrangement();
 });
 
 barcode.addEventListener('click', () => {
@@ -31,7 +33,7 @@ barcode.addEventListener('click', () => {
     var SizeRate = 0.5;
     var ScanRate = new Array(0.75, 0.3);
         
-    this.turnButton();
+    turnButton.objArrangement();
     
     barcode.style.display = "none";
     qrcode.style.display = "none";
@@ -227,7 +229,7 @@ qrcode.addEventListener('click', () => {
     var VideoSize = new Array(1080, 720);
     var SizeRate = 0.5;
     
-    this.turnButton();
+    turnButton.objArrangement();
     
     barcode.style.display = "none";
     qrcode.style.display = "none";
