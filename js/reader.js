@@ -17,7 +17,7 @@ var turnButton = {
         } else {
             document.getElementById('turn').style.bottom = "150px"
             document.getElementById('turn').style.left = "60px"
-            document.getElementById('info').style.bottom = "20px"
+            document.getElementById('info').style.bottom = "25px"
         }
     }
 };
