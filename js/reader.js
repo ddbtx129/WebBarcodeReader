@@ -170,7 +170,7 @@ barcode.addEventListener('click', () => {
 
         if (DetectedCount >= 3) {
             value.value = result.codeResult.code;
-            prev_ctx.codeResult(0, 0, prev.width, prev.height)
+            //prev_ctx.codeResult(0, 0, prev.width, prev.height)
 
             displayreset();
 
