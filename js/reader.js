@@ -240,25 +240,6 @@ qrcode.addEventListener('click', () => {
     codevalue.style.textAlign = "left";
     codevalue.style.overflow = "scroll";
 
-    //scanarea = document.createElement('div');
-    //scanarea.id = "scanarea";
-    //scanarea.className = "scanarea";
-    //document.body.appendChild(scanarea);
-
-    //var preview = document.createElement('canvas');
-    //preview.id = "preview";
-    //scanarea.appendChild(preview);
-
-    //var info = document.createElement('p');
-    //info.className = "text";
-    //info.innerHTML = "カメラにバーコードを写してください。";
-    //info.style.fontWeight = "1200";
-    //info.style.marginBottom = "50px";
-    //scanarea.appendChild(info);
-
-
-    //scanarea.style.display = 'inline';
-
     video = document.createElement('video');
     video.setAttribute("autoplay", "");
     video.setAttribute("muted", "");
@@ -271,22 +252,11 @@ qrcode.addEventListener('click', () => {
     tmp = document.createElement('canvas');
     tmp_ctx = tmp.getContext("2d");
 
-    //value = document.getElementById("code");
-    //value.value = "";
-
-    //value.style.width = "360px";
-    //value.style.height = "108px";
-    //value.style.display = "none";
-    //value.style.textAlign = "left";
-    //value.style.overflow = "scroll";
-
     //マイクはオフ, カメラの設定   背面カメラを希望する 640×480を希望する
     var options = { audio: false, video: { facingMode: "environment", width: { ideal: VideoSize[0] }, height: { ideal: VideoSize[1] } } };
 
     //カメラ使用の許可ダイアログが表示される
     navigator.mediaDevices.getUserMedia(
-        //マイクはオフ, カメラの設定   できれば背面カメラ    できれば640×480
-    //    { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": 1080 }, "height": { "ideal": 720 } } }
         options
     ).then( //許可された場合
         function (stream) {
@@ -316,26 +286,6 @@ qrcode.addEventListener('click', () => {
     };
 
     function Scan(first) {
-
-        //if (first) {
-        //    if (window.innerWidth < window.innerHeight) {
-        //        if (video.videoWidth < video.videoHeight) {
-        //            w = video.videoWidth;
-        //            h = video.videoHeight;
-        //        } else {
-        //            h = video.videoWidth;
-        //            w = video.videoHeight;
-        //        }
-        //    } else {
-        //        if (video.videoWidth < video.videoHeight) {
-        //            h = video.videoWidth;
-        //            w = video.videoHeight;
-        //        } else {
-        //            w = video.videoWidth;
-        //            h = video.videoHeight;
-        //        }
-        //    }
-        //}
 
         //選択された幅高さ
         //w = video.videoWidth;
@@ -408,7 +358,6 @@ qrcode.addEventListener('click', () => {
 
     function displayreset() {
 
-        Quagga.stop();
         clearTimeout(id);
 
         const tracks = videostream.getVideoTracks();
@@ -423,19 +372,6 @@ qrcode.addEventListener('click', () => {
         DetectedCount = 0;
         video.remove();
         tmp.remove();
-
-        //scanarea.style.display = 'none';
-
-        //value.style.display = "inline";
-        //reset.style.display = "inline";
-
-        //tmp.remove();
-
-        //video.stop();
-        //video.srcObject = null;
-
-        //video.remove();
-        //scanarea.remove();
     }
 });
 
