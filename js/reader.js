@@ -7,7 +7,10 @@ var turn = document.getElementById('turn');
 var id;
 
 barcode.addEventListener('click', () => {
-    var VideoSize = new Array(640, 480);
+
+    window.alert(window.innerWidth + "：" + window.innerHeight );
+
+    var VideoSize = new Array(1080, 720);
     var SizeRate = 0.5;
     var ScanRate = new Array(0.6, 0.25);
 
