@@ -8,8 +8,7 @@ var turn = document.getElementById('turn');
 var id;
 var flg = false;
 
-window.addEventListener("orientationchange", function () {
-    flg = true;
+var turnButton = {
     if (window.innerWidth > window.innerHeight) {
         document.getElementById('turn').style.bottom = "80px"
         document.getElementById('turn').style.left = "50%"
@@ -19,6 +18,11 @@ window.addEventListener("orientationchange", function () {
         document.getElementById('turn').style.left = "60px"
         document.getElementById('info').style.bottom = "20px"
     }
+};
+
+window.addEventListener("orientationchange", function () {
+    flg = true;
+    this.turnButton();
 });
 
 barcode.addEventListener('click', () => {
@@ -26,6 +30,8 @@ barcode.addEventListener('click', () => {
     var VideoSize = new Array(1080, 720);
     var SizeRate = 0.5;
     var ScanRate = new Array(0.75, 0.3);
+        
+    this.turnButton();
     
     barcode.style.display = "none";
     qrcode.style.display = "none";
@@ -35,7 +41,7 @@ barcode.addEventListener('click', () => {
     var DetectedCount = 0, DetectedCode = "";
 
     scanarea.style.display = 'inline';
-
+    
     video = document.createElement('video');
     video.id = "video";
     video.setAttribute("autoplay", "");
@@ -220,7 +226,9 @@ qrcode.addEventListener('click', () => {
 
     var VideoSize = new Array(1080, 720);
     var SizeRate = 0.5;
-
+    
+    this.turnButton();
+    
     barcode.style.display = "none";
     qrcode.style.display = "none";
 
@@ -399,3 +407,5 @@ reset.addEventListener('click', () => {
     codevalue.style.display = "none";
     scanarea.style.display = 'none';
 });
+
+
