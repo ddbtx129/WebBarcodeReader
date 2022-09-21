@@ -32,8 +32,6 @@ barcode.addEventListener('click', () => {
     var VideoSize = new Array(1080, 720);
     var SizeRate = 0.5;
     var ScanRate = new Array(0.75, 0.3);
-        
-    turnButton.objArrangement();
     
     barcode.style.display = "none";
     qrcode.style.display = "none";
@@ -228,8 +226,6 @@ qrcode.addEventListener('click', () => {
 
     var VideoSize = new Array(1080, 720);
     var SizeRate = 0.5;
-    
-    turnButton.objArrangement();
     
     barcode.style.display = "none";
     qrcode.style.display = "none";
