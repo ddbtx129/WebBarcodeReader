@@ -73,7 +73,7 @@ button {
     bottom: 50px;
     width: 120px;
     font-size: larger;
-    color: #fff;
+    color: #000;
     text-align: center;
     left: 50%;
     transform: translateX(-50%);
