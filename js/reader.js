@@ -5,6 +5,11 @@ var reset = document.getElementById('reset');
 var scanarea = document.getElementById('scanarea');
 var turn = document.getElementById('turn');
 var id;
+var flg = false;
+
+window.addEventListener("orientationchange", function () {
+    flg = true;
+});
 
 barcode.addEventListener('click', () => {
 
@@ -75,16 +80,7 @@ barcode.addEventListener('click', () => {
         scanarea.style.display = 'none';
     };
 
-    var flg = false;
-
     function Scan(first) {
-
-        flg = first;
-
-        if (video.videoWidth != w) {
-            window.alert(1);
-            flg = true;
-        }
 
         if (first) {
 
@@ -117,6 +113,8 @@ barcode.addEventListener('click', () => {
             prev.setAttribute("height", h);
 
             turn.style.display = "inline";
+
+            flg = false;
         }
 
         prev_ctx.drawImage(video, 0, 0, w, h);
@@ -182,7 +180,8 @@ barcode.addEventListener('click', () => {
             barcode.style.display = "none";
             qrcode.style.display = "none";
         }
-    });
+    })
+
 
     function displayreset() {
 
