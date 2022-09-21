@@ -35,7 +35,7 @@ var id;
 
 //barcode.addEventListener('click', () => {
  window.addEventListener('load', function (event) {
-    var VideoSize = new Array(720, 1080);
+    var VideoSize = new Array(1080, 720);
 
     barcode.style.display = "none";
     qrcode.style.display = "none";
