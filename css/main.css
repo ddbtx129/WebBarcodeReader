@@ -32,17 +32,6 @@ div.scanarea {
     background: rgba(0, 0, 0, 0.8);
 }
 
-turn {
-    position: fixed;
-    bottom: 1rem;
-    left: 0;
-    width: 100%;
-    margin-top: 5px;
-    font-size: larger;
-    color: #fff;
-    text-align: center;
-}
-
 .text {
     position: fixed;
     bottom: 1rem;
@@ -74,4 +63,16 @@ button {
 .reset-button {
     margin-top: 24px;
     margin-left: 12px;
+}
+
+.turn {
+    position: fixed;
+    bottom: 1rem;
+    left: 0;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 30px; 
+    font-size: larger;
+    color: #fff;
+    text-align: center;
 }
