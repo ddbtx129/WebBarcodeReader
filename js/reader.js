@@ -2,7 +2,9 @@
 var barcode = document.getElementById('barcode');
 var qrcode = document.getElementById('qrcode');
 var reset = document.getElementById('reset');
-var scanarea, turn, id;
+var scanarea = document.getElementById('scanarea');
+var turn = document.getElementById('turn');
+var id;
 
 window.addEventListener('load', function (event) {
 
@@ -44,7 +46,7 @@ reset.addEventListener('click', () => {
 
 barcode.addEventListener('click', () => {
 
-    var VideoSize = new Array(640, 480);
+    var VideoSize = new Array(720, 1080);
 
     barcode.style.display = "none";
     qrcode.style.display = "none";
@@ -68,7 +70,7 @@ barcode.addEventListener('click', () => {
     var video, tmp, tmp_ctx, prev, prev_ctx, w, h, mw, mh, x1, y1;
     var DetectedCount = 0, DetectedCode = "";
 
-    scanarea.style.display = 'inline';
+    scanarea.style.display = 'block';
 
     video = document.createElement('video');
     video.id = "video";
