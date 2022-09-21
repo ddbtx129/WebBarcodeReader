@@ -23,7 +23,15 @@ var turnButton = {
 };
 
 window.addEventListener('load', (event) => {
-  turnButton.objArrangement();
+          if (window.innerWidth < window.innerHeight) {
+            document.getElementById('turn').style.bottom = "80px"
+            document.getElementById('turn').style.left = "50%"
+            document.getElementById('info').style.bottom = "30px"
+        } else {
+            document.getElementById('turn').style.bottom = "150px"
+            document.getElementById('turn').style.left = "60px"
+            document.getElementById('info').style.bottom = "25px"
+        }
 });
 
 window.addEventListener("orientationchange", function () {
