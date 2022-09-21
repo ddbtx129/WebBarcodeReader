@@ -13,13 +13,11 @@ body {
 .video {
     margin-top: 8px;
 }
-div.mask {
-    overflow: hidden;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
+
+p.info {
+    color: #FFF;
+    font-weight: bold;
+    margin-bottom: 10px
 }
 
 div.scanarea {
