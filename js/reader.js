@@ -12,11 +12,11 @@ window.addEventListener("orientationchange", function () {
     flg = true;
     if (window.innerWidth < window.innerHeight) {
         document.getElementById('turn').style.bottom = "80px"
-        document.getElementById('turn').style.bottom = "50%"
+        document.getElementById('turn').style.left = "50%"
         document.getElementById('info').style.bottom = "30px"
     } else {
         document.getElementById('turn').style.bottom = "150px"
-        document.getElementById('turn').style.bottom = "10px"
+        document.getElementById('turn').style.left = "10px"
         document.getElementById('info').style.bottom = "15px"
     }
 });
