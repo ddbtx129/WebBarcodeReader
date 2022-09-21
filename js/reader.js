@@ -287,6 +287,11 @@ qrcode.addEventListener('click', () => {
 
     function Scan(first) {
 
+        if (first) {
+            turn.style.display = "inline";
+            flg = false;
+        }
+
         //選択された幅高さ
         //w = video.videoWidth;
         //h = video.videoHeight;
