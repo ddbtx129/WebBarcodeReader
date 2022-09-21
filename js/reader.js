@@ -80,37 +80,37 @@ barcode.addEventListener('click', () => {
 
     function Scan(first) {
 
-        //if (first) {
+        if (first) {
 
             //選択された幅高さ
             //w = video.videoWidth;
             //h = video.videoHeight;
-        if (window.innerWidth < window.innerHeight) {
-            if (video.videoWidth < video.videoHeight) {
-                w = video.videoWidth;
-                h = video.videoHeight;
+            if (window.innerWidth < window.innerHeight) {
+                if (video.videoWidth < video.videoHeight) {
+                    w = video.videoWidth;
+                    h = video.videoHeight;
+                } else {
+                    h = video.videoWidth;
+                    w = video.videoHeight;
+                }
             } else {
-                h = video.videoWidth;
-                w = video.videoHeight;
+                if (video.videoWidth < video.videoHeight) {
+                    h = video.videoWidth;
+                    w = video.videoHeight;
+                } else {
+                    w = video.videoWidth;
+                    h = video.videoHeight;
+                }
             }
-        } else {
-            if (video.videoWidth < video.videoHeight) {
-                h = video.videoWidth;
-                w = video.videoHeight;
-            } else {
-                w = video.videoWidth;
-                h = video.videoHeight;
-            }
+
+            //画面上の表示サイズ
+            prev.style.width = (w * SizeRate) + "px";
+            prev.style.height = (h * SizeRate) + "px";
+            //内部のサイズ
+            prev.setAttribute("width", w);
+            prev.setAttribute("height", h);
+
         }
-
-        //画面上の表示サイズ
-        prev.style.width = (w * SizeRate) + "px";
-        prev.style.height = (h * SizeRate) + "px";
-        //内部のサイズ
-        prev.setAttribute("width", w);
-        prev.setAttribute("height", h);
-
-        //}
 
         prev_ctx.drawImage(video, 0, 0, w, h);
         prev_ctx.beginPath();
