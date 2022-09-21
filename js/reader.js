@@ -3,6 +3,7 @@ var barcode = document.getElementById('barcode');
 var qrcode = document.getElementById('qrcode');
 var reset = document.getElementById('reset');
 var scanarea = document.getElementById('scanarea');
+var mask = document.getElementById('mask');
 var turn = document.getElementById('turn');
 var id;
 var flg = false;
@@ -16,7 +17,7 @@ barcode.addEventListener('click', () => {
     var VideoSize = new Array(1080, 720);
     var SizeRate = 0.5;
     var ScanRate = new Array(0.6, 0.25);
-
+    
     barcode.style.display = "none";
     qrcode.style.display = "none";
     turn.style.display = "none";
@@ -24,7 +25,7 @@ barcode.addEventListener('click', () => {
     var video, tmp, tmp_ctx, prev, prev_ctx, w, h, mw, mh, x1, y1;
     var DetectedCount = 0, DetectedCode = "";
 
-    scanarea.style.display = 'inline';
+    mask.style.display = 'inline';
 
     video = document.createElement('video');
     video.id = "video";
@@ -32,7 +33,7 @@ barcode.addEventListener('click', () => {
     video.setAttribute("muted", "");
     video.setAttribute("playsinline", "");
     video.onloadedmetadata = function (e) { video.play(); };
-
+    
     prev = document.getElementById("preview");
     prev_ctx = prev.getContext("2d");
 
@@ -58,6 +59,7 @@ barcode.addEventListener('click', () => {
             video.srcObject = stream;
             //0.5秒毎にスキャンする
             id = setTimeout(Scan, 500, true);
+            scanarea.style.display = 'inline';
         }
     ).catch( //許可されなかった場合
         function (err) {
@@ -72,6 +74,14 @@ barcode.addEventListener('click', () => {
     );
 
     turn.onclick = function () {
+
+        const tracks = video.srcObject.getTracks();
+        tracks.forEach(track => {
+            track.stop();
+        });
+
+        video.srcObject = null;
+
         displayreset();
         barcode.style.display = "inline";
         qrcode.style.display = "inline";
@@ -83,6 +93,8 @@ barcode.addEventListener('click', () => {
     function Scan(first) {
 
         if (first) {
+
+            mask.style.display = 'none';
 
             //選択された幅高さ
             //w = video.videoWidth;
@@ -185,8 +197,6 @@ barcode.addEventListener('click', () => {
 
         Quagga.stop();
         clearTimeout(id);
-
-        prev_ctx.clearRect(0, 0, prev_ctx.width, prev_ctx.height);
 
         DetectedCode = '';
         DetectedCount = 0;
