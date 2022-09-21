@@ -82,9 +82,15 @@ barcode.addEventListener('click', () => {
         //if (first) {
 
             //選択された幅高さ
+            //w = video.videoWidth;
+            //h = video.videoHeight;
+        if (video.videoWidth > video.videoHeight) {
+            h = video.videoWidth;
+            w = video.videoHeight;
+        } else {
             w = video.videoWidth;
             h = video.videoHeight;
-
+        }
             //画面上の表示サイズ
             prev.style.width = (w * SizeRate) + "px";
             prev.style.height = (h * SizeRate) + "px";
@@ -164,8 +170,8 @@ barcode.addEventListener('click', () => {
 
         DetectedCode = '';
         DetectedCount = 0;
-        video.remove();
-        tmp.remove();
+        //video.remove();
+        //tmp.remove();
         //tmp.remove();
 
         //video.stop();
