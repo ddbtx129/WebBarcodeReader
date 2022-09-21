@@ -23,7 +23,6 @@ barcode.addEventListener('click', () => {
 
     video = document.createElement('video');
     video.id = "video";
-    video.className = "Rotate0";
     video.setAttribute("autoplay", "");
     video.setAttribute("muted", "");
     video.setAttribute("playsinline", "");
@@ -35,7 +34,6 @@ barcode.addEventListener('click', () => {
     tmp = document.createElement('canvas');
     tmp_ctx = tmp.getContext("2d");
 
-    //value = document.getElementById("code");
     value.value = "";
 
     value.style.width = "300px";
@@ -78,6 +76,11 @@ barcode.addEventListener('click', () => {
     };
 
     function Scan(first) {
+
+        var flg = false;
+
+        if (video.videoWidth != w)
+            flg = true;
 
         if (first) {
 
@@ -149,10 +152,11 @@ barcode.addEventListener('click', () => {
             }
             reader.readAsDataURL(blob);
         });
-        id = setTimeout(Scan, 50, false);
+        id = setTimeout(Scan, 500, flg);
     }
 
     Quagga.onDetected(function (result) {
+
         //読み取り誤差が多いため、3回連続で同じ値だった場合に成功とする
         if (DetectedCode == result.codeResult.code) {
             DetectedCount++;
@@ -160,9 +164,10 @@ barcode.addEventListener('click', () => {
             DetectedCount = 0;
             DetectedCode = result.codeResult.code;
         }
-        if (DetectedCount >= 3) {
 
+        if (DetectedCount >= 3) {
             value.value = result.codeResult.code;
+            prev_ctx.codeResult(0, 0, prev.width, prev.height)
 
             displayreset();
 
