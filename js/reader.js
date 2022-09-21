@@ -181,11 +181,12 @@ barcode.addEventListener('click', () => {
         }
     })
 
-
     function displayreset() {
 
         Quagga.stop();
         clearTimeout(id);
+
+        prev_ctx.clearRect(0, 0, prev_ctx.width, prev_ctx.height);
 
         DetectedCode = '';
         DetectedCount = 0;
