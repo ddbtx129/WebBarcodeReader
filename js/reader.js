@@ -16,8 +16,8 @@ window.addEventListener("orientationchange", function () {
         document.getElementById('info').style.bottom = "30px"
     } else {
         document.getElementById('turn').style.bottom = "150px"
-        document.getElementById('turn').style.left = "30px"
-        document.getElementById('info').style.bottom = "15px"
+        document.getElementById('turn').style.left = "60px"
+        document.getElementById('info').style.bottom = "20px"
     }
 });
 
