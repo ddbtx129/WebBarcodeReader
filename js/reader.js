@@ -8,8 +8,6 @@ var id;
 
 barcode.addEventListener('click', () => {
 
-    window.alert(window.innerWidth + "：" + window.innerHeight );
-
     var VideoSize = new Array(1080, 720);
     var SizeRate = 0.5;
     var ScanRate = new Array(0.6, 0.25);
@@ -87,19 +85,30 @@ barcode.addEventListener('click', () => {
             //選択された幅高さ
             //w = video.videoWidth;
             //h = video.videoHeight;
-        if (video.videoWidth > video.videoHeight) {
-            h = video.videoWidth;
-            w = video.videoHeight;
+        if (window.innerWidth < window.innerHeight) {
+            if (video.videoWidth < video.videoHeight) {
+                w = video.videoWidth;
+                h = video.videoHeight;
+            } else {
+                h = video.videoWidth;
+                w = video.videoHeight;
+            }
         } else {
-            w = video.videoWidth;
-            h = video.videoHeight;
+            if (video.videoWidth < video.videoHeight) {
+                h = video.videoWidth;
+                w = video.videoHeight;
+            } else {
+                w = video.videoWidth;
+                h = video.videoHeight;
+            }
         }
-            //画面上の表示サイズ
-            prev.style.width = (w * SizeRate) + "px";
-            prev.style.height = (h * SizeRate) + "px";
-            //内部のサイズ
-            prev.setAttribute("width", w);
-            prev.setAttribute("height", h);
+
+        //画面上の表示サイズ
+        prev.style.width = (w * SizeRate) + "px";
+        prev.style.height = (h * SizeRate) + "px";
+        //内部のサイズ
+        prev.setAttribute("width", w);
+        prev.setAttribute("height", h);
 
         //}
 
@@ -153,6 +162,7 @@ barcode.addEventListener('click', () => {
         }
         if (DetectedCount >= 3) {
 
+            window.alert(1);
             value.value = result.codeResult.code;
             video.stop();
 
@@ -173,8 +183,8 @@ barcode.addEventListener('click', () => {
 
         DetectedCode = '';
         DetectedCount = 0;
-        //video.remove();
-        //tmp.remove();
+        video.remove();
+        tmp.remove();
         //tmp.remove();
 
         //video.stop();
