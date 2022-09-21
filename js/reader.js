@@ -16,7 +16,7 @@ barcode.addEventListener('click', () => {
 
     var VideoSize = new Array(1080, 720);
     var SizeRate = 0.5;
-    var ScanRate = new Array(0.6, 0.25);
+    var ScanRate = new Array(0.75, 0.3);
     
     barcode.style.display = "none";
     qrcode.style.display = "none";
