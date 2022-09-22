@@ -9,7 +9,7 @@ var id;
 var flg = false;
 
 var turnButton = {
-    objArrangement : function() {
+    objArrangement: function () {
         if (window.innerWidth > window.innerHeight) {
             document.getElementById('turn').style.bottom = "80px"
             document.getElementById('turn').style.left = "50%"
@@ -23,15 +23,15 @@ var turnButton = {
 };
 
 window.addEventListener('load', (event) => {
-          if (window.innerWidth < window.innerHeight) {
-            document.getElementById('turn').style.bottom = "80px"
-            document.getElementById('turn').style.left = "50%"
-            document.getElementById('info').style.bottom = "30px"
-        } else {
-            document.getElementById('turn').style.bottom = "150px"
-            document.getElementById('turn').style.left = "60px"
-            document.getElementById('info').style.bottom = "25px"
-        }
+    if (window.innerWidth < window.innerHeight) {
+        document.getElementById('turn').style.bottom = "80px"
+        document.getElementById('turn').style.left = "50%"
+        document.getElementById('info').style.bottom = "30px"
+    } else {
+        document.getElementById('turn').style.bottom = "150px"
+        document.getElementById('turn').style.left = "60px"
+        document.getElementById('info').style.bottom = "25px"
+    }
 });
 
 window.addEventListener("orientationchange", function () {
@@ -44,7 +44,7 @@ barcode.addEventListener('click', () => {
     var VideoSize = new Array(1080, 720);
     var SizeRate = 0.5;
     var ScanRate = new Array(0.75, 0.3);
-    
+
     barcode.style.display = "none";
     qrcode.style.display = "none";
     turn.style.display = "none";
@@ -53,14 +53,14 @@ barcode.addEventListener('click', () => {
     var DetectedCount = 0, DetectedCode = "";
 
     scanarea.style.display = 'inline';
-    
+
     video = document.createElement('video');
     video.id = "video";
     video.setAttribute("autoplay", "");
     video.setAttribute("muted", "");
     video.setAttribute("playsinline", "");
     video.onloadedmetadata = function (e) { video.play(); };
-    
+
     prev = document.getElementById("preview");
     prev_ctx = prev.getContext("2d");
 
@@ -76,7 +76,7 @@ barcode.addEventListener('click', () => {
     codevalue.style.textAlign = "center";
 
     //マイクはオフ, カメラの設定   背面カメラを希望する 640×480を希望する
-    var options = { audio: false, video: { facingMode: "environment", width: { ideal: VideoSize[0] }, height: { ideal: VideoSize[1] } }};
+    var options = { audio: false, video: { facingMode: "environment", width: { ideal: VideoSize[0] }, height: { ideal: VideoSize[1] } } };
 
     //カメラ使用の許可ダイアログが表示される
     navigator.mediaDevices.getUserMedia(
@@ -238,7 +238,7 @@ qrcode.addEventListener('click', () => {
 
     var VideoSize = new Array(1080, 720);
     var SizeRate = 0.5;
-    
+
     barcode.style.display = "none";
     qrcode.style.display = "none";
 
@@ -314,11 +314,6 @@ qrcode.addEventListener('click', () => {
 
     function Scan(first) {
 
-        if (first) {
-            turn.style.display = "inline";
-            flg = false;
-        }
-
         //選択された幅高さ
         //w = video.videoWidth;
         //h = video.videoHeight;
@@ -385,6 +380,11 @@ qrcode.addEventListener('click', () => {
             clearTimeout(id);
         }
 
+        if (first) {
+            turn.style.display = "inline";
+            flg = false;
+        }
+
         id = setTimeout(Scan, 50, false);
     }
 
@@ -417,5 +417,4 @@ reset.addEventListener('click', () => {
     codevalue.style.display = "none";
     scanarea.style.display = 'none';
 });
-
 
