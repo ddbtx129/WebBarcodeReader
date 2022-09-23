@@ -362,7 +362,7 @@ qrcode.addEventListener('click', () => {
         prev_ctx.lineTo((x1 + m + 50),  y1 + (m / 2));
 
         prev_ctx.moveTo(x1 + (m / 2), y1 - 50);
-        prev_ctx.lineTo(x1 + (m / 2), y1 + 50);
+        prev_ctx.lineTo(x1 + (m / 2), y1 + m + 50);
 
         prev_ctx.stroke();
 
