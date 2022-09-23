@@ -49,7 +49,7 @@ barcode.addEventListener('click', () => {
     qrcode.style.display = "none";
     turn.style.display = "none";
 
-    var video, videostream, tmp, tmp_ctx, prev, prev_ctx, prev_ctx2, w, h, mw, mh, x1, y1;
+    var video, videostream, tmp, tmp_ctx, prev, prev_ctx, w, h, mw, mh, x1, y1;
     var DetectedCount = 0, DetectedCode = "";
 
     scanarea.style.display = 'inline';
@@ -63,7 +63,6 @@ barcode.addEventListener('click', () => {
 
     prev = document.getElementById("preview");
     prev_ctx = prev.getContext("2d");
-    prev_ctx2 = prev.getContext("2d");
 
     tmp = document.createElement('canvas');
     tmp_ctx = tmp.getContext("2d");
@@ -153,8 +152,8 @@ barcode.addEventListener('click', () => {
         prev_ctx.lineWidth = 3;
         prev_ctx.rect(((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2), (w * ScanRate[0]), (w * ScanRate[1]));
 
-        prev_ctx.moveTo(((w - (w * ScanRate[0])) / 2) - 40, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
-        prev_ctx.lineTo(((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0]) + 40, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
+        prev_ctx.moveTo(((w - (w * ScanRate[0])) / 2) - 50, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
+        prev_ctx.lineTo(((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0]) + 50, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
         prev_ctx.stroke();
 
         tmp.setAttribute("width", (w * ScanRate[0]));
@@ -358,6 +357,13 @@ qrcode.addEventListener('click', () => {
         prev_ctx.strokeStyle = "rgb(255,0,0)";
         prev_ctx.lineWidth = 3;
         prev_ctx.rect(x1, y1, m, m);
+
+        prev_ctx.moveTo(x1 - 50, y1 + (m / 2));
+        prev_ctx.lineTo((x1 + m + 50),  y1 + (m / 2));
+
+        prev_ctx.moveTo(x1 + (m / 2), y1 - 50);
+        prev_ctx.lineTo(x1 + (m / 2), y1 + 50);
+
         prev_ctx.stroke();
 
         tmp.setAttribute("width", m);
