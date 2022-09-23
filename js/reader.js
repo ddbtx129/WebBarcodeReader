@@ -63,6 +63,7 @@ barcode.addEventListener('click', () => {
 
     prev = document.getElementById("preview");
     prev_ctx = prev.getContext("2d");
+    prev_ctx2 = prev.getContext("2d");
 
     tmp = document.createElement('canvas');
     tmp_ctx = tmp.getContext("2d");
@@ -153,12 +154,13 @@ barcode.addEventListener('click', () => {
         prev_ctx.rect(((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2), (w * ScanRate[0]), (w * ScanRate[1]));
         prev_ctx.stroke();
 
-        prev_ctx.beginPath();
-        prev_ctx.strokeStyle = "rgb(255,255,255)";
-        prev_ctx.lineWidth = 2;
-        prev_ctx.moveTo(((w - (w * ScanRate[0])) / 2) - 60, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
-        prev_ctx.lineTo(((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0]) + 60, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
-        prev_ctx.stroke();
+        prev_ctx2.beginPath();
+        prev_ctx2.setLineDash([4, 2]);
+        prev_ctx2.strokeStyle = "rgb(255,255,255)";
+        prev_ctx2.lineWidth = 2;
+        prev_ctx2.moveTo(((w - (w * ScanRate[0])) / 2) - 60, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
+        prev_ctx2.lineTo(((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0]) + 60, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
+        prev_ctx2.stroke();
 
         tmp.setAttribute("width", (w * ScanRate[0]));
         tmp.setAttribute("height", (w * ScanRate[1]));
