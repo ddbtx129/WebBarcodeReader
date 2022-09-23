@@ -92,6 +92,16 @@ barcode.addEventListener('click', () => {
         }
     );
 
+    function concatCanvas(base, asset) {
+        const canvas = document.querySelector(base);
+        const ctx = canvas.getContext("2d");
+
+        for (let i = 0; i < asset.length; i++) {
+            const image1 = await getImagefromCanvas(asset[i]);
+            ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
+        }
+    };
+
     function Scan(first) {
 
         if (first) {
@@ -311,6 +321,17 @@ qrcode.addEventListener('click', () => {
     //    scanarea.style.display = 'none';
     //};
 
+
+    function concatCanvas(base, asset) {
+        const canvas = document.querySelector(base);
+        const ctx = canvas.getContext("2d");
+
+        for (let i = 0; i < asset.length; i++) {
+            const image1 = await getImagefromCanvas(asset[i]);
+            ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
+        }
+    };
+
     function Scan(first) {
 
         //選択された幅高さ
@@ -394,34 +415,24 @@ qrcode.addEventListener('click', () => {
         id = setTimeout(Scan, 50, false);
     }
 
-    function displayreset() {
+    //function displayreset() {
 
-        clearTimeout(id);
+    //    clearTimeout(id);
 
-        const tracks = videostream.getVideoTracks();
-        for (let i = 0; i < tracks.length; i++) {
-            tracks[i].stop();
-        }
+    //    const tracks = videostream.getVideoTracks();
+    //    for (let i = 0; i < tracks.length; i++) {
+    //        tracks[i].stop();
+    //    }
 
-        prev_ctx.clearRect(0, 0, w, h);
-        tmp_ctx.clearRect(x1, y1, m, m, 0, 0, m, m);
+    //    prev_ctx.clearRect(0, 0, w, h);
+    //    tmp_ctx.clearRect(x1, y1, m, m, 0, 0, m, m);
 
-        DetectedCode = '';
-        DetectedCount = 0;
-        video.remove();
-        tmp.remove();
-    }
+    //    DetectedCode = '';
+    //    DetectedCount = 0;
+    //    video.remove();
+    //    tmp.remove();
+    //}
 });
-
-function concatCanvas(base, asset) {
-    const canvas = document.querySelector(base);
-    const ctx = canvas.getContext("2d");
-
-    for (let i = 0; i < asset.length; i++) {
-        const image1 = await getImagefromCanvas(asset[i]);
-        ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
-    }
-};
 
 var displayreset = {
     reset: function () {
