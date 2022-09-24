@@ -5,11 +5,9 @@ var reset = document.getElementById('reset');
 var scanarea = document.getElementById('scanarea');
 var mask = document.getElementById('mask');
 var turn = document.getElementById('turn');
-var id;
 var flg = false;
 var kind = 0;
-var video, videostream, tmp, tmp_ctx, prev, prev_ctx, w, h, mw, mh, x1, y1;
-
+var video, videostream, id, tmp, tmp_ctx, prev, prev_ctx, w, h, mw, mh, x1, y1;
 
 window.addEventListener('load', (event) => {
     if (window.innerWidth < window.innerHeight) {
@@ -26,6 +24,32 @@ window.addEventListener('load', (event) => {
 window.addEventListener("orientationchange", function () {
     flg = true;
     turnButton.objArrangement();
+});
+
+turn.addEventListener("onclick", () => {
+
+    if (kind == 0) {
+        Quagga.stop();
+    }
+
+    displayreset.reset();
+
+    barcode.style.display = "inline";
+    qrcode.style.display = "inline";
+    reset.style.display = "none";
+    codevalue.style.display = "none";
+    scanarea.style.display = 'none';
+});
+
+reset.addEventListener('click', () => {
+
+    clearTimeout(id);
+
+    barcode.style.display = "inline";
+    qrcode.style.display = "inline";
+    reset.style.display = "none";
+    codevalue.style.display = "none";
+    scanarea.style.display = 'none';
 });
 
 var createImage = function (context) {
@@ -204,7 +228,7 @@ barcode.addEventListener('click', () => {
         if (DetectedCount >= 3) {
             codevalue.value = result.codeResult.code;
 
-            displayreset();
+            displayreset.reset();
 
             codevalue.style.display = "inline";
             reset.style.display = "inline";
@@ -214,27 +238,27 @@ barcode.addEventListener('click', () => {
         }
     })
 
-    function displayreset() {
+    //function displayreset() {
 
-        clearTimeout(id);
+    //    clearTimeout(id);
 
-        const tracks = videostream.getVideoTracks();
-        for (let i = 0; i < tracks.length; i++) {
-            tracks[i].stop();
-        }
+    //    const tracks = videostream.getVideoTracks();
+    //    for (let i = 0; i < tracks.length; i++) {
+    //        tracks[i].stop();
+    //    }
 
-        prev_ctx.clearRect(0, 0, w, h);
-        tmp_ctx.clearRect(
-            ((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2),
-            (w * ScanRate[0]), (w * ScanRate[1]),
-            0, 0,
-            (w * ScanRate[0]), (w * ScanRate[1]));
+    //    prev_ctx.clearRect(0, 0, w, h);
+    //    tmp_ctx.clearRect(
+    //        ((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2),
+    //        (w * ScanRate[0]), (w * ScanRate[1]),
+    //        0, 0,
+    //        (w * ScanRate[0]), (w * ScanRate[1]));
 
-        DetectedCode = '';
-        DetectedCount = 0;
-        video.remove();
-        tmp.remove();
-    }
+    //    DetectedCode = '';
+    //    DetectedCount = 0;
+    //    video.remove();
+    //    tmp.remove();
+    //}
 });
 
 qrcode.addEventListener('click', () => {
@@ -462,28 +486,3 @@ var turnButton = {
     }
 };
 
-turn.addEventListener("onclick", () => {
-
-    if (kind == 0) {
-        Quagga.stop();
-    }
-
-    displayreset.reset();
-
-    barcode.style.display = "inline";
-    qrcode.style.display = "inline";
-    reset.style.display = "none";
-    codevalue.style.display = "none";
-    scanarea.style.display = 'none';
-});
-
-reset.addEventListener('click', () => {
-
-    clearTimeout(id);
-
-    barcode.style.display = "inline";
-    qrcode.style.display = "inline";
-    reset.style.display = "none";
-    codevalue.style.display = "none";
-    scanarea.style.display = 'none';
-});
