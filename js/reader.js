@@ -160,8 +160,6 @@ barcode.addEventListener('click', () => {
         prev_ctx2.lineTo(((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0]) + 50, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
         prev_ctx2.stroke();
 
-        concatCanvas(prev_ctx, prev_ctx2);
-
         tmp.setAttribute("width", (w * ScanRate[0]));
         tmp.setAttribute("height", (w * ScanRate[1]));
         tmp_ctx.drawImage(prev,
