@@ -149,7 +149,7 @@ barcode.addEventListener('click', () => {
         prev_ctx.drawImage(video, 0, 0, w, h);
 
         prev_ctx.beginPath();
-        prev_ctx.strokeStyle = "rgb(255,255,255)";
+        prev_ctx.strokeStyle = "rgb(255,255,255,0.5)";
         prev_ctx.lineWidth = 2;
         prev_ctx.setLineDash([10, 10]);
         prev_ctx.moveTo(((w - (w * ScanRate[0])) / 2) - 50, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
@@ -364,7 +364,7 @@ qrcode.addEventListener('click', () => {
         prev_ctx.drawImage(video, 0, 0, w, h);
 
         prev_ctx.beginPath();
-        prev_ctx.strokeStyle = "rgb(255,255,255)";
+        prev_ctx.strokeStyle = "rgb(255,255,255,0.5)";
         prev_ctx.lineWidth = 2;
         prev_ctx.setLineDash([10, 10]);
         prev_ctx.moveTo(x1 - 50, y1 + (m / 2));
@@ -374,7 +374,7 @@ qrcode.addEventListener('click', () => {
         prev_ctx.stroke();
 
         prev_ctx.beginPath();
-        prev_ctx.strokeStyle = "rgb(255,255,255)";
+        prev_ctx.strokeStyle = "rgb(255,255,255,0.5)";
         prev_ctx.lineWidth = 2;
         prev_ctx.setLineDash([10, 10]);
         prev_ctx.moveTo(x1 + (m / 2), y1 - 50);
