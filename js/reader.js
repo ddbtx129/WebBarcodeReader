@@ -26,21 +26,6 @@ window.addEventListener("orientationchange", function () {
     turnButton.objArrangement();
 });
 
-turn.addEventListener("onclick", () => {
-
-    //if (kind == 0) {
-    //    Quagga.stop();
-    //}
-
-    //displayreset.reset();
-
-    barcode.style.display = "inline";
-    qrcode.style.display = "inline";
-    reset.style.display = "none";
-    codevalue.style.display = "none";
-    scanarea.style.display = 'none';
-});
-
 reset.addEventListener('click', () => {
 
     clearTimeout(id);
@@ -110,15 +95,27 @@ barcode.addEventListener('click', () => {
         }
     ).catch( //許可されなかった場合
         function (err) {
-            //scanarea.style.display = 'none';
-            //barcode.style.display = "none";
-            //qrcode.style.display = "none";
-            //codevalue.style.display = "inline";
-            //reset.style.display = "inline";
-            turn.style.display = "inline";
+            scanarea.style.display = 'none';
+            barcode.style.display = "none";
+            qrcode.style.display = "none";
+            codevalue.style.display = "inline";
+            reset.style.display = "inline";
+
             codevalue.value = err;
         }
     );
+
+    turn.onclick{ 
+
+        Quagga.stop();
+        displayreset.reset();
+
+        barcode.style.display = "inline";
+        qrcode.style.display = "inline";
+        reset.style.display = "none";
+        codevalue.style.display = "none";
+        scanarea.style.display = 'none';
+    });
 
     function Scan(first) {
 
