@@ -37,12 +37,6 @@ reset.addEventListener('click', () => {
     scanarea.style.display = 'none';
 });
 
-var createImage = function (context) {
-    var image = new Image
-    image.src = context.canvas.toDataURL()
-    return image
-};
-
 barcode.addEventListener('click', () => {
 
     var VideoSize = new Array(1080, 720);
@@ -167,7 +161,6 @@ barcode.addEventListener('click', () => {
         prev_ctx.rect(((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2), (w * ScanRate[0]), (w * ScanRate[1]));
         prev_ctx.stroke();
 
-        //var prev_ctx2 = document.createElement('canvas').getContext('2d');
         prev_ctx.beginPath();
         prev_ctx.strokeStyle = "rgb(255,255,255)";
         prev_ctx.lineWidth = 2;
@@ -175,8 +168,6 @@ barcode.addEventListener('click', () => {
         prev_ctx.moveTo(((w - (w * ScanRate[0])) / 2) - 50, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
         prev_ctx.lineTo(((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0]) + 50, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
         prev_ctx.stroke();
-
-        //prev_ctx2.drawImage(createImage(prev_ctx), 0, 0);
 
         tmp.setAttribute("width", (w * ScanRate[0]));
         tmp.setAttribute("height", (w * ScanRate[1]));
@@ -225,7 +216,7 @@ barcode.addEventListener('click', () => {
         if (DetectedCount >= 3) {
             codevalue.value = result.codeResult.code;
 
-            displayreset.reset();
+            displayreset();
 
             codevalue.style.display = "inline";
             reset.style.display = "inline";
@@ -235,27 +226,27 @@ barcode.addEventListener('click', () => {
         }
     })
 
-    //function displayreset() {
+    function displayreset() {
 
-    //    clearTimeout(id);
+        clearTimeout(id);
 
-    //    const tracks = videostream.getVideoTracks();
-    //    for (let i = 0; i < tracks.length; i++) {
-    //        tracks[i].stop();
-    //    }
+        const tracks = videostream.getVideoTracks();
+        for (let i = 0; i < tracks.length; i++) {
+            tracks[i].stop();
+        }
 
-    //    prev_ctx.clearRect(0, 0, w, h);
-    //    tmp_ctx.clearRect(
-    //        ((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2),
-    //        (w * ScanRate[0]), (w * ScanRate[1]),
-    //        0, 0,
-    //        (w * ScanRate[0]), (w * ScanRate[1]));
+        prev_ctx.clearRect(0, 0, w, h);
+        tmp_ctx.clearRect(
+            ((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2),
+            (w * ScanRate[0]), (w * ScanRate[1]),
+            0, 0,
+            (w * ScanRate[0]), (w * ScanRate[1]));
 
-    //    DetectedCode = '';
-    //    DetectedCount = 0;
-    //    video.remove();
-    //    tmp.remove();
-    //}
+        DetectedCode = '';
+        DetectedCount = 0;
+        video.remove();
+        tmp.remove();
+    }
 });
 
 qrcode.addEventListener('click', () => {
@@ -327,26 +318,15 @@ qrcode.addEventListener('click', () => {
         }
     );
 
-    //turn.onclick = function () {
+    turn.onclick = function () {
 
-    //    displayreset();
-    //    barcode.style.display = "inline";
-    //    qrcode.style.display = "inline";
-    //    reset.style.display = "none";
-    //    codevalue.style.display = "none";
-    //    scanarea.style.display = 'none';
-    //};
-
-
-    //function concatCanvas(base, asset) {
-    //    const canvas = document.querySelector(base);
-    //    const ctx = canvas.getContext("2d");
-
-    //    for (let i = 0; i < asset.length; i++) {
-    //        const image1 = await getImagefromCanvas(asset[i]);
-    //        ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
-    //    }
-    //};
+        displayreset();
+        barcode.style.display = "inline";
+        qrcode.style.display = "inline";
+        reset.style.display = "none";
+        codevalue.style.display = "none";
+        scanarea.style.display = 'none';
+    };
 
     function Scan(first) {
 
@@ -431,30 +411,11 @@ qrcode.addEventListener('click', () => {
         id = setTimeout(Scan, 50, false);
     }
 
-    //function displayreset() {
+    function displayreset() {
 
-    //    clearTimeout(id);
-
-    //    const tracks = videostream.getVideoTracks();
-    //    for (let i = 0; i < tracks.length; i++) {
-    //        tracks[i].stop();
-    //    }
-
-    //    prev_ctx.clearRect(0, 0, w, h);
-    //    tmp_ctx.clearRect(x1, y1, m, m, 0, 0, m, m);
-
-    //    DetectedCode = '';
-    //    DetectedCount = 0;
-    //    video.remove();
-    //    tmp.remove();
-    //}
-});
-
-var displayreset = {
-    reset: function () {
         clearTimeout(id);
 
-        var tracks = videostream.getVideoTracks();
+        const tracks = videostream.getVideoTracks();
         for (let i = 0; i < tracks.length; i++) {
             tracks[i].stop();
         }
@@ -467,7 +428,7 @@ var displayreset = {
         video.remove();
         tmp.remove();
     }
-};
+});
 
 var turnButton = {
     objArrangement: function () {
