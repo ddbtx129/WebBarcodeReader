@@ -151,7 +151,7 @@ barcode.addEventListener('click', () => {
         prev_ctx.beginPath();
         prev_ctx.strokeStyle = "rgb(255,255,255,0.5)";
         prev_ctx.lineWidth = 2;
-        prev_ctx.setLineDash([10, 10]);
+        prev_ctx.setLineDash([10, 20]);
         prev_ctx.moveTo(((w - (w * ScanRate[0])) / 2) - 50, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
         prev_ctx.lineTo(((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0]) + 50, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
 
