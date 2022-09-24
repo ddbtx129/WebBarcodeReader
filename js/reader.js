@@ -156,6 +156,7 @@ barcode.addEventListener('click', () => {
         prev_ctx.lineTo(((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0]) + 50, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
 
         prev_ctx.closePath();
+        prev_ctx.stroke();
 
         prev_ctx.beginPath();
         prev_ctx.strokeStyle = "rgb(255,0,0)";
@@ -371,6 +372,7 @@ qrcode.addEventListener('click', () => {
         prev_ctx.lineTo(x1 + (m / 2), y1 + m + 50);
 
         prev_ctx.closePath();
+        prev_ctx.stroke();
 
         prev_ctx.beginPath();
         prev_ctx.strokeStyle = "rgb(255,0,0)";
