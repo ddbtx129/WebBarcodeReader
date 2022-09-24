@@ -28,11 +28,11 @@ window.addEventListener("orientationchange", function () {
 
 turn.addEventListener("onclick", () => {
 
-    if (kind == 0) {
-        Quagga.stop();
-    }
+    //if (kind == 0) {
+    //    Quagga.stop();
+    //}
 
-    displayreset.reset();
+    //displayreset.reset();
 
     barcode.style.display = "inline";
     qrcode.style.display = "inline";
