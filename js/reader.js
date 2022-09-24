@@ -92,15 +92,15 @@ barcode.addEventListener('click', () => {
         }
     );
 
-    function concatCanvas(base, asset) {
-        const canvas = document.querySelector(base);
-        const ctx = canvas.getContext("2d");
+    //function concatCanvas(base, asset) {
+    //    const canvas = document.querySelector(base);
+    //    const ctx = canvas.getContext("2d");
 
-        for (let i = 0; i < asset.length; i++) {
-            const image1 = await getImagefromCanvas(asset[i]);
-            ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
-        }
-    };
+    //    for (let i = 0; i < asset.length; i++) {
+    //        const image1 = await getImagefromCanvas(asset[i]);
+    //        ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
+    //    }
+    //};
 
     function Scan(first) {
 
@@ -320,15 +320,15 @@ qrcode.addEventListener('click', () => {
     //};
 
 
-    function concatCanvas(base, asset) {
-        const canvas = document.querySelector(base);
-        const ctx = canvas.getContext("2d");
+    //function concatCanvas(base, asset) {
+    //    const canvas = document.querySelector(base);
+    //    const ctx = canvas.getContext("2d");
 
-        for (let i = 0; i < asset.length; i++) {
-            const image1 = await getImagefromCanvas(asset[i]);
-            ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
-        }
-    };
+    //    for (let i = 0; i < asset.length; i++) {
+    //        const image1 = await getImagefromCanvas(asset[i]);
+    //        ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
+    //    }
+    //};
 
     function Scan(first) {
 
