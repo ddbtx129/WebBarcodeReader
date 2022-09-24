@@ -8,7 +8,7 @@ var turn = document.getElementById('turn');
 var id;
 var flg = false;
 var kind = 0;
-var video, videostream, tmp, tmp_ctx, prev, prev_ctx, prev2, prev_ctx2, w, h, mw, mh, x1, y1;
+var video, videostream, tmp, tmp_ctx, prev, prev_ctx, w, h, mw, mh, x1, y1;
 
 
 window.addEventListener('load', (event) => {
@@ -91,7 +91,7 @@ barcode.addEventListener('click', () => {
             //qrcode.style.display = "none";
             //codevalue.style.display = "inline";
             //reset.style.display = "inline";
-
+            turn.style.display = "inline";
             codevalue.value = err;
         }
     );
