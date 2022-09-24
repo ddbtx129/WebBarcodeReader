@@ -105,7 +105,7 @@ barcode.addEventListener('click', () => {
         }
     );
 
-    turn.onclick{ 
+    turn.onclick = function () {
 
         Quagga.stop();
         displayreset.reset();
@@ -115,7 +115,7 @@ barcode.addEventListener('click', () => {
         reset.style.display = "none";
         codevalue.style.display = "none";
         scanarea.style.display = 'none';
-    });
+    };
 
     function Scan(first) {
 
