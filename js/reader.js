@@ -6,7 +6,7 @@ var scanarea = document.getElementById('scanarea');
 var mask = document.getElementById('mask');
 var turn = document.getElementById('turn');
 var flg = false;
-var video, videostream, id, tmp, tmp_ctx, prev, prev_ctx, prev_ctx2, w, h, mw, mh, x1, y1;
+var video, videostream, id, tmp, tmp_ctx, prev, prev_ctx, w, h, mw, mh, x1, y1;
 
 var turnButton = {
     objArrangement: function () {
@@ -47,7 +47,7 @@ barcode.addEventListener('click', () => {
     var tranc = 1;
     var trancFlg = 0.0;
     var searchline = 0;
-    var searchlinemove = 1;
+    var searchlinemove = 25;
 
     barcode.style.display = "none";
     qrcode.style.display = "none";
@@ -66,7 +66,6 @@ barcode.addEventListener('click', () => {
 
     prev = document.getElementById("preview");
     prev_ctx = prev.getContext("2d");
-    prev_ctx2 = prev.getContext("2d");
 
     tmp = document.createElement('canvas');
     tmp_ctx = tmp.getContext("2d");
