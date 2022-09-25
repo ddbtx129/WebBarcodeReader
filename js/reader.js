@@ -203,9 +203,9 @@ barcode.addEventListener('click', () => {
             reader.readAsDataURL(blob);
         });
 
-        if (tranc == 0) {
+        if (tranc <= 0) {
             trancFlg = 0.1;
-        } else if (tranc == 1) {
+        } else if (tranc >= 1) {
             trancFlg = -0.1
         }
 
@@ -436,9 +436,9 @@ qrcode.addEventListener('click', () => {
             flg = false;
         }
 
-        if (tranc == 0) {
+        if (tranc <= 0) {
             trancFlg = 0.1;
-        } else if (tranc == 1) {
+        } else if (tranc >= 1) {
             trancFlg = -0.1
         }
 
