@@ -173,8 +173,8 @@ barcode.addEventListener('click', () => {
         prev_ctx.lineWidth = 2;
         prev_ctx.setLineDash([2, 2]);
         prev_ctx.setLineDash([]);
-        prev_ctx.moveTo(((w - (w * ScanRate[0])) / 2) + searchline, ((h - (w * ScanRate[1])) / 2));
-        prev_ctx.lineTo(((w - (w * ScanRate[0])) / 2) + searchline, ((h - (w * ScanRate[1])) / 2) + (w * ScanRate[1]));
+        prev_ctx.moveTo(((w - (w * ScanRate[0])) / 2) + searchline, ((h - (w * ScanRate[1])) / 2) + 24);
+        prev_ctx.lineTo(((w - (w * ScanRate[0])) / 2) + searchline, ((h - (w * ScanRate[1])) / 2) + (w * ScanRate[1]) - 24);
 
         prev_ctx.closePath();
         prev_ctx.stroke();
