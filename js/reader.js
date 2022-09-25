@@ -226,6 +226,10 @@ barcode.addEventListener('click', () => {
             trancFlg = -0.1
         }
 
+        if (searchline >= ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2)) {
+            searchline = ((w - (w * ScanRate[0])) / 2);
+        }
+
         id = setTimeout(Scan, 50, flg);
     }
 
