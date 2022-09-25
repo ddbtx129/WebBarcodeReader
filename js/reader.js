@@ -44,6 +44,8 @@ barcode.addEventListener('click', () => {
     var VideoSize = new Array(1080, 720);
     var SizeRate = 0.5;
     var ScanRate = new Array(0.75, 0.3);
+    var tranc = 1;
+    var trancFlg = 0.0;
 
     barcode.style.display = "none";
     qrcode.style.display = "none";
@@ -149,7 +151,7 @@ barcode.addEventListener('click', () => {
         prev_ctx.drawImage(video, 0, 0, w, h);
 
         prev_ctx.beginPath();
-        prev_ctx.strokeStyle = "rgb(255,255,255,0.75)";
+        prev_ctx.strokeStyle = "rgb(255,255,255," + (tranc + trancFlg) + ")";
         prev_ctx.lineWidth = 2;
         prev_ctx.setLineDash([2, 2]);
         prev_ctx.setLineDash([]);
@@ -198,6 +200,12 @@ barcode.addEventListener('click', () => {
             }
             reader.readAsDataURL(blob);
         });
+
+        if (tranc == 0) {
+            trancFlg = 0.1;
+        } else if (tranc == 1) {
+            trancFlg = -0.1
+        }
 
         id = setTimeout(Scan, 50, flg);
     }
@@ -253,6 +261,8 @@ qrcode.addEventListener('click', () => {
 
     var VideoSize = new Array(1080, 720);
     var SizeRate = 0.5;
+    var tranc = 1;
+    var trancFlg = 0.0;
 
     barcode.style.display = "none";
     qrcode.style.display = "none";
@@ -365,7 +375,7 @@ qrcode.addEventListener('click', () => {
         prev_ctx.drawImage(video, 0, 0, w, h);
 
         prev_ctx.beginPath();
-        prev_ctx.strokeStyle = "rgb(255,255,255,0.75)";
+        prev_ctx.strokeStyle = "rgb(255,255,255," + (tranc + trancFlg) + ")";
         prev_ctx.lineWidth = 2;
         prev_ctx.setLineDash([2,2]);
         prev_ctx.moveTo(x1 - 50, y1 + (m / 2));
@@ -375,7 +385,7 @@ qrcode.addEventListener('click', () => {
         prev_ctx.stroke();
 
         prev_ctx.beginPath();
-        prev_ctx.strokeStyle = "rgb(255,255,255,0.75)";
+        prev_ctx.strokeStyle = "rgb(255,255,255," + (tranc + trancFlg) + ")";
         prev_ctx.lineWidth = 2;
         prev_ctx.setLineDash([2, 2]);
         prev_ctx.moveTo(x1 + (m / 2), y1 - 50);
@@ -420,6 +430,12 @@ qrcode.addEventListener('click', () => {
         if (first) {
             turn.style.display = "inline";
             flg = false;
+        }
+
+        if (tranc == 0) {
+            trancFlg = 0.1;
+        } else if (tranc == 1) {
+            trancFlg = -0.1
         }
 
         id = setTimeout(Scan, 50, false);
