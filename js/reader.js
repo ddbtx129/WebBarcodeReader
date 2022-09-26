@@ -7,6 +7,7 @@ var mask = document.getElementById('mask');
 var turn = document.getElementById('turn');
 var flg = false;
 var video, videostream, id, tmp, tmp_ctx, prev, prev_ctx, w, h, mw, mh, x1, y1;
+var DetectedCount = 0, DetectedCode = "";
 
 var turnButton = {
     objArrangement: function () {
@@ -53,8 +54,6 @@ barcode.addEventListener('click', () => {
     barcode.style.display = "none";
     qrcode.style.display = "none";
     turn.style.display = "none";
-
-    var DetectedCount = 0, DetectedCode = "";
 
     scanarea.style.display = 'inline';
 
