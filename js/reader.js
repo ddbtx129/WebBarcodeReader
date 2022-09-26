@@ -178,8 +178,8 @@ barcode.addEventListener('click', () => {
                                             ((h - (w * ScanRate[1])) / 2));
         // 色を定義
         g.addColorStop(0, 'rgb(255,255,255,0)');
-        g.addColorStop(0.6, 'rgb(255,255,255,0.2)');
-        g.addColorStop(1, 'rgb(255,255,255,0.4)');
+        g.addColorStop(0.4, 'rgb(255,255,255,0.2)');
+        g.addColorStop(1, 'rgb(255,255,255,0.3)');
         prev_ctx.fillStyle = g;
         prev_ctx.fillRect(((w - (w * ScanRate[0])) / 2) + searchline, ((h - (w * ScanRate[1])) / 2), 100, (w * ScanRate[1]));
 
@@ -438,8 +438,8 @@ qrcode.addEventListener('click', () => {
         var g = prev_ctx.createLinearGradient(x1 + searchline, y1, x1 + 100 + searchline, y1);
         // 色を定義
         g.addColorStop(0, 'rgb(255,255,255,0)');
-        g.addColorStop(0.6, 'rgb(255,255,255,0.2)');
-        g.addColorStop(1, 'rgb(255,255,255,0.4)');
+        g.addColorStop(0.4, 'rgb(255,255,255,0.2)');
+        g.addColorStop(1, 'rgb(255,255,255,0.3)');
         prev_ctx.fillStyle = g;
         prev_ctx.fillRect(x1 + searchline, y1, 100, m);
 
