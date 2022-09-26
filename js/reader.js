@@ -46,6 +46,7 @@ barcode.addEventListener('click', () => {
     var ScanRate = new Array(0.75, 0.3);
     var tranc = 1;
     var trancFlg = 0.0;
+    var search = false;
     var searchline = 0;
     var searchlinemove = 25;
 
@@ -169,22 +170,24 @@ barcode.addEventListener('click', () => {
         prev_ctx.closePath();
         prev_ctx.stroke();
 
-        // 
-        prev_ctx.beginPath();
-        // 線形グラデーション
-        var g = prev_ctx.createLinearGradient(((w - (w * ScanRate[0])) / 2) + searchline,
-                                            ((h - (w * ScanRate[1])) / 2),
-                                            ((w - (w * ScanRate[0])) / 2) + 100 + searchline,
-                                            ((h - (w * ScanRate[1])) / 2));
-        // 色を定義
-        g.addColorStop(0, 'rgb(255,255,255,0)');
-        g.addColorStop(0.4, 'rgb(255,255,255,0.2)');
-        g.addColorStop(1, 'rgb(255,255,255,0.3)');
-        prev_ctx.fillStyle = g;
-        prev_ctx.fillRect(((w - (w * ScanRate[0])) / 2) + searchline, ((h - (w * ScanRate[1])) / 2), 100, (w * ScanRate[1]));
+        if (search) {
+            // 
+            prev_ctx.beginPath();
+            // 線形グラデーション
+            var g = prev_ctx.createLinearGradient(((w - (w * ScanRate[0])) / 2) + searchline,
+                                                    ((h - (w * ScanRate[1])) / 2),
+                                                    ((w - (w * ScanRate[0])) / 2) + 100 + searchline,
+                                                    ((h - (w * ScanRate[1])) / 2));
+            // 色を定義
+            g.addColorStop(0, 'rgb(255,255,255,0)');
+            g.addColorStop(0.4, 'rgb(255,255,255,0.2)');
+            g.addColorStop(1, 'rgb(255,255,255,0.3)');
+            prev_ctx.fillStyle = g;
+            prev_ctx.fillRect(((w - (w * ScanRate[0])) / 2) + searchline, ((h - (w * ScanRate[1])) / 2), 100, (w * ScanRate[1]));
 
-        prev_ctx.closePath();
-        prev_ctx.stroke();
+            prev_ctx.closePath();
+            prev_ctx.stroke();
+        }
 
         // 赤枠
         prev_ctx.beginPath();
@@ -291,6 +294,7 @@ qrcode.addEventListener('click', () => {
     var SizeRate = 0.5;
     var tranc = 1;
     var trancFlg = 0.0;
+    var search = false;
     var searchline = 0;
     var searchlinemove = 15;
 
@@ -432,19 +436,21 @@ qrcode.addEventListener('click', () => {
         prev_ctx.closePath();
         prev_ctx.stroke();
 
-        // 
-        prev_ctx.beginPath();
-        // 線形グラデーション
-        var g = prev_ctx.createLinearGradient(x1 + searchline, y1, x1 + 100 + searchline, y1);
-        // 色を定義
-        g.addColorStop(0, 'rgb(255,255,255,0)');
-        g.addColorStop(0.4, 'rgb(255,255,255,0.2)');
-        g.addColorStop(1, 'rgb(255,255,255,0.3)');
-        prev_ctx.fillStyle = g;
-        prev_ctx.fillRect(x1 + searchline, y1, 100, m);
+        if (search) {
+            // 
+            prev_ctx.beginPath();
+            // 線形グラデーション
+            var g = prev_ctx.createLinearGradient(x1 + searchline, y1, x1 + 100 + searchline, y1);
+            // 色を定義
+            g.addColorStop(0, 'rgb(255,255,255,0)');
+            g.addColorStop(0.4, 'rgb(255,255,255,0.2)');
+            g.addColorStop(1, 'rgb(255,255,255,0.3)');
+            prev_ctx.fillStyle = g;
+            prev_ctx.fillRect(x1 + searchline, y1, 100, m);
 
-        prev_ctx.closePath();
-        prev_ctx.stroke();
+            prev_ctx.closePath();
+            prev_ctx.stroke();
+        }
 
         // 赤枠
         prev_ctx.beginPath();
