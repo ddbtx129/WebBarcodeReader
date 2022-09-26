@@ -264,6 +264,8 @@ barcode.addEventListener('click', () => {
             barcode.style.display = "none";
             qrcode.style.display = "none";
         }
+        
+        Quagga.stop();
     })
 
     function displayreset() {
