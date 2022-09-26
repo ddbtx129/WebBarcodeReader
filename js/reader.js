@@ -175,9 +175,9 @@ barcode.addEventListener('click', () => {
             prev_ctx.beginPath();
             // 線形グラデーション
             var g = prev_ctx.createLinearGradient(((w - (w * ScanRate[0])) / 2) + searchline,
-                                                    ((h - (w * ScanRate[1])) / 2),
-                                                    ((w - (w * ScanRate[0])) / 2) + 100 + searchline,
-                                                    ((h - (w * ScanRate[1])) / 2));
+                ((h - (w * ScanRate[1])) / 2),
+                ((w - (w * ScanRate[0])) / 2) + 100 + searchline,
+                ((h - (w * ScanRate[1])) / 2));
             // 色を定義
             g.addColorStop(0, 'rgb(255,255,255,0)');
             g.addColorStop(0.4, 'rgb(255,255,255,0.2)');
@@ -471,19 +471,23 @@ qrcode.addEventListener('click', () => {
         let scanResult = jsQR(imageData.data, m, m);
 
         if (scanResult) {
-            //QRコードをスキャンした結果を出力
-            codevalue.value = scanResult.data;
-            codevalue.scrollTop = codevalue.scrollHeight;
 
-            displayreset();
+            if (String(scanResult.data) != '') {
+                //QRコードをスキャンした結果を出力
+                codevalue.value = scanResult.data;
+                codevalue.scrollTop = codevalue.scrollHeight;
 
-            codevalue.style.display = "inline";
-            reset.style.display = "inline";
-            scanarea.style.display = 'none';
-            barcode.style.display = "none";
-            qrcode.style.display = "none";
+                displayreset();
 
-            clearTimeout(id);
+                codevalue.style.display = "inline";
+                reset.style.display = "inline";
+                scanarea.style.display = 'none';
+                barcode.style.display = "none";
+                qrcode.style.display = "none";
+
+                clearTimeout(id);
+                return;
+            }
         }
 
         if (first) {
