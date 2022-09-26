@@ -472,11 +472,11 @@ qrcode.addEventListener('click', () => {
         if (scanResult) {
 
             //読み取り誤差が多いため、3回連続で同じ値だった場合に成功とする
-            if (DetectedCode == result.codeResult.code) {
+            if (DetectedCode == scanResult.data) {
                 DetectedCount++;
             } else {
                 DetectedCount = 0;
-                DetectedCode = result.codeResult.code;
+                DetectedCode = scanResult.data;
             }
 
             if (DetectedCount >= 3) {
