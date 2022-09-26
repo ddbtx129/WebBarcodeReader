@@ -291,6 +291,8 @@ qrcode.addEventListener('click', () => {
     var SizeRate = 0.5;
     var tranc = 1;
     var trancFlg = 0.0;
+    var searchline = 0;
+    var searchlinemove = 25;
 
     barcode.style.display = "none";
     qrcode.style.display = "none";
@@ -402,8 +404,13 @@ qrcode.addEventListener('click', () => {
 
         tranc = tranc + trancFlg
 
+        if (((w - (w * ScanRate[0])) / 2) + 100 + (searchline + searchlinemove) > ((h - (w * ScanRate[1])) / 2) + (w * ScanRate[1])) {
+            searchline = 0;
+        }
+
         prev_ctx.drawImage(video, 0, 0, w, h);
 
+        // 横線
         prev_ctx.beginPath();
         prev_ctx.strokeStyle = "rgb(255,255,255," + tranc + ")";
         prev_ctx.lineWidth = 2;
@@ -414,6 +421,7 @@ qrcode.addEventListener('click', () => {
         prev_ctx.closePath();
         prev_ctx.stroke();
 
+        // 縦線
         prev_ctx.beginPath();
         prev_ctx.strokeStyle = "rgb(255,255,255," + tranc + ")";
         prev_ctx.lineWidth = 2;
@@ -424,6 +432,21 @@ qrcode.addEventListener('click', () => {
         prev_ctx.closePath();
         prev_ctx.stroke();
 
+        // 
+        prev_ctx.beginPath();
+        // 線形グラデーション
+        var g = prev_ctx.createLinearGradient(x1 + searchline, y1, x1 + 100 + searchline, y1 + m);
+        // 色を定義
+        g.addColorStop(0, 'rgb(255,255,255,0)');
+        g.addColorStop(0.4, 'rgb(255,255,255,0.25)');
+        g.addColorStop(1, 'rgb(255,255,255,0.5)');
+        prev_ctx.fillStyle = g;
+        prev_ctx.fillRect(x1 + searchline, y1, 100, m);
+
+        prev_ctx.closePath();
+        prev_ctx.stroke();
+
+        // 赤枠
         prev_ctx.beginPath();
         prev_ctx.strokeStyle = "rgb(255,0,0,1)";
         prev_ctx.lineWidth = 4;
@@ -467,6 +490,8 @@ qrcode.addEventListener('click', () => {
         } else if (tranc >= 1) {
             trancFlg = -0.1
         }
+
+        searchline = searchline + searchlinemove;
 
         id = setTimeout(Scan, 50, false);
     }
