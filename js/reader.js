@@ -42,8 +42,8 @@ window.addEventListener("orientationchange", function () {
 
 barcode.addEventListener('click', () => {
 
-    var VideoSize = new Array(1080, 720);
-    var SizeRate = 0.5;
+    var VideoSize = new Array(720, 480);
+    var SizeRate = 0.75;
     var ScanRate = new Array(0.75, 0.3);
     var tranc = 1;
     var trancFlg = 0.0;
@@ -292,8 +292,8 @@ barcode.addEventListener('click', () => {
 
 qrcode.addEventListener('click', () => {
 
-    var VideoSize = new Array(1080, 720);
-    var SizeRate = 0.5;
+    var VideoSize = new Array(720, 480);
+    var SizeRate = 0.75;
     var tranc = 1;
     var trancFlg = 0.0;
     var search = true;
