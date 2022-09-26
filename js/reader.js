@@ -47,7 +47,6 @@ barcode.addEventListener('click', () => {
     var tranc = 1;
     var trancFlg = 0.0;
     var searchline = 0;
-    var searchline2 = 0;
     var searchlinemove = 25;
 
     barcode.style.display = "none";
@@ -148,11 +147,9 @@ barcode.addEventListener('click', () => {
             turn.style.display = "inline";
 
             flg = false;
-            searchline = ((w - (w * ScanRate[0])) / 2);
         }
 
         tranc = tranc + trancFlg;
-        searchline = searchline + searchlinemove;
 
         prev_ctx.drawImage(video, 0, 0, w, h);
 
@@ -181,12 +178,6 @@ barcode.addEventListener('click', () => {
         g.addColorStop(1, 'rgb(255,255,255,0.5)');
         prev_ctx.fillStyle = g;
         prev_ctx.fillRect(((w - (w * ScanRate[0])) / 2) + searchline, ((h - (w * ScanRate[1])) / 2), 100, (w * ScanRate[1]));
-        //prev_ctx.strokeStyle = "rgb(255,255,255," + tranc + ")";
-        //prev_ctx.lineWidth = 2;
-        //prev_ctx.setLineDash([2, 2]);
-        //prev_ctx.setLineDash([]);
-        //prev_ctx.moveTo(((w - (w * ScanRate[0])) / 2) + searchline, ((h - (w * ScanRate[1])) / 2) + 24);
-        //prev_ctx.lineTo(((w - (w * ScanRate[0])) / 2) + searchline, ((h - (w * ScanRate[1])) / 2) + (w * ScanRate[1]) - 24);
 
         prev_ctx.closePath();
         prev_ctx.stroke();
@@ -238,8 +229,10 @@ barcode.addEventListener('click', () => {
             trancFlg = -0.1
         }
 
+        searchline = searchline + searchlinemove;
+
         if (((w - (w * ScanRate[0])) / 2) + 100 + searchline >= ((h - (w * ScanRate[1])) / 2) + (w * ScanRate[1])) {
-            searchline = ((w - (w * ScanRate[0])) / 2);
+            searchline = 0;
         }
 
         id = setTimeout(Scan, 50, flg);
