@@ -399,8 +399,8 @@ qrcode.addEventListener('click', () => {
         }
 
         //画面上の表示サイズ
-        prev.style.width = (w / 2) + "px";
-        prev.style.height = (h / 2) + "px";
+        prev.style.width = (w * SizeRate) + "px";
+        prev.style.height = (h * SizeRate) + "px";
 
         //内部のサイズ
         prev.setAttribute("width", w);
@@ -408,8 +408,8 @@ qrcode.addEventListener('click', () => {
 
         if (w > h) { m = h * 0.6; } else { m = w * 0.6; }
 
-        x1 = (w - m) / 2;
-        y1 = (h - m) / 2;
+        x1 = (w - m) * SizeRate;
+        y1 = (h - m) * SizeRate;
 
         tranc = tranc + trancFlg
 
@@ -424,8 +424,8 @@ qrcode.addEventListener('click', () => {
         prev_ctx.strokeStyle = "rgb(255,255,255," + tranc + ")";
         prev_ctx.lineWidth = 2;
         prev_ctx.setLineDash([2, 2]);
-        prev_ctx.moveTo(x1 - 50, y1 + (m / 2));
-        prev_ctx.lineTo((x1 + m + 50), y1 + (m / 2));
+        prev_ctx.moveTo(x1 - 50, y1 + (m * SizeRate));
+        prev_ctx.lineTo((x1 + m + 50), y1 + (m * SizeRate));
 
         prev_ctx.closePath();
         prev_ctx.stroke();
@@ -435,8 +435,8 @@ qrcode.addEventListener('click', () => {
         prev_ctx.strokeStyle = "rgb(255,255,255," + tranc + ")";
         prev_ctx.lineWidth = 2;
         prev_ctx.setLineDash([2, 2]);
-        prev_ctx.moveTo(x1 + (m / 2), y1 - 50);
-        prev_ctx.lineTo(x1 + (m / 2), y1 + m + 50);
+        prev_ctx.moveTo(x1 + (m * SizeRate), y1 - 50);
+        prev_ctx.lineTo(x1 + (m * SizeRate), y1 + m + 50);
 
         prev_ctx.closePath();
         prev_ctx.stroke();
