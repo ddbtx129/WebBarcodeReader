@@ -151,7 +151,7 @@ barcode.addEventListener('click', () => {
 
         tranc = tranc + trancFlg;
 
-        if (((w - (w * ScanRate[0])) / 2) + 100 + (searchline + searchlinemove) > ((h - (w * ScanRate[1])) / 2) + (w * ScanRate[1])) {
+        if (((w - (w * ScanRate[0])) / 2) + 100 + searchline > ((w - (w * ScanRate[0])) / 2) + (w * ScanRate[1])) {
             searchline = 0;
         }
 
@@ -404,7 +404,7 @@ qrcode.addEventListener('click', () => {
 
         tranc = tranc + trancFlg
 
-        if (((w - (w * ScanRate[0])) / 2) + 100 + (searchline + searchlinemove) > ((h - (w * ScanRate[1])) / 2) + (w * ScanRate[1])) {
+        if (x1 + 100 + (searchline + searchlinemove) > x1 + m) {
             searchline = 0;
         }
 
