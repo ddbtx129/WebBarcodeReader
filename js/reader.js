@@ -404,7 +404,7 @@ qrcode.addEventListener('click', () => {
 
         tranc = tranc + trancFlg
 
-        if (x1 + 100 + (searchline + searchlinemove) > x1 + m) {
+        if (x1 + 100 + searchline > x1 + m) {
             searchline = 0;
         }
 
