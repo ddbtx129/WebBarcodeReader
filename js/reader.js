@@ -47,7 +47,7 @@ barcode.addEventListener('click', () => {
     var ScanRate = new Array(0.75, 0.3);
     var tranc = 1;
     var trancFlg = 0.0;
-    var search = false;
+    var search = true;
     var searchline = 0;
     var searchlinemove = 25;
 
@@ -296,7 +296,7 @@ qrcode.addEventListener('click', () => {
     var SizeRate = 0.5;
     var tranc = 1;
     var trancFlg = 0.0;
-    var search = false;
+    var search = true;
     var searchline = 0;
     var searchlinemove = 15;
 
