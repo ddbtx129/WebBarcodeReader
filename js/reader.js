@@ -467,12 +467,19 @@ qrcode.addEventListener('click', () => {
         tmp_ctx.drawImage(prev, x1, y1, m, m, 0, 0, m, m);
 
         let imageData = tmp_ctx.getImageData(0, 0, m, m);
-
         let scanResult = jsQR(imageData.data, m, m);
 
         if (scanResult) {
 
-            if (String(scanResult.data) != '') {
+            //読み取り誤差が多いため、3回連続で同じ値だった場合に成功とする
+            if (DetectedCode == result.codeResult.code) {
+                DetectedCount++;
+            } else {
+                DetectedCount = 0;
+                DetectedCode = result.codeResult.code;
+            }
+
+            if (DetectedCount >= 3) {
                 //QRコードをスキャンした結果を出力
                 codevalue.value = scanResult.data;
                 codevalue.scrollTop = codevalue.scrollHeight;
