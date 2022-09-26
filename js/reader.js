@@ -151,7 +151,7 @@ barcode.addEventListener('click', () => {
 
         tranc = tranc + trancFlg;
 
-        if (((w - (w * ScanRate[0])) / 2) + 100 + searchline > ((w - (w * ScanRate[0])) / 2) + (w * ScanRate[1])) {
+        if (((w - (w * ScanRate[0])) / 2) + 100 + searchline > ((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0])) {
             searchline = 0;
         }
 
@@ -435,7 +435,7 @@ qrcode.addEventListener('click', () => {
         // 
         prev_ctx.beginPath();
         // 線形グラデーション
-        var g = prev_ctx.createLinearGradient(x1 + searchline, y1, x1 + 100 + searchline, y1 + m);
+        var g = prev_ctx.createLinearGradient(x1 + searchline, y1, x1 + 100 + searchline, y1);
         // 色を定義
         g.addColorStop(0, 'rgb(255,255,255,0)');
         g.addColorStop(0.4, 'rgb(255,255,255,0.25)');
