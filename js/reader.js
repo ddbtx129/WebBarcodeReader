@@ -5,9 +5,10 @@ var reset = document.getElementById('reset');
 var scanarea = document.getElementById('scanarea');
 var mask = document.getElementById('mask');
 var turn = document.getElementById('turn');
-var flg = false;
+var flg = false, loopflg = false;
 var video, videostream, id, tmp, tmp_ctx, prev, prev_ctx, w, h, mw, mh, x1, y1;
 var DetectedCount = 0, DetectedCode = "";
+var loopspan = 100, looptime = 0, maxtime = 30000;
 
 var turnButton = {
     objArrangement: function () {
@@ -81,6 +82,8 @@ barcode.addEventListener('click', () => {
     codevalue.style.overflow = "hidden";
     codevalue.style.textAlign = "center";
 
+    loopspan = 100;
+
     //マイクはオフ, カメラの設定   背面カメラを希望する 640×480を希望する
     var options = { audio: false, video: { facingMode: "environment", width: { ideal: VideoSize[0] }, height: { ideal: VideoSize[1] } } };
 
@@ -106,6 +109,11 @@ barcode.addEventListener('click', () => {
         }
     );
 
+    scan.onclick = function () {
+        looptime = 0;
+        loopflg = true;
+    };
+
     turn.onclick = function () {
 
         displayreset();
@@ -117,6 +125,11 @@ barcode.addEventListener('click', () => {
     };
 
     function Scan(first) {
+
+        if (looptime >= maxtime) {
+            looptime = maxtime + loopspan;
+            loopflg = false;
+        }
 
         if (first) {
             //選択された幅高さ
@@ -152,28 +165,29 @@ barcode.addEventListener('click', () => {
             flg = false;
         }
 
-        tranc = tranc + trancFlg;
-
-        if (((w - (w * ScanRate[0])) / 2) + 100 + searchline > ((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0])) {
-            searchline = 0;
-        }
-
         prev_ctx.drawImage(video, 0, 0, w, h);
 
-        // 横線
-        prev_ctx.beginPath();
-        prev_ctx.strokeStyle = "rgb(255,255,255," + tranc + ")";
-        prev_ctx.lineWidth = 2;
-        prev_ctx.setLineDash([2, 2]);
-        prev_ctx.setLineDash([]);
-        prev_ctx.moveTo(((w - (w * ScanRate[0])) / 2) - 50, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
-        prev_ctx.lineTo(((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0]) + 50, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
+        if (loopflg) {
 
-        prev_ctx.closePath();
-        prev_ctx.stroke();
+            tranc = tranc + trancFlg;
 
-        if (search) {
-            // 
+            if (((w - (w * ScanRate[0])) / 2) + 100 + searchline > ((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0])) {
+                searchline = 0;
+            }
+
+            // 横線
+            prev_ctx.beginPath();
+            prev_ctx.strokeStyle = "rgb(255,255,255," + tranc + ")";
+            prev_ctx.lineWidth = 2;
+            prev_ctx.setLineDash([2, 2]);
+            prev_ctx.setLineDash([]);
+            prev_ctx.moveTo(((w - (w * ScanRate[0])) / 2) - 50, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
+            prev_ctx.lineTo(((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0]) + 50, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
+
+            prev_ctx.closePath();
+            prev_ctx.stroke();
+
+            // スキャン
             prev_ctx.beginPath();
             // 線形グラデーション
             var g = prev_ctx.createLinearGradient(((w - (w * ScanRate[0])) / 2) + searchline,
@@ -186,6 +200,18 @@ barcode.addEventListener('click', () => {
             g.addColorStop(1, 'rgb(255,255,255,0.3)');
             prev_ctx.fillStyle = g;
             prev_ctx.fillRect(((w - (w * ScanRate[0])) / 2) + searchline, ((h - (w * ScanRate[1])) / 2), 100, (w * ScanRate[1]));
+
+            prev_ctx.closePath();
+            prev_ctx.stroke();
+        } else {
+            // 横線
+            prev_ctx.beginPath();
+            prev_ctx.strokeStyle = "rgb(255,255,255,0.75)";
+            prev_ctx.lineWidth = 2;
+            prev_ctx.setLineDash([2, 2]);
+            prev_ctx.setLineDash([]);
+            prev_ctx.moveTo(((w - (w * ScanRate[0])) / 2) - 50, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
+            prev_ctx.lineTo(((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0]) + 50, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
 
             prev_ctx.closePath();
             prev_ctx.stroke();
@@ -209,28 +235,30 @@ barcode.addEventListener('click', () => {
             0, 0,
             (w * ScanRate[0]), (w * ScanRate[1]));
 
-        tmp.toBlob(function (blob) {
-            let reader = new FileReader();
-            reader.onload = function () {
-                let config = {
-                    decoder: {
-                        readers: [
-                            "ean_reader",
-                            "ean_8_reader",
-                            "code_39_reader",
-                            "code_39_vin_reader",
-                            "code_93_reader",
-                            "codabar_reader"
-                        ]
-                    },
-                    locator: { patchSize: "large", halfSample: false },
-                    locate: false,
-                    src: reader.result,
-                };
-                Quagga.decodeSingle(config, function () { });
-            }
-            reader.readAsDataURL(blob);
-        });
+        if (loopflg) {
+            tmp.toBlob(function (blob) {
+                let reader = new FileReader();
+                reader.onload = function () {
+                    let config = {
+                        decoder: {
+                            readers: [
+                                "ean_reader",
+                                "ean_8_reader",
+                                "code_39_reader",
+                                "code_39_vin_reader",
+                                "code_93_reader",
+                                "codabar_reader"
+                            ]
+                        },
+                        locator: { patchSize: "large", halfSample: false },
+                        locate: false,
+                        src: reader.result,
+                    };
+                    Quagga.decodeSingle(config, function () { });
+                }
+                reader.readAsDataURL(blob);
+            });
+        }
 
         if (tranc <= 0) {
             trancFlg = 0.1;
@@ -240,7 +268,8 @@ barcode.addEventListener('click', () => {
 
         searchline = searchline + searchlinemove;
 
-        id = setTimeout(Scan, 50, flg);
+        if (loopflg) looptime = looptime + loopspan;
+        id = setTimeout(Scan, loopspan, flg);
     }
 
     Quagga.onDetected(function (result) {
@@ -264,7 +293,7 @@ barcode.addEventListener('click', () => {
             barcode.style.display = "none";
             qrcode.style.display = "none";
         }
-        
+
         Quagga.stop();
     })
 
@@ -343,6 +372,8 @@ qrcode.addEventListener('click', () => {
     tmp = document.createElement('canvas');
     tmp_ctx = tmp.getContext("2d");
 
+    loopspan = 50;
+
     //マイクはオフ, カメラの設定   背面カメラを希望する 640×480を希望する
     var options = { audio: false, video: { facingMode: "environment", width: { ideal: VideoSize[0] }, height: { ideal: VideoSize[1] } } };
 
@@ -366,6 +397,11 @@ qrcode.addEventListener('click', () => {
         }
     );
 
+    scan.onclick = function () {
+        looptime = 0;
+        loopflg = true;
+    };
+
     turn.onclick = function () {
 
         displayreset();
@@ -377,6 +413,11 @@ qrcode.addEventListener('click', () => {
     };
 
     function Scan(first) {
+
+        if (looptime >= maxtime) {
+            looptime = maxtime + loopspan;
+            loopflg = false;
+        }
 
         //選択された幅高さ
         //w = video.videoWidth;
@@ -413,38 +454,39 @@ qrcode.addEventListener('click', () => {
         x1 = (w - m) * 0.5;
         y1 = (h - m) * 0.5;
 
-        tranc = tranc + trancFlg
-
-        if (x1 + 100 + searchline > x1 + m) {
-            searchline = 0;
-        }
-
         prev_ctx.drawImage(video, 0, 0, w, h);
 
-        // 横線
-        prev_ctx.beginPath();
-        prev_ctx.strokeStyle = "rgb(255,255,255," + tranc + ")";
-        prev_ctx.lineWidth = 2;
-        prev_ctx.setLineDash([2, 2]);
-        prev_ctx.moveTo(x1 - 50, y1 + (m * 0.5));
-        prev_ctx.lineTo((x1 + m + 50), y1 + (m * 0.5));
+        if (loopflg) {
 
-        prev_ctx.closePath();
-        prev_ctx.stroke();
+            tranc = tranc + trancFlg
 
-        // 縦線
-        prev_ctx.beginPath();
-        prev_ctx.strokeStyle = "rgb(255,255,255," + tranc + ")";
-        prev_ctx.lineWidth = 2;
-        prev_ctx.setLineDash([2, 2]);
-        prev_ctx.moveTo(x1 + (m * 0.5), y1 - 50);
-        prev_ctx.lineTo(x1 + (m * 0.5), y1 + m + 50);
+            if (x1 + 100 + searchline > x1 + m) {
+                searchline = 0;
+            }
 
-        prev_ctx.closePath();
-        prev_ctx.stroke();
+            // 横線
+            prev_ctx.beginPath();
+            prev_ctx.strokeStyle = "rgb(255,255,255," + tranc + ")";
+            prev_ctx.lineWidth = 2;
+            prev_ctx.setLineDash([2, 2]);
+            prev_ctx.moveTo(x1 - 50, y1 + (m * 0.5));
+            prev_ctx.lineTo((x1 + m + 50), y1 + (m * 0.5));
 
-        if (search) {
-            // 
+            prev_ctx.closePath();
+            prev_ctx.stroke();
+
+            // 縦線
+            prev_ctx.beginPath();
+            prev_ctx.strokeStyle = "rgb(255,255,255," + tranc + ")";
+            prev_ctx.lineWidth = 2;
+            prev_ctx.setLineDash([2, 2]);
+            prev_ctx.moveTo(x1 + (m * 0.5), y1 - 50);
+            prev_ctx.lineTo(x1 + (m * 0.5), y1 + m + 50);
+
+            prev_ctx.closePath();
+            prev_ctx.stroke();
+
+            // スキャン
             prev_ctx.beginPath();
             // 線形グラデーション
             var g = prev_ctx.createLinearGradient(x1 + searchline, y1, x1 + 100 + searchline, y1);
@@ -454,6 +496,29 @@ qrcode.addEventListener('click', () => {
             g.addColorStop(1, 'rgb(255,255,255,0.3)');
             prev_ctx.fillStyle = g;
             prev_ctx.fillRect(x1 + searchline, y1, 100, m);
+
+            prev_ctx.closePath();
+            prev_ctx.stroke();
+        } else {
+
+            // 横線
+            prev_ctx.beginPath();
+            prev_ctx.strokeStyle = "rgb(255,255,255,0.75)";
+            prev_ctx.lineWidth = 2;
+            prev_ctx.setLineDash([2, 2]);
+            prev_ctx.moveTo(x1 - 50, y1 + (m * 0.5));
+            prev_ctx.lineTo((x1 + m + 50), y1 + (m * 0.5));
+
+            prev_ctx.closePath();
+            prev_ctx.stroke();
+
+            // 縦線
+            prev_ctx.beginPath();
+            prev_ctx.strokeStyle = "rgb(255,255,255,0.75)";
+            prev_ctx.lineWidth = 2;
+            prev_ctx.setLineDash([2, 2]);
+            prev_ctx.moveTo(x1 + (m * 0.5), y1 - 50);
+            prev_ctx.lineTo(x1 + (m * 0.5), y1 + m + 50);
 
             prev_ctx.closePath();
             prev_ctx.stroke();
@@ -469,38 +534,41 @@ qrcode.addEventListener('click', () => {
         prev_ctx.closePath();
         prev_ctx.stroke();
 
-        tmp.setAttribute("width", m);
-        tmp.setAttribute("height", m);
-        tmp_ctx.drawImage(prev, x1, y1, m, m, 0, 0, m, m);
+        if (loopflg) {
 
-        let imageData = tmp_ctx.getImageData(0, 0, m, m);
-        let scanResult = jsQR(imageData.data, m, m);
+            tmp.setAttribute("width", m);
+            tmp.setAttribute("height", m);
+            tmp_ctx.drawImage(prev, x1, y1, m, m, 0, 0, m, m);
 
-        if (scanResult) {
+            let imageData = tmp_ctx.getImageData(0, 0, m, m);
+            let scanResult = jsQR(imageData.data, m, m);
 
-            //読み取り誤差が多いため、3回連続で同じ値だった場合に成功とする
-            if (DetectedCode == scanResult.data) {
-                DetectedCount++;
-            } else {
-                DetectedCount = 0;
-                DetectedCode = scanResult.data;
-            }
+            if (scanResult) {
 
-            if (DetectedCount >= 3) {
-                //QRコードをスキャンした結果を出力
-                codevalue.value = scanResult.data;
-                codevalue.scrollTop = codevalue.scrollHeight;
+                //読み取り誤差が多いため、3回連続で同じ値だった場合に成功とする
+                if (DetectedCode == scanResult.data) {
+                    DetectedCount++;
+                } else {
+                    DetectedCount = 0;
+                    DetectedCode = scanResult.data;
+                }
 
-                displayreset();
+                if (DetectedCount >= 3) {
+                    //QRコードをスキャンした結果を出力
+                    codevalue.value = scanResult.data;
+                    codevalue.scrollTop = codevalue.scrollHeight;
 
-                codevalue.style.display = "inline";
-                reset.style.display = "inline";
-                scanarea.style.display = 'none';
-                barcode.style.display = "none";
-                qrcode.style.display = "none";
+                    displayreset();
 
-                clearTimeout(id);
-                return;
+                    codevalue.style.display = "inline";
+                    reset.style.display = "inline";
+                    scanarea.style.display = 'none';
+                    barcode.style.display = "none";
+                    qrcode.style.display = "none";
+
+                    clearTimeout(id);
+                    return;
+                }
             }
         }
 
@@ -517,7 +585,8 @@ qrcode.addEventListener('click', () => {
 
         searchline = searchline + searchlinemove;
 
-        id = setTimeout(Scan, 50, false);
+        if(loopflg) looptime = looptime + loopspan;
+        id = setTimeout(Scan, loopspan, false);
     }
 
     function displayreset() {
