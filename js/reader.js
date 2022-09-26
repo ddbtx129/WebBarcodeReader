@@ -408,8 +408,8 @@ qrcode.addEventListener('click', () => {
 
         if (w > h) { m = h * 0.6; } else { m = w * 0.6; }
 
-        x1 = (w - m) * SizeRate;
-        y1 = (h - m) * SizeRate;
+        x1 = (w - m) * 0.5;
+        y1 = (h - m) * 0.5;
 
         tranc = tranc + trancFlg
 
