@@ -51,6 +51,9 @@ barcode.addEventListener('click', () => {
     var searchline = 0;
     var searchlinemove = 25;
 
+    DetectedCount = 0;
+    DetectedCode = "";
+
     barcode.style.display = "none";
     qrcode.style.display = "none";
     turn.style.display = "none";
@@ -296,6 +299,9 @@ qrcode.addEventListener('click', () => {
     var search = false;
     var searchline = 0;
     var searchlinemove = 15;
+
+    DetectedCount = 0;
+    DetectedCode = "";
 
     barcode.style.display = "none";
     qrcode.style.display = "none";
