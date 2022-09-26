@@ -171,7 +171,7 @@ barcode.addEventListener('click', () => {
         // 
         prev_ctx.beginPath();
         // 線形グラデーション
-        var g = prev_ctx.createLinearGradient(((w - (w * ScanRate[0])) / 2) - 50 + searchline, ((h - (w * ScanRate[1])) / 2), 50, ((h - (w * ScanRate[1])) / 2));
+        var g = prev_ctx.createLinearGradient(((w - (w * ScanRate[0])) / 2) - 50 + searchline, ((h - (w * ScanRate[1])) / 2), ((w - (w * ScanRate[0])) / 2) + searchline, ((h - (w * ScanRate[1])) / 2));
         // 色を定義
         g.addColorStop(0, 'rgb(255,255,255,0)');
         g.addColorStop(0.4, 'rgb(255,255,255,0.25)');
@@ -235,7 +235,7 @@ barcode.addEventListener('click', () => {
             trancFlg = -0.1
         }
 
-        if (((w - (w * ScanRate[0])) / 2) + searchline >= ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2)) {
+        if (((w - (w * ScanRate[0])) / 2) + searchline >= ((h - (w * ScanRate[1])) / 2) + (w * ScanRate[1])) {
             searchline = ((w - (w * ScanRate[0])) / 2);
         }
 
