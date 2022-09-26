@@ -292,7 +292,7 @@ qrcode.addEventListener('click', () => {
     var tranc = 1;
     var trancFlg = 0.0;
     var searchline = 0;
-    var searchlinemove = 18;
+    var searchlinemove = 15;
 
     barcode.style.display = "none";
     qrcode.style.display = "none";
