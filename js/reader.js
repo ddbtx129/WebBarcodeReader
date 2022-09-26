@@ -151,6 +151,10 @@ barcode.addEventListener('click', () => {
 
         tranc = tranc + trancFlg;
 
+        if (((w - (w * ScanRate[0])) / 2) + 100 + searchline >= ((h - (w * ScanRate[1])) / 2) + (w * ScanRate[1])) {
+            searchline = 0;
+        }
+
         prev_ctx.drawImage(video, 0, 0, w, h);
 
         // 横線
@@ -230,10 +234,6 @@ barcode.addEventListener('click', () => {
         }
 
         searchline = searchline + searchlinemove;
-
-        if (((w - (w * ScanRate[0])) / 2) + 100 + searchline >= ((h - (w * ScanRate[1])) / 2) + (w * ScanRate[1])) {
-            searchline = 0;
-        }
 
         id = setTimeout(Scan, 50, flg);
     }
