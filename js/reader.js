@@ -169,12 +169,20 @@ barcode.addEventListener('click', () => {
 
         // 
         prev_ctx.beginPath();
-        prev_ctx.strokeStyle = "rgb(255,255,255," + tranc + ")";
-        prev_ctx.lineWidth = 2;
-        prev_ctx.setLineDash([2, 2]);
-        prev_ctx.setLineDash([]);
-        prev_ctx.moveTo(((w - (w * ScanRate[0])) / 2) + searchline, ((h - (w * ScanRate[1])) / 2) + 24);
-        prev_ctx.lineTo(((w - (w * ScanRate[0])) / 2) + searchline, ((h - (w * ScanRate[1])) / 2) + (w * ScanRate[1]) - 24);
+        // 線形グラデーション
+        var g = prev_ctx.createLinearGradient(((w - (w * ScanRate[0])) / 2) - 50, ((h - (w * ScanRate[1])) / 2), searchline, (w * ScanRate[1]));
+        // 色を定義
+        g.addColorStop(0, 'rgb(255,255,255,0)');
+        g.addColorStop(0.4, 'rgb(255,255,255,0.5)');
+        g.addColorStop(1, 'rgb(255,255,255,0.75)');
+        prev_ctx.fillStyle = g;
+        prev_ctx.fillRect(((w - (w * ScanRate[0])) / 2) - 50, ((h - (w * ScanRate[1])) / 2), searchline, (w * ScanRate[1]));
+        //prev_ctx.strokeStyle = "rgb(255,255,255," + tranc + ")";
+        //prev_ctx.lineWidth = 2;
+        //prev_ctx.setLineDash([2, 2]);
+        //prev_ctx.setLineDash([]);
+        //prev_ctx.moveTo(((w - (w * ScanRate[0])) / 2) + searchline, ((h - (w * ScanRate[1])) / 2) + 24);
+        //prev_ctx.lineTo(((w - (w * ScanRate[0])) / 2) + searchline, ((h - (w * ScanRate[1])) / 2) + (w * ScanRate[1]) - 24);
 
         prev_ctx.closePath();
         prev_ctx.stroke();
