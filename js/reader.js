@@ -5,6 +5,7 @@ var reset = document.getElementById('reset');
 var scanarea = document.getElementById('scanarea');
 var mask = document.getElementById('mask');
 var turn = document.getElementById('turn');
+var scaning = document.getElementById('scan');
 var flg = false, loopflg = false;
 var video, videostream, id, tmp, tmp_ctx, prev, prev_ctx, w, h, mw, mh, x1, y1;
 var DetectedCount = 0, DetectedCode = "";
@@ -109,9 +110,10 @@ barcode.addEventListener('click', () => {
         }
     );
 
-    scan.onclick = function () {
+    scaning.onclick = function () {
         looptime = 0;
         loopflg = true;
+        scaning.disabled = false;
     };
 
     turn.onclick = function () {
@@ -129,6 +131,7 @@ barcode.addEventListener('click', () => {
         if (looptime >= maxtime) {
             looptime = maxtime + loopspan;
             loopflg = false;
+            scaning.disabled = true;
         }
 
         if (first) {
@@ -397,9 +400,10 @@ qrcode.addEventListener('click', () => {
         }
     );
 
-    scan.onclick = function () {
+    scaning.onclick = function () {
         looptime = 0;
         loopflg = true;
+        scaning.disabled = false;
     };
 
     turn.onclick = function () {
@@ -417,6 +421,7 @@ qrcode.addEventListener('click', () => {
         if (looptime >= maxtime) {
             looptime = maxtime + loopspan;
             loopflg = false;
+            scaning.disabled = true;
         }
 
         //選択された幅高さ
