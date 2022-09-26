@@ -424,8 +424,8 @@ qrcode.addEventListener('click', () => {
         prev_ctx.strokeStyle = "rgb(255,255,255," + tranc + ")";
         prev_ctx.lineWidth = 2;
         prev_ctx.setLineDash([2, 2]);
-        prev_ctx.moveTo(x1 - 50, y1 + (m * SizeRate));
-        prev_ctx.lineTo((x1 + m + 50), y1 + (m * SizeRate));
+        prev_ctx.moveTo(x1 - 50, y1 + (m * 0.5));
+        prev_ctx.lineTo((x1 + m + 50), y1 + (m * 0.5));
 
         prev_ctx.closePath();
         prev_ctx.stroke();
@@ -435,8 +435,8 @@ qrcode.addEventListener('click', () => {
         prev_ctx.strokeStyle = "rgb(255,255,255," + tranc + ")";
         prev_ctx.lineWidth = 2;
         prev_ctx.setLineDash([2, 2]);
-        prev_ctx.moveTo(x1 + (m * SizeRate), y1 - 50);
-        prev_ctx.lineTo(x1 + (m * SizeRate), y1 + m + 50);
+        prev_ctx.moveTo(x1 + (m * 0.5), y1 - 50);
+        prev_ctx.lineTo(x1 + (m * 0.5), y1 + m + 50);
 
         prev_ctx.closePath();
         prev_ctx.stroke();
