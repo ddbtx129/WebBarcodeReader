@@ -77,7 +77,7 @@ button {
     font-size: larger;
     color: #000;
     text-align: center;
-    left: 40%;
+    left: 25%;
     transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
@@ -90,7 +90,7 @@ button {
     font-size: larger;
     color: #000;
     text-align: center;
-    right: 40%;
+    right: 25%;
     transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
