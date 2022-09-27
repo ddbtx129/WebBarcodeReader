@@ -77,6 +77,8 @@ barcode.addEventListener('click', () => {
     DetectedCount = 0;
     DetectedCode = "";
 
+    document.getElementById('info').innerHTML = "カメラにバーコードを写してください。";
+
     barcode.style.display = "none";
     qrcode.style.display = "none";
     turn.style.display = "none";
@@ -209,8 +211,8 @@ barcode.addEventListener('click', () => {
             // 横線
             prev_ctx.beginPath();
             prev_ctx.strokeStyle = "rgb(255,0,0," + tranc + ")";
-            prev_ctx.lineWidth = 2;
-            prev_ctx.setLineDash([2, 2]);
+            prev_ctx.lineWidth = 3;
+            prev_ctx.setLineDash([2, 4]);
             prev_ctx.setLineDash([]);
             prev_ctx.moveTo(((w - (w * ScanRate[0])) / 2) - 50, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
             prev_ctx.lineTo(((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0]) + 50, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
@@ -383,6 +385,8 @@ qrcode.addEventListener('click', () => {
     DetectedCount = 0;
     DetectedCode = "";
 
+    document.getElementById('info').innerHTML = "カメラにＱＲコードを写してください。";
+
     barcode.style.display = "none";
     qrcode.style.display = "none";
     turn.style.display = "none";
@@ -527,8 +531,8 @@ qrcode.addEventListener('click', () => {
             // 横線
             prev_ctx.beginPath();
             prev_ctx.strokeStyle = "rgb(255,0,0," + tranc + ")";
-            prev_ctx.lineWidth = 2;
-            prev_ctx.setLineDash([2, 2]);
+            prev_ctx.lineWidth = 3;
+            prev_ctx.setLineDash([2, 4]);
             prev_ctx.moveTo(x1 - 50, y1 + (m * 0.5));
             prev_ctx.lineTo((x1 + m + 50), y1 + (m * 0.5));
 
@@ -538,8 +542,8 @@ qrcode.addEventListener('click', () => {
             // 縦線
             prev_ctx.beginPath();
             prev_ctx.strokeStyle = "rgb(255,0,0," + tranc + ")";
-            prev_ctx.lineWidth = 2;
-            prev_ctx.setLineDash([2, 2]);
+            prev_ctx.lineWidth = 3;
+            prev_ctx.setLineDash([2, 4]);
             prev_ctx.moveTo(x1 + (m * 0.5), y1 - 50);
             prev_ctx.lineTo(x1 + (m * 0.5), y1 + m + 50);
 
