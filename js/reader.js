@@ -14,7 +14,7 @@ var DetectedCount = 0, DetectedCode = "";
 
 var flg = false, loopflg = false;
 var loopspan = 100, looptime = 0, maxtime = 10000;
-var tranc = 1, trancFlg = 0.0, maxtranc = 0.6;
+var tranc = 1, trancFlg = 0.0, maxtranc = 0.8;
 var searchline = 0, searchlinemove = 25, searchNum = 0, searchWidth = 100;
 
 var turnButton = {
@@ -213,7 +213,7 @@ barcode.addEventListener('click', () => {
             prev_ctx.strokeStyle = "rgb(255,0,0," + tranc + ")";
             prev_ctx.lineWidth = 3;
             prev_ctx.setLineDash([2, 4]);
-            prev_ctx.setLineDash([]);
+            //prev_ctx.setLineDash([]);
             prev_ctx.moveTo(((w - (w * ScanRate[0])) / 2) - 50, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
             prev_ctx.lineTo(((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0]) + 50, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
 
