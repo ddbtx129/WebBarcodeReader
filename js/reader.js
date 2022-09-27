@@ -12,7 +12,7 @@ var video, videostream, id, tmp, tmp_ctx, prev, prev_ctx, w, h, mw, mh, x1, y1;
 var DetectedCount = 0, DetectedCode = "";
 
 var flg = false, loopflg = false;
-var loopspan = 100, looptime = 0, maxtime = 15000;
+var loopspan = 100, looptime = 0, maxtime = 10000;
 var tranc = 1, trancFlg = 0.0, maxtranc = 0.6;
 var searchline = 0, searchlinemove = 25, searchNum = 0, searchWidth = 100;
 
