@@ -369,15 +369,15 @@ barcode.addEventListener('click', () => {
         for (let i = 0; i < tracks.length; i++) {
             tracks[i].stop();
         }
-
-        prev_ctx.clearRect(0, 0, w, h);
-        prev_ctx.clearRect(((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2), (w * ScanRate[0]), (w * ScanRate[1]));
+        
         tmp_ctx.clearRect(
             ((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2),
             (w * ScanRate[0]), (w * ScanRate[1]),
             0, 0,
             (w * ScanRate[0]), (w * ScanRate[1]));
-
+        prev_ctx.clearRect(((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2), (w * ScanRate[0]), (w * ScanRate[1]));
+        prev_ctx.clearRect(0, 0, w, h);
+        
         DetectedCode = '';
         DetectedCount = 0;
         video.remove();
@@ -697,10 +697,10 @@ qrcode.addEventListener('click', () => {
             tracks[i].stop();
         }
 
-        prev_ctx.clearRect(0, 0, w, h);
-        prev_ctx.clearRect(x1, y1, m, m);
         tmp_ctx.clearRect(x1, y1, m, m, 0, 0, m, m);
-
+        prev_ctx.clearRect(x1, y1, m, m);
+        prev_ctx.clearRect(0, 0, w, h);
+        
         DetectedCode = '';
         DetectedCount = 0;
         video.remove();
