@@ -76,11 +76,11 @@ button {
     width: 80px;
     font-size: larger;
     color: #000;
-    left: 90%;
+    left: 75%;
     text-align: center;
-    transform: translateX(-90%);
-    -webkit-transform: translateX(-90%);
-    -ms-transform: translateX(-85%);
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
 }
 
 .turn {
@@ -90,8 +90,8 @@ button {
     font-size: larger;
     color: #000;
     text-align: center;
-    left: 25%;
-    transform: translateX(-25%);
-    -webkit-transform: translateX(-25%);
-    -ms-transform: translateX(-25%);
+    left: 30%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
 }
