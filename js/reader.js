@@ -10,6 +10,7 @@ var flg = false, loopflg = false;
 var video, videostream, id, tmp, tmp_ctx, prev, prev_ctx, w, h, mw, mh, x1, y1;
 var DetectedCount = 0, DetectedCode = "";
 var loopspan = 100, looptime = 0, maxtime = 15000;
+var tranc = 1, trancFlg = 0.0, maxtranc = 0.75;
 
 var turnButton = {
     objArrangement: function () {
@@ -47,8 +48,6 @@ barcode.addEventListener('click', () => {
     var VideoSize = new Array(720, 480);
     var SizeRate = 0.75;
     var ScanRate = new Array(0.75, 0.3);
-    var tranc = 1;
-    var trancFlg = 0.0;
     var searchline = 0;
     var searchlinemove = 25;
 
@@ -181,7 +180,7 @@ barcode.addEventListener('click', () => {
 
             // 横線
             prev_ctx.beginPath();
-            prev_ctx.strokeStyle = "rgb(255,255,255," + tranc + ")";
+            prev_ctx.strokeStyle = "rgb(255,0,0," + tranc + ")";
             prev_ctx.lineWidth = 2;
             prev_ctx.setLineDash([2, 2]);
             prev_ctx.setLineDash([]);
@@ -266,7 +265,7 @@ barcode.addEventListener('click', () => {
 
         if (tranc <= 0) {
             trancFlg = 0.1;
-        } else if (tranc >= 1) {
+        } else if (tranc >= maxtranc) {
             trancFlg = -0.1
         }
 
@@ -333,8 +332,6 @@ qrcode.addEventListener('click', () => {
 
     var VideoSize = new Array(720, 480);
     var SizeRate = 0.75;
-    var tranc = 1;
-    var trancFlg = 0.0;
     var searchline = 0;
     var searchlinemove = 15;
 
@@ -477,7 +474,7 @@ qrcode.addEventListener('click', () => {
 
             // 横線
             prev_ctx.beginPath();
-            prev_ctx.strokeStyle = "rgb(255,255,255," + tranc + ")";
+            prev_ctx.strokeStyle = "rgb(255,0,0," + tranc + ")";
             prev_ctx.lineWidth = 2;
             prev_ctx.setLineDash([2, 2]);
             prev_ctx.moveTo(x1 - 50, y1 + (m * 0.5));
@@ -488,7 +485,7 @@ qrcode.addEventListener('click', () => {
 
             // 縦線
             prev_ctx.beginPath();
-            prev_ctx.strokeStyle = "rgb(255,255,255," + tranc + ")";
+            prev_ctx.strokeStyle = "rgb(255,0,0," + tranc + ")";
             prev_ctx.lineWidth = 2;
             prev_ctx.setLineDash([2, 2]);
             prev_ctx.moveTo(x1 + (m * 0.5), y1 - 50);
@@ -591,7 +588,7 @@ qrcode.addEventListener('click', () => {
 
         if (tranc <= 0) {
             trancFlg = 0.1;
-        } else if (tranc >= 1) {
+        } else if (tranc >= maxtranc) {
             trancFlg = -0.1
         }
 
