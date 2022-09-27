@@ -144,7 +144,7 @@ qrcode.addEventListener('click', () => {
         x1 = (w - m) * 0.5;
         y1 = (h - m) * 0.5;
 
-        if (first) scancount = m / 20;
+        if (first) scancount = m / 32;
 
         prev_ctx.drawImage(video, 0, 0, w, h);
 

@@ -122,7 +122,7 @@ barcode.addEventListener('click', () => {
                 }
             }
 
-            scancount = (w * ScanRate[0]) / 20;
+            scancount = (w * ScanRate[0]) / 32;
 
             //画面上の表示サイズ
             prev.style.width = (w * SizeRate) + "px";
