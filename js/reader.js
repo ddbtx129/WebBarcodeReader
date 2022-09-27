@@ -23,7 +23,7 @@ var turnButton = {
 
             document.getElementById('info').style.bottom = "30px"
         } else {
-            document.getElementById('turn').style.bottom = "150px"
+            document.getElementById('turn').style.bottom = "200px"
             document.getElementById('turn').style.left = "60px"
 
             document.getElementById('scan').style.bottom = "100px"
@@ -44,7 +44,7 @@ window.addEventListener('load', (event) => {
 
         document.getElementById('info').style.bottom = "30px"
     } else {
-        document.getElementById('turn').style.bottom = "150px"
+        document.getElementById('turn').style.bottom = "200px"
         document.getElementById('turn').style.left = "60px"
 
         document.getElementById('scan').style.bottom = "100px"
