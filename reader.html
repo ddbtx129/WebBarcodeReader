@@ -12,7 +12,7 @@
 
 <body>
 
-    <div id="main" style="overflow: hidden; text-align: center; width: 100%; display: inline;">
+    <div id="main" style="overflow: hidden; text-align: center; width: 100%; display:  none;">
         <div>
             <textarea readonly id="code" style="display: none"></textarea>
             <button id="barcode" class="scan-button" style="display: inline;">バーコードを読み込む</button>
@@ -23,10 +23,10 @@
         </div>
     </div>
 
-    <div id="scanarea" class="scanarea" style="display: none;">
+    <div id="scanarea" class="scanarea" style="display:inline;">
         <canvas id="preview"></canvas>
-        <button id="scan" class="scan" style="display: inline;">ｽｷｬﾝ</button>
         <button id="turn" class="turn" style="display: inline;">戻る</button>
+        <button id="scan" class="scan" style="display: inline;">ｽｷｬﾝ</button>
         <p id="info" class="info" style="color: #FFF; font-weight: bold; margin-bottom: 10px">カメラにバーコードを写してください。</p>
     </div>
 
