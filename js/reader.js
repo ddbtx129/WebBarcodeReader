@@ -260,8 +260,13 @@ barcode.addEventListener('click', () => {
         // 赤枠
         prev_ctx.beginPath();
         prev_ctx.strokeStyle = "rgb(255,0,0,1)";
-        prev_ctx.lineWidth = 4;
-        prev_ctx.setLineDash([6, 6]);
+        if (loopflg) {
+            prev_ctx.lineWidth = 3;
+            prev_ctx.setLineDash([]);
+        } else {
+            prev_ctx.lineWidth = 4;
+            prev_ctx.setLineDash([6, 6]);
+        }
         prev_ctx.rect(((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2), (w * ScanRate[0]), (w * ScanRate[1]));
 
         prev_ctx.closePath();
@@ -532,7 +537,7 @@ qrcode.addEventListener('click', () => {
             prev_ctx.beginPath();
             prev_ctx.strokeStyle = "rgb(255,0,0," + tranc + ")";
             prev_ctx.lineWidth = 3;
-            prev_ctx.setLineDash([2, 4]);
+            prev_ctx.setLineDash([2, 3]);
             prev_ctx.moveTo(x1 - 50, y1 + (m * 0.5));
             prev_ctx.lineTo((x1 + m + 50), y1 + (m * 0.5));
 
@@ -592,8 +597,13 @@ qrcode.addEventListener('click', () => {
         // 赤枠
         prev_ctx.beginPath();
         prev_ctx.strokeStyle = "rgb(255,0,0,1)";
-        prev_ctx.lineWidth = 4;
-        prev_ctx.setLineDash([6, 6]);
+        if (loopflg) {
+            prev_ctx.lineWidth = 3;
+            prev_ctx.setLineDash([]);
+        } else {
+            prev_ctx.lineWidth = 4;
+            prev_ctx.setLineDash([6, 6]);
+        }
         prev_ctx.rect(x1, y1, m, m);
 
         prev_ctx.closePath();
