@@ -184,7 +184,7 @@ barcode.addEventListener('click', () => {
                 }
             }
 
-            scancount = (w * ScanRate[0]) / 10;
+            scancount = (w * ScanRate[0]) / 20;
 
             //画面上の表示サイズ
             prev.style.width = (w * SizeRate) + "px";
@@ -532,7 +532,7 @@ qrcode.addEventListener('click', () => {
         x1 = (w - m) * 0.5;
         y1 = (h - m) * 0.5;
 
-        if (first) scancount = m / 5;
+        if (first) scancount = m / 20;
 
         prev_ctx.drawImage(video, 0, 0, w, h);
 
