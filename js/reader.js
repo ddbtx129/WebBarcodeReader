@@ -231,6 +231,8 @@ barcode.addEventListener('click', () => {
                 searchNum,
                 (w * ScanRate[1])
             );
+            console.l("始点:" + ((w - (w * ScanRate[0])) / 2) + searchline);
+            console.l("Width:" + searchNum);
 
             prev_ctx.closePath();
             prev_ctx.stroke();
