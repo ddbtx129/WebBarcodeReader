@@ -33,7 +33,7 @@ var turnButton = {
             document.getElementById('scan').style.bottom = "100px"
             document.getElementById('scan').style.left = "60px"
 
-            document.getElementById('info').style.bottom = "25px"
+            document.getElementById('info').style.bottom = "10px"
         }
     }
 };
@@ -54,7 +54,7 @@ window.addEventListener('load', (event) => {
         document.getElementById('scan').style.bottom = "100px"
         document.getElementById('scan').style.left = "60px"
          　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
-        document.getElementById('info').style.bottom = "25px"
+        document.getElementById('info').style.bottom = "10px"
     }
 });
 
