@@ -49,7 +49,6 @@ barcode.addEventListener('click', () => {
     var ScanRate = new Array(0.75, 0.3);
     var tranc = 1;
     var trancFlg = 0.0;
-    var search = true;
     var searchline = 0;
     var searchlinemove = 25;
 
@@ -59,6 +58,7 @@ barcode.addEventListener('click', () => {
     barcode.style.display = "none";
     qrcode.style.display = "none";
     turn.style.display = "none";
+    scaning.style.display = "none";
 
     scanarea.style.display = 'inline';
 
@@ -128,7 +128,7 @@ barcode.addEventListener('click', () => {
 
     function Scan(first) {
 
-        if (looptime >= maxtime) {
+        if (loopflg && looptime >= maxtime) {
             looptime = maxtime + loopspan;
             loopflg = false;
             scaning.disabled = true;
@@ -164,6 +164,7 @@ barcode.addEventListener('click', () => {
             prev.setAttribute("height", h);
 
             turn.style.display = "inline";
+            scaning.style.display = "inline";
 
             flg = false;
         }
@@ -321,6 +322,10 @@ barcode.addEventListener('click', () => {
         DetectedCount = 0;
         video.remove();
         tmp.remove();
+
+        looptime = maxtime + loopspan;
+        loopflg = false;
+        scaning.disabled = true;
     }
 });
 
@@ -330,7 +335,6 @@ qrcode.addEventListener('click', () => {
     var SizeRate = 0.75;
     var tranc = 1;
     var trancFlg = 0.0;
-    var search = true;
     var searchline = 0;
     var searchlinemove = 15;
 
@@ -339,6 +343,8 @@ qrcode.addEventListener('click', () => {
 
     barcode.style.display = "none";
     qrcode.style.display = "none";
+    turn.style.display = "none";
+    scaning.style.display = "none";
 
     scanarea.style.display = 'inline';
 
@@ -418,7 +424,7 @@ qrcode.addEventListener('click', () => {
 
     function Scan(first) {
 
-        if (looptime >= maxtime) {
+        if (loopflg && looptime >= maxtime) {
             looptime = maxtime + loopspan;
             loopflg = false;
             scaning.disabled = true;
@@ -579,6 +585,7 @@ qrcode.addEventListener('click', () => {
 
         if (first) {
             turn.style.display = "inline";
+            scaning.style.display = "inline";
             flg = false;
         }
 
@@ -610,6 +617,10 @@ qrcode.addEventListener('click', () => {
         DetectedCount = 0;
         video.remove();
         tmp.remove();
+
+        looptime = 0;
+        loopflg = false;
+        scaning.disabled = true;
     }
 });
 
@@ -622,4 +633,8 @@ reset.addEventListener('click', () => {
     reset.style.display = "none";
     codevalue.style.display = "none";
     scanarea.style.display = 'none';
+
+    looptime = 0;
+    loopflg = false;
+    scaning.disabled = true;
 });
