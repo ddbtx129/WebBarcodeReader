@@ -326,6 +326,8 @@ barcode.addEventListener('click', () => {
 
     Quagga.onDetected(function (result) {
 
+        clearTimeout(id);
+
         //読み取り誤差が多いため、3回連続で同じ値だった場合に成功とする
         if (DetectedCode == result.codeResult.code) {
             DetectedCount++;
@@ -347,9 +349,12 @@ barcode.addEventListener('click', () => {
             scanarea.style.display = 'none';
             barcode.style.display = "none";
             qrcode.style.display = "none";
+
+            return;
         }
 
         Quagga.stop();
+        id = setTimeout(Scan, loopspan, flg);
     })
 
     function displayreset() {
