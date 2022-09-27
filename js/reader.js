@@ -334,6 +334,7 @@ barcode.addEventListener('click', () => {
         if (DetectedCode == result.codeResult.code) {
             DetectedCount++;
         } else {
+            looptime = 0;
             DetectedCount = 0;
             DetectedCode = result.codeResult.code;
         }
@@ -634,6 +635,7 @@ qrcode.addEventListener('click', () => {
                 if (DetectedCode == scanResult.data) {
                     DetectedCount++;
                 } else {
+                    looptime = 0;
                     DetectedCount = 0;
                     DetectedCode = scanResult.data;
                 }
