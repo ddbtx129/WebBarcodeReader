@@ -9,7 +9,7 @@ var scaning = document.getElementById('scan');
 var flg = false, loopflg = false;
 var video, videostream, id, tmp, tmp_ctx, prev, prev_ctx, w, h, mw, mh, x1, y1;
 var DetectedCount = 0, DetectedCode = "";
-var loopspan = 100, looptime = 0, maxtime = 30000;
+var loopspan = 100, looptime = 0, maxtime = 15000;
 
 var turnButton = {
     objArrangement: function () {
