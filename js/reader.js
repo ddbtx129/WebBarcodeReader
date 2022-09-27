@@ -16,11 +16,19 @@ var turnButton = {
     objArrangement: function () {
         if (window.innerWidth > window.innerHeight) {
             document.getElementById('turn').style.bottom = "80px"
-            document.getElementById('turn').style.left = "50%"
+            document.getElementById('turn').style.left = "30%"
+
+            document.getElementById('scan').style.bottom = "80px"
+            document.getElementById('scan').style.left = "75%"
+
             document.getElementById('info').style.bottom = "30px"
         } else {
             document.getElementById('turn').style.bottom = "150px"
             document.getElementById('turn').style.left = "60px"
+
+            document.getElementById('scan').style.bottom = "100px"
+            document.getElementById('scan').style.left = "60px"
+
             document.getElementById('info').style.bottom = "25px"
         }
     }
@@ -29,11 +37,19 @@ var turnButton = {
 window.addEventListener('load', (event) => {
     if (window.innerWidth < window.innerHeight) {
         document.getElementById('turn').style.bottom = "80px"
-        document.getElementById('turn').style.left = "50%"
+        document.getElementById('turn').style.left = "30%"
+
+        document.getElementById('scan').style.bottom = "80px"
+        document.getElementById('scan').style.left = "75%"
+
         document.getElementById('info').style.bottom = "30px"
     } else {
         document.getElementById('turn').style.bottom = "150px"
         document.getElementById('turn').style.left = "60px"
+
+        document.getElementById('scan').style.bottom = "100px"
+        document.getElementById('scan').style.left = "60px"
+
         document.getElementById('info').style.bottom = "25px"
     }
 });
