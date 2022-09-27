@@ -71,6 +71,7 @@ barcode.addEventListener('click', () => {
 
     searchline = 0;
     searchlinemove = 25;
+    searchNum = 0;
 
     DetectedCount = 0;
     DetectedCode = "";
@@ -197,6 +198,7 @@ barcode.addEventListener('click', () => {
 
             if (((w - (w * ScanRate[0])) / 2) + searchWidth + searchline > ((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0])) {
                 searchline = 0;
+                searchNum = 0;
             }
 
             // 横線
@@ -299,10 +301,16 @@ barcode.addEventListener('click', () => {
             trancFlg = -0.1
         }
 
-        if (searchNum < searchWidth) searchNum = searchNum + searchlinemove;
-        searchline = searchline + searchlinemove;
 
-        if (loopflg) looptime = looptime + loopspan;
+        if (loopflg) {
+
+            if (searchNum < searchWidth) {
+                searchNum = searchNum + searchlinemove;
+            }
+            looptime = looptime + loopspan;
+            searchline = searchline + searchlinemove;
+        }
+
         id = setTimeout(Scan, loopspan, flg);
     }
 
