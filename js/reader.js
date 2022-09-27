@@ -14,6 +14,7 @@ var DetectedCount = 0, DetectedCode = "";
 var flg = false, loopflg = false;
 var loopspan = 100, looptime = 0, maxtime = 15000;
 var tranc = 1, trancFlg = 0.0, maxtranc = 0.6;
+var searchline = 0, searchlinemove = 25, searchNum = 0, searchWidth = 100;
 
 var turnButton = {
     objArrangement: function () {
@@ -52,7 +53,7 @@ window.addEventListener('load', (event) => {
 
         document.getElementById('scan').style.bottom = "100px"
         document.getElementById('scan').style.left = "60px"
-
+         　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
         document.getElementById('info').style.bottom = "25px"
     }
 });
@@ -67,8 +68,9 @@ barcode.addEventListener('click', () => {
     var VideoSize = new Array(720, 480);
     var SizeRate = 0.75;
     var ScanRate = new Array(0.75, 0.3);
-    var searchline = 0;
-    var searchlinemove = 25;
+
+    searchline = 0;
+    searchlinemove = 25;
 
     DetectedCount = 0;
     DetectedCode = "";
@@ -193,7 +195,7 @@ barcode.addEventListener('click', () => {
 
             tranc = tranc + trancFlg;
 
-            if (((w - (w * ScanRate[0])) / 2) + 100 + searchline > ((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0])) {
+            if (((w - (w * ScanRate[0])) / 2) + searchWidth + searchline > ((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0])) {
                 searchline = 0;
             }
 
@@ -212,16 +214,23 @@ barcode.addEventListener('click', () => {
             // スキャン
             prev_ctx.beginPath();
             // 線形グラデーション
-            var g = prev_ctx.createLinearGradient(((w - (w * ScanRate[0])) / 2) + searchline,
+            var g = prev_ctx.createLinearGradient(
+                ((w - (w * ScanRate[0])) / 2) + searchline,
                 ((h - (w * ScanRate[1])) / 2),
-                ((w - (w * ScanRate[0])) / 2) + 100 + searchline,
-                ((h - (w * ScanRate[1])) / 2));
+                ((w - (w * ScanRate[0])) / 2) + searchNum + searchline,
+                ((h - (w * ScanRate[1])) / 2)
+            );
             // 色を定義
             g.addColorStop(0, 'rgb(255,255,255,0)');
             g.addColorStop(0.4, 'rgb(255,255,255,0.2)');
             g.addColorStop(1, 'rgb(255,255,255,0.3)');
             prev_ctx.fillStyle = g;
-            prev_ctx.fillRect(((w - (w * ScanRate[0])) / 2) + searchline, ((h - (w * ScanRate[1])) / 2), 100, (w * ScanRate[1]));
+            prev_ctx.fillRect(
+                ((w - (w * ScanRate[0])) / 2) + searchline,
+                ((h - (w * ScanRate[1])) / 2),
+                searchNum,
+                (w * ScanRate[1])
+            );
 
             prev_ctx.closePath();
             prev_ctx.stroke();
@@ -288,6 +297,7 @@ barcode.addEventListener('click', () => {
             trancFlg = -0.1
         }
 
+        if (searchNum < searchWidth) searchNum = searchNum + searchlinemove;
         searchline = searchline + searchlinemove;
 
         if (loopflg) looptime = looptime + loopspan;
@@ -351,8 +361,9 @@ qrcode.addEventListener('click', () => {
 
     var VideoSize = new Array(720, 480);
     var SizeRate = 0.75;
-    var searchline = 0;
-    var searchlinemove = 15;
+
+    searchline = 0;
+    searchlinemove = 15;
 
     DetectedCount = 0;
     DetectedCode = "";
