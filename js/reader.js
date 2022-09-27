@@ -233,8 +233,6 @@ barcode.addEventListener('click', () => {
                 searchNum,
                 (w * ScanRate[1])
             );
-            console.log("始点:" + ((w - (w * ScanRate[0])) / 2) + searchline);
-            console.log("Width:" + searchNum);
 
             prev_ctx.closePath();
             prev_ctx.stroke();
@@ -300,7 +298,6 @@ barcode.addEventListener('click', () => {
         } else if (tranc >= maxtranc) {
             trancFlg = -0.1
         }
-
 
         if (loopflg) {
 
@@ -374,6 +371,7 @@ qrcode.addEventListener('click', () => {
 
     searchline = 0;
     searchlinemove = 15;
+    searchNum = 0;
 
     DetectedCount = 0;
     DetectedCode = "";
@@ -510,6 +508,7 @@ qrcode.addEventListener('click', () => {
 
             if (x1 + 100 + searchline > x1 + m) {
                 searchline = 0;
+                searchNum = 0;
             }
 
             // 横線
@@ -537,13 +536,13 @@ qrcode.addEventListener('click', () => {
             // スキャン
             prev_ctx.beginPath();
             // 線形グラデーション
-            var g = prev_ctx.createLinearGradient(x1 + searchline, y1, x1 + 100 + searchline, y1);
+            var g = prev_ctx.createLinearGradient(x1 + searchline, y1, x1 + searchNum + searchline, y1);
             // 色を定義
             g.addColorStop(0, 'rgb(255,255,255,0)');
             g.addColorStop(0.4, 'rgb(255,255,255,0.2)');
             g.addColorStop(1, 'rgb(255,255,255,0.3)');
             prev_ctx.fillStyle = g;
-            prev_ctx.fillRect(x1 + searchline, y1, 100, m);
+            prev_ctx.fillRect(x1 + searchline, y1, searchNum, m);
 
             prev_ctx.closePath();
             prev_ctx.stroke();
@@ -632,9 +631,15 @@ qrcode.addEventListener('click', () => {
             trancFlg = -0.1
         }
 
-        searchline = searchline + searchlinemove;
+        if (loopflg) {
 
-        if(loopflg) looptime = looptime + loopspan;
+            if (searchNum < searchWidth) {
+                searchNum = searchNum + searchlinemove;
+            }
+            looptime = looptime + loopspan;
+            searchline = searchline + searchlinemove;
+        }
+
         id = setTimeout(Scan, loopspan, false);
     }
 
