@@ -113,7 +113,7 @@ barcode.addEventListener('click', () => {
     scaning.onclick = function () {
         looptime = 0;
         loopflg = true;
-        scaning.disabled = false;
+        scaning.disabled = true;
     };
 
     turn.onclick = function () {
@@ -131,7 +131,7 @@ barcode.addEventListener('click', () => {
         if (loopflg && looptime >= maxtime) {
             looptime = maxtime + loopspan;
             loopflg = false;
-            scaning.disabled = true;
+            scaning.disabled = false;
         }
 
         if (first) {
@@ -327,7 +327,7 @@ barcode.addEventListener('click', () => {
 
         looptime = maxtime + loopspan;
         loopflg = false;
-        scaning.disabled = true;
+        scaning.disabled = false;
     }
 });
 
@@ -411,7 +411,7 @@ qrcode.addEventListener('click', () => {
     scaning.onclick = function () {
         looptime = 0;
         loopflg = true;
-        scaning.disabled = false;
+        scaning.disabled = true;
     };
 
     turn.onclick = function () {
@@ -429,7 +429,7 @@ qrcode.addEventListener('click', () => {
         if (loopflg && looptime >= maxtime) {
             looptime = maxtime + loopspan;
             loopflg = false;
-            scaning.disabled = true;
+            scaning.disabled = false;
         }
 
         //選択された幅高さ
@@ -588,8 +588,6 @@ qrcode.addEventListener('click', () => {
         if (first) {
             turn.style.display = "inline";
             scaning.style.display = "inline";
-            turn.disabled = true;
-            scaning.disabled = true;
             flg = false;
         }
 
@@ -624,7 +622,7 @@ qrcode.addEventListener('click', () => {
 
         looptime = 0;
         loopflg = false;
-        scaning.disabled = true;
+        scaning.disabled = false;
     }
 });
 
@@ -640,5 +638,5 @@ reset.addEventListener('click', () => {
 
     looptime = 0;
     loopflg = false;
-    scaning.disabled = true;
+    scaning.disabled = false;
 });
