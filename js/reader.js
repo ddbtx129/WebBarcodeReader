@@ -99,12 +99,13 @@ barcode.addEventListener('click', () => {
 
     prev = document.getElementById("preview");
     prev_ctx = prev.getContext("2d");
-
-    prev_ctx.clearRect(0, 0, prev.style.width, prev.style.height);
     
     tmp = document.createElement('canvas');
     tmp_ctx = tmp.getContext("2d");
-
+    
+    prev_ctx.clearRect(0, 0, prev.style.width, prev.style.height);
+    tmp_ctx.clearRect(0, 0, prev.style.width, prev.style.height);
+    
     codevalue.value = "";
 
     codevalue.style.width = "300px";
@@ -445,12 +446,13 @@ qrcode.addEventListener('click', () => {
 
     prev = document.getElementById("preview");
     prev_ctx = prev.getContext("2d");
-
-    prev_ctx.clearRect(0, 0, prev.style.width, prev.style.height);
     
     tmp = document.createElement('canvas');
     tmp_ctx = tmp.getContext("2d");
-
+    
+    prev_ctx.clearRect(0, 0, prev.style.width, prev.style.height);
+    tmp_ctx.clearRect(0, 0, prev.style.width, prev.style.height);
+    
     //マイクはオフ, カメラの設定   背面カメラを希望する 640×480を希望する
     var options = { audio: false, video: { facingMode: "environment", width: { ideal: VideoSize[0] }, height: { ideal: VideoSize[1] } } };
 
