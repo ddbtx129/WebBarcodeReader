@@ -6,9 +6,12 @@ var scanarea = document.getElementById('scanarea');
 var mask = document.getElementById('mask');
 var turn = document.getElementById('turn');
 var scaning = document.getElementById('scan');
-var flg = false, loopflg = false;
+
 var video, videostream, id, tmp, tmp_ctx, prev, prev_ctx, w, h, mw, mh, x1, y1;
+
 var DetectedCount = 0, DetectedCode = "";
+
+var flg = false, loopflg = false;
 var loopspan = 100, looptime = 0, maxtime = 15000;
 var tranc = 1, trancFlg = 0.0, maxtranc = 0.6;
 
