@@ -71,6 +71,7 @@ barcode.addEventListener('click', () => {
     var ScanRate = new Array(0.75, 0.3);
 
     loopflg = false;
+    loopspan = 100;
     
     searchline = 0;
     searchlinemove = 25;
@@ -109,8 +110,6 @@ barcode.addEventListener('click', () => {
     codevalue.style.display = "none";
     codevalue.style.overflow = "hidden";
     codevalue.style.textAlign = "center";
-
-    loopspan = 100;
 
     //マイクはオフ, カメラの設定   背面カメラを希望する 640×480を希望する
     var options = { audio: false, video: { facingMode: "environment", width: { ideal: VideoSize[0] }, height: { ideal: VideoSize[1] } } };
@@ -396,6 +395,7 @@ qrcode.addEventListener('click', () => {
     var SizeRate = 0.75;
     
     loopflg = false;
+    loopspan = 50;
     
     searchline = 0;
     searchlinemove = 15;
@@ -446,8 +446,6 @@ qrcode.addEventListener('click', () => {
 
     tmp = document.createElement('canvas');
     tmp_ctx = tmp.getContext("2d");
-
-    loopspan = 50;
 
     //マイクはオフ, カメラの設定   背面カメラを希望する 640×480を希望する
     var options = { audio: false, video: { facingMode: "environment", width: { ideal: VideoSize[0] }, height: { ideal: VideoSize[1] } } };
