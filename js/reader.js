@@ -329,6 +329,7 @@ barcode.addEventListener('click', () => {
         if (DetectedCount >= 3) {
             codevalue.value = result.codeResult.code;
 
+            Quagga.stop();
             displayreset();
 
             codevalue.style.display = "inline";
@@ -345,7 +346,6 @@ barcode.addEventListener('click', () => {
 
     function displayreset() {
 
-        Quagga.stop();
         clearTimeout(id);
 
         const tracks = videostream.getVideoTracks();
