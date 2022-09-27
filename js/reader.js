@@ -370,6 +370,7 @@ barcode.addEventListener('click', () => {
         }
 
         prev_ctx.clearRect(0, 0, w, h);
+        prev_ctx.clearRect(((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2), (w * ScanRate[0]), (w * ScanRate[1]));
         tmp_ctx.clearRect(
             ((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2),
             (w * ScanRate[0]), (w * ScanRate[1]),
@@ -695,6 +696,7 @@ qrcode.addEventListener('click', () => {
         }
 
         prev_ctx.clearRect(0, 0, w, h);
+        prev_ctx.clearRect(x1, y1, m, m);
         tmp_ctx.clearRect(x1, y1, m, m, 0, 0, m, m);
 
         DetectedCode = '';
