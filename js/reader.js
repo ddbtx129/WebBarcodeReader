@@ -292,6 +292,7 @@ barcode.addEventListener('click', () => {
                                 "code_39_reader",
                                 "code_39_vin_reader",
                                 "code_93_reader",
+                                "code_128_reader",
                                 "codabar_reader"
                             ]
                         },
