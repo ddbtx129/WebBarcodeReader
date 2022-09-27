@@ -165,8 +165,6 @@ barcode.addEventListener('click', () => {
 
             turn.style.display = "inline";
             scaning.style.display = "inline";
-            turn.disabled = true;
-            scaning.disabled = true;
 
             flg = false;
         }
