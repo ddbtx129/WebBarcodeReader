@@ -254,6 +254,7 @@ qrcode.addEventListener('click', () => {
                 }
 
                 if (DetectedCount >= scancount) {
+
                     //QRコードをスキャンした結果を出力
                     codevalue.value = scanResult.data;
                     codevalue.scrollTop = codevalue.scrollHeight;
@@ -267,8 +268,6 @@ qrcode.addEventListener('click', () => {
                     scanarea.style.display = 'none';
                     barcode.style.display = "none";
                     qrcode.style.display = "none";
-
-                    clearTimeout(id);
                     return;
                 }
             }

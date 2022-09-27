@@ -196,22 +196,20 @@ barcode.addEventListener('click', () => {
             prev_ctx.stroke();
         }
 
-        if (drawcanvs) {
-            // 赤枠
-            prev_ctx.beginPath();
-            prev_ctx.strokeStyle = "rgb(255,0,0,1)";
-            if (loopflg) {
-                prev_ctx.lineWidth = 3;
-                prev_ctx.setLineDash([]);
-            } else {
-                prev_ctx.lineWidth = 4;
-                prev_ctx.setLineDash([6, 6]);
-            }
-            prev_ctx.rect(((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2), (w * ScanRate[0]), (w * ScanRate[1]));
-
-            prev_ctx.closePath();
-            prev_ctx.stroke();
+        // 赤枠
+        prev_ctx.beginPath();
+        prev_ctx.strokeStyle = "rgb(255,0,0,1)";
+        if (loopflg) {
+            prev_ctx.lineWidth = 3;
+            prev_ctx.setLineDash([]);
+        } else {
+            prev_ctx.lineWidth = 4;
+            prev_ctx.setLineDash([6, 6]);
         }
+        prev_ctx.rect(((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2), (w * ScanRate[0]), (w * ScanRate[1]));
+
+        prev_ctx.closePath();
+        prev_ctx.stroke();
 
         tmp.setAttribute("width", (w * ScanRate[0]));
         tmp.setAttribute("height", (w * ScanRate[1]));
@@ -268,9 +266,8 @@ barcode.addEventListener('click', () => {
     Quagga.onDetected(function (result) {
 
         Quagga.stop();
-        drawcanvs = false;
 
-        //読み取り誤差が多いため、3回連続で同じ値だった場合に成功とする
+        //読み取り誤差が多いため、複数回連続で同じ値だった場合に成功とする
         if (DetectedCode == result.codeResult.code) {
             DetectedCount++;
         } else {
@@ -282,7 +279,6 @@ barcode.addEventListener('click', () => {
         if (DetectedCount >= scancount) {
             codevalue.value = result.codeResult.code;
 
-            //Quagga.stop();
             displayreset();
 
             codevalue.style.display = "inline";

@@ -16,7 +16,6 @@ var flg = false, loopflg = false, scancount = 5;
 var loopspan = 100, looptime = 0, maxtime = 10000;
 var tranc = 1, trancFlg = 0.0, maxtranc = 0.8;
 var searchline = 0, searchlinemove = 25, searchNum = 0, searchWidth = 100;
-var drawcanvs = true;
 
 var turnButton = {
     objArrangement: function () {
