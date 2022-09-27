@@ -6,6 +6,7 @@ var scanarea = document.getElementById('scanarea');
 var mask = document.getElementById('mask');
 var turn = document.getElementById('turn');
 var scaning = document.getElementById('scan');
+var copyright = document.getElementById('copyright');
 
 var video, videostream, id, tmp, tmp_ctx, prev, prev_ctx, w, h, mw, mh, x1, y1;
 
@@ -33,7 +34,7 @@ var turnButton = {
             document.getElementById('scan').style.bottom = "100px"
             document.getElementById('scan').style.left = "60px"
 
-            document.getElementById('info').style.bottom = "10px"
+            document.getElementById('info').style.bottom = "2px"
         }
     }
 };
@@ -54,7 +55,7 @@ window.addEventListener('load', (event) => {
         document.getElementById('scan').style.bottom = "100px"
         document.getElementById('scan').style.left = "60px"
          　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
-        document.getElementById('info').style.bottom = "10px"
+        document.getElementById('info').style.bottom = "2px"
     }
 });
 
@@ -80,6 +81,7 @@ barcode.addEventListener('click', () => {
     qrcode.style.display = "none";
     turn.style.display = "none";
     scaning.style.display = "none";
+    copyright.style.display = "none";
 
     scanarea.style.display = 'inline';
 
@@ -126,6 +128,7 @@ barcode.addEventListener('click', () => {
             qrcode.style.display = "none";
             codevalue.style.display = "inline";
             reset.style.display = "inline";
+            copyright.style.display = "inline";
 
             codevalue.value = err;
         }
@@ -142,6 +145,8 @@ barcode.addEventListener('click', () => {
         displayreset();
         barcode.style.display = "inline";
         qrcode.style.display = "inline";
+        copyright.style.display = "inline";
+
         reset.style.display = "none";
         codevalue.style.display = "none";
         scanarea.style.display = 'none';
@@ -328,6 +333,8 @@ barcode.addEventListener('click', () => {
 
             codevalue.style.display = "inline";
             reset.style.display = "inline";
+            copyright.style.display = "inline";
+
             scanarea.style.display = 'none';
             barcode.style.display = "none";
             qrcode.style.display = "none";
@@ -380,6 +387,7 @@ qrcode.addEventListener('click', () => {
     qrcode.style.display = "none";
     turn.style.display = "none";
     scaning.style.display = "none";
+    copyright.style.display = "none";
 
     scanarea.style.display = 'inline';
 
@@ -434,9 +442,12 @@ qrcode.addEventListener('click', () => {
     ).catch( //許可されなかった場合
         function (err) {
             scanarea.style.display = 'none';
-
+            barcode.style.display = "none";
+            qrcode.style.display = "none";
             codevalue.style.display = "inline";
             reset.style.display = "inline";
+            copyright.style.display = "inline";
+
             codevalue.value = err;
         }
     );
@@ -452,6 +463,8 @@ qrcode.addEventListener('click', () => {
         displayreset();
         barcode.style.display = "inline";
         qrcode.style.display = "inline";
+        copyright.style.display = "inline";
+
         reset.style.display = "none";
         codevalue.style.display = "none";
         scanarea.style.display = 'none';
@@ -546,6 +559,7 @@ qrcode.addEventListener('click', () => {
 
             prev_ctx.closePath();
             prev_ctx.stroke();
+
         } else {
 
             // 横線
@@ -609,6 +623,8 @@ qrcode.addEventListener('click', () => {
 
                     codevalue.style.display = "inline";
                     reset.style.display = "inline";
+                    copyright.style.display = "inline";
+
                     scanarea.style.display = 'none';
                     barcode.style.display = "none";
                     qrcode.style.display = "none";
@@ -672,6 +688,8 @@ reset.addEventListener('click', () => {
 
     barcode.style.display = "inline";
     qrcode.style.display = "inline";
+    copyright.style.display = "inline";
+
     reset.style.display = "none";
     codevalue.style.display = "none";
     scanarea.style.display = 'none';
