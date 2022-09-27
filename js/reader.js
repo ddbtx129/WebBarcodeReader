@@ -16,6 +16,7 @@ var flg = false, loopflg = false, scancount = 5;
 var loopspan = 100, looptime = 0, maxtime = 10000;
 var tranc = 1, trancFlg = 0.0, maxtranc = 0.8;
 var searchline = 0, searchlinemove = 25, searchNum = 0, searchWidth = 100;
+var drawcanvs = true;
 
 var turnButton = {
     objArrangement: function () {
@@ -54,7 +55,7 @@ window.addEventListener('load', (event) => {
 
         document.getElementById('scan').style.bottom = "100px"
         document.getElementById('scan').style.left = "60px"
-         　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
+
         document.getElementById('info').style.bottom = "2px"
     }
 });
@@ -72,7 +73,7 @@ barcode.addEventListener('click', () => {
 
     loopflg = false;
     loopspan = 100;
-    
+
     searchline = 0;
     searchlinemove = 25;
     searchNum = 0;
@@ -99,13 +100,13 @@ barcode.addEventListener('click', () => {
 
     prev = document.getElementById("preview");
     prev_ctx = prev.getContext("2d");
-    
+
     tmp = document.createElement('canvas');
     tmp_ctx = tmp.getContext("2d");
-    
+
     prev_ctx.clearRect(0, 0, prev.style.width, prev.style.height);
     tmp_ctx.clearRect(0, 0, prev.style.width, prev.style.height);
-    
+
     codevalue.value = "";
 
     codevalue.style.width = "300px";
@@ -124,6 +125,7 @@ barcode.addEventListener('click', () => {
         function (stream) {
             videostream = stream;
             video.srcObject = stream;
+            drawcanvs = true;
             //0.5秒毎にスキャンする
             id = setTimeout(Scan, 500, true);
         }
@@ -149,7 +151,7 @@ barcode.addEventListener('click', () => {
     turn.onclick = function () {
 
         displayreset();
-        
+
         barcode.style.display = "inline";
         qrcode.style.display = "inline";
         copyright.style.display = "inline";
@@ -251,33 +253,37 @@ barcode.addEventListener('click', () => {
             prev_ctx.closePath();
             prev_ctx.stroke();
         } else {
-            // 横線
+            if (drawcanvs) {
+                // 横線
+                prev_ctx.beginPath();
+                prev_ctx.strokeStyle = "rgb(255,255,255,0.75)";
+                prev_ctx.lineWidth = 2;
+                prev_ctx.setLineDash([2, 2]);
+                prev_ctx.setLineDash([]);
+                prev_ctx.moveTo(((w - (w * ScanRate[0])) / 2) - 50, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
+                prev_ctx.lineTo(((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0]) + 50, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
+
+                prev_ctx.closePath();
+                prev_ctx.stroke();
+            }
+        }
+
+        if (drawcanvs) {
+            // 赤枠
             prev_ctx.beginPath();
-            prev_ctx.strokeStyle = "rgb(255,255,255,0.75)";
-            prev_ctx.lineWidth = 2;
-            prev_ctx.setLineDash([2, 2]);
-            prev_ctx.setLineDash([]);
-            prev_ctx.moveTo(((w - (w * ScanRate[0])) / 2) - 50, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
-            prev_ctx.lineTo(((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0]) + 50, ((h - (w * ScanRate[1])) / 2) + ((w * ScanRate[1]) / 2));
+            prev_ctx.strokeStyle = "rgb(255,0,0,1)";
+            if (loopflg) {
+                prev_ctx.lineWidth = 3;
+                prev_ctx.setLineDash([]);
+            } else {
+                prev_ctx.lineWidth = 4;
+                prev_ctx.setLineDash([6, 6]);
+            }
+            prev_ctx.rect(((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2), (w * ScanRate[0]), (w * ScanRate[1]));
 
             prev_ctx.closePath();
             prev_ctx.stroke();
         }
-        
-        // 赤枠
-        prev_ctx.beginPath();
-        prev_ctx.strokeStyle = "rgb(255,0,0,1)";
-        if (loopflg) {
-            prev_ctx.lineWidth = 3;
-            prev_ctx.setLineDash([]);
-        } else {
-            prev_ctx.lineWidth = 4;
-            prev_ctx.setLineDash([6, 6]);
-        }
-        prev_ctx.rect(((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2), (w * ScanRate[0]), (w * ScanRate[1]));
-
-        prev_ctx.closePath();
-        prev_ctx.stroke();
 
         tmp.setAttribute("width", (w * ScanRate[0]));
         tmp.setAttribute("height", (w * ScanRate[1]));
@@ -334,6 +340,7 @@ barcode.addEventListener('click', () => {
     Quagga.onDetected(function (result) {
 
         clearTimeout(id);
+        drawcanvs = false;
 
         //読み取り誤差が多いため、3回連続で同じ値だった場合に成功とする
         if (DetectedCode == result.codeResult.code) {
@@ -362,6 +369,8 @@ barcode.addEventListener('click', () => {
         }
 
         Quagga.stop();
+
+        drawcanvs = true;
         id = setTimeout(Scan, loopspan, flg);
     })
 
@@ -373,7 +382,7 @@ barcode.addEventListener('click', () => {
         for (let i = 0; i < tracks.length; i++) {
             tracks[i].stop();
         }
-        
+
         DetectedCode = '';
         DetectedCount = 0;
         video.remove();
@@ -382,7 +391,7 @@ barcode.addEventListener('click', () => {
         looptime = maxtime + loopspan;
         loopflg = false;
         scaning.disabled = false;
-        
+
         tmp_ctx.clearRect(
             ((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2),
             (w * ScanRate[0]), (w * ScanRate[1]),
@@ -396,10 +405,10 @@ qrcode.addEventListener('click', () => {
 
     var VideoSize = new Array(720, 480);
     var SizeRate = 0.75;
-    
+
     loopflg = false;
     loopspan = 50;
-    
+
     searchline = 0;
     searchlinemove = 15;
     searchNum = 0;
@@ -446,13 +455,13 @@ qrcode.addEventListener('click', () => {
 
     prev = document.getElementById("preview");
     prev_ctx = prev.getContext("2d");
-    
+
     tmp = document.createElement('canvas');
     tmp_ctx = tmp.getContext("2d");
-    
+
     prev_ctx.clearRect(0, 0, prev.style.width, prev.style.height);
     tmp_ctx.clearRect(0, 0, prev.style.width, prev.style.height);
-    
+
     //マイクはオフ, カメラの設定   背面カメラを希望する 640×480を希望する
     var options = { audio: false, video: { facingMode: "environment", width: { ideal: VideoSize[0] }, height: { ideal: VideoSize[1] } } };
 
@@ -711,7 +720,7 @@ qrcode.addEventListener('click', () => {
         looptime = 0;
         loopflg = false;
         scaning.disabled = false;
-        
+
         tmp_ctx.clearRect(x1, y1, m, m, 0, 0, m, m);
         prev_ctx.clearRect(0, 0, w, h);
     }
