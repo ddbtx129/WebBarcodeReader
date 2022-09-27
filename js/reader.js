@@ -100,6 +100,8 @@ barcode.addEventListener('click', () => {
     prev = document.getElementById("preview");
     prev_ctx = prev.getContext("2d");
 
+    prev_ctx.clearRect(0, 0, prev.style.width, prev.style.height);
+    
     tmp = document.createElement('canvas');
     tmp_ctx = tmp.getContext("2d");
 
@@ -146,6 +148,7 @@ barcode.addEventListener('click', () => {
     turn.onclick = function () {
 
         displayreset();
+        
         barcode.style.display = "inline";
         qrcode.style.display = "inline";
         copyright.style.display = "inline";
@@ -260,8 +263,6 @@ barcode.addEventListener('click', () => {
             prev_ctx.stroke();
         }
         
-        prev_ctx.clearRect(((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2), (w * ScanRate[0]), (w * ScanRate[1]));
-        
         // 赤枠
         prev_ctx.beginPath();
         prev_ctx.strokeStyle = "rgb(255,0,0,1)";
@@ -372,14 +373,6 @@ barcode.addEventListener('click', () => {
             tracks[i].stop();
         }
         
-        tmp_ctx.clearRect(
-            ((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2),
-            (w * ScanRate[0]), (w * ScanRate[1]),
-            0, 0,
-            (w * ScanRate[0]), (w * ScanRate[1]));
-        prev_ctx.clearRect(((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2), (w * ScanRate[0]), (w * ScanRate[1]));
-        prev_ctx.clearRect(0, 0, w, h);
-        
         DetectedCode = '';
         DetectedCount = 0;
         video.remove();
@@ -388,6 +381,13 @@ barcode.addEventListener('click', () => {
         looptime = maxtime + loopspan;
         loopflg = false;
         scaning.disabled = false;
+        
+        tmp_ctx.clearRect(
+            ((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2),
+            (w * ScanRate[0]), (w * ScanRate[1]),
+            0, 0,
+            (w * ScanRate[0]), (w * ScanRate[1]));
+        prev_ctx.clearRect(0, 0, w, h);
     }
 });
 
@@ -446,6 +446,8 @@ qrcode.addEventListener('click', () => {
     prev = document.getElementById("preview");
     prev_ctx = prev.getContext("2d");
 
+    prev_ctx.clearRect(0, 0, prev.style.width, prev.style.height);
+    
     tmp = document.createElement('canvas');
     tmp_ctx = tmp.getContext("2d");
 
@@ -699,10 +701,6 @@ qrcode.addEventListener('click', () => {
             tracks[i].stop();
         }
 
-        tmp_ctx.clearRect(x1, y1, m, m, 0, 0, m, m);
-        prev_ctx.clearRect(x1, y1, m, m);
-        prev_ctx.clearRect(0, 0, w, h);
-        
         DetectedCode = '';
         DetectedCount = 0;
         video.remove();
@@ -711,6 +709,9 @@ qrcode.addEventListener('click', () => {
         looptime = 0;
         loopflg = false;
         scaning.disabled = false;
+        
+        tmp_ctx.clearRect(x1, y1, m, m, 0, 0, m, m);
+        prev_ctx.clearRect(0, 0, w, h);
     }
 });
 
