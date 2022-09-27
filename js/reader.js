@@ -12,7 +12,7 @@ var video, videostream, id, tmp, tmp_ctx, prev, prev_ctx, w, h, mw, mh, x1, y1;
 
 var DetectedCount = 0, DetectedCode = "";
 
-var flg = false, loopflg = false;
+var flg = false, loopflg = false, scancount = 5;
 var loopspan = 100, looptime = 0, maxtime = 10000;
 var tranc = 1, trancFlg = 0.0, maxtranc = 0.8;
 var searchline = 0, searchlinemove = 25, searchNum = 0, searchWidth = 100;
@@ -333,7 +333,7 @@ barcode.addEventListener('click', () => {
             DetectedCode = result.codeResult.code;
         }
 
-        if (DetectedCount >= 3) {
+        if (DetectedCount >= scancount) {
             codevalue.value = result.codeResult.code;
 
             Quagga.stop();
@@ -628,7 +628,7 @@ qrcode.addEventListener('click', () => {
                     DetectedCode = scanResult.data;
                 }
 
-                if (DetectedCount >= 3) {
+                if (DetectedCount >= scancount) {
                     //QRコードをスキャンした結果を出力
                     codevalue.value = scanResult.data;
                     codevalue.scrollTop = codevalue.scrollHeight;
