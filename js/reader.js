@@ -70,6 +70,8 @@ barcode.addEventListener('click', () => {
     var SizeRate = 0.75;
     var ScanRate = new Array(0.75, 0.3);
 
+    loopflg = false;
+    
     searchline = 0;
     searchlinemove = 25;
     searchNum = 0;
@@ -392,7 +394,9 @@ qrcode.addEventListener('click', () => {
 
     var VideoSize = new Array(720, 480);
     var SizeRate = 0.75;
-
+    
+    loopflg = false;
+    
     searchline = 0;
     searchlinemove = 15;
     searchNum = 0;
