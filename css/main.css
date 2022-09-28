@@ -55,6 +55,10 @@ textarea {
     text-align: center;
     justify-content: center;
 }
+btn-start {
+    width: 64px;
+    height: 64px;
+}
 
 button {
     font-size: x-large;
@@ -62,9 +66,15 @@ button {
 
 .scan-button {
     margin-top: 48px;
-    margin-left: 12px;
+    margin-left: 48%;
     width: 72px;
     height: 72px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
 }
 
 .reset-button {
