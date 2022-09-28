@@ -266,7 +266,7 @@ barcode.addEventListener('click', () => {
                 searchline += searchlinemove;
             }
 
-            console.log(String(searchline) + " / " + String((w * ScanRate[0])) + "    " + String(((w - (w * ScanRate[0])) / 2) + searchline + searchNum));
+            console.log(String(searchline) + " / " + String((w * ScanRate[0])) + "    " + String(((w - (w * ScanRate[0])) / 2) + searchline) + " : " + string(searchNum));
         }
 
         id = setTimeout(Scan, loopspan, flg);
