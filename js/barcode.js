@@ -83,8 +83,8 @@ barcode.addEventListener('click', () => {
 
         displayreset();
 
-        barcode.style.display = "inline";
-        qrcode.style.display = "inline";
+        barcode.style.display = "flex";
+        qrcode.style.display = "flex";
         copyright.style.display = "inline";
 
         reset.style.display = "none";
