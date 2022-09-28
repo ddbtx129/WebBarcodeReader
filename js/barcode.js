@@ -254,10 +254,16 @@ barcode.addEventListener('click', () => {
         if (loopflg) {
 
             if (searchNum < searchWidth) {
-                searchNum = searchNum + searchlinemove;
+                searchNum += searchlinemove;
             }
-            looptime = looptime + loopspan;
-            searchline = searchline + searchlinemove;
+            looptime += loopspan;
+            if (((w - (w * ScanRate[0])) / 2) + searchWidth + searchline + searchlinemove > ((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0])) {
+                if (((w - (w * ScanRate[0])) / 2) + searchWidth + searchline < ((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0])) {
+                    searchline += ((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0]) - (((w - (w * ScanRate[0])) / 2) + searchWidth + searchline);
+                }
+            } else {
+                searchline += searchlinemove;
+            }
         }
 
         id = setTimeout(Scan, loopspan, flg);
