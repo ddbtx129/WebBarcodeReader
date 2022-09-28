@@ -95,11 +95,9 @@ barcode.addEventListener('click', () => {
     function Scan(first) {
 
         if (loopflg && looptime >= maxtime) {
-            looptime = maxtime + loopspan;
+            looptime = maxtime + loopspan, searchline = 0, searchNum = 0;
             loopflg = false;
             scaning.disabled = false;
-            searchline = 0;
-            searchNum = 0;
         }
 
         if (first) {
