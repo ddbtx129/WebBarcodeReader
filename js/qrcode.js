@@ -40,7 +40,7 @@ qrcode.addEventListener('click', () => {
     codevalue.value = "";
 
     codevalue.style.width = "360px";
-    codevalue.style.height = "108px";
+    codevalue.style.height = "216px";
     codevalue.style.display = "none";
     codevalue.style.textAlign = "left";
     codevalue.style.overflow = "scroll";
@@ -244,7 +244,7 @@ qrcode.addEventListener('click', () => {
 
             if (scanResult) {
 
-                //読み取り誤差が多いため、3回連続で同じ値だった場合に成功とする
+                //読み取り誤差のために、複数回連続で同じ値だった場合に成功とする
                 if (DetectedCode == scanResult.data) {
                     DetectedCount++;
                 } else {
