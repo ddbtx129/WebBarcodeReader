@@ -256,9 +256,9 @@ barcode.addEventListener('click', () => {
             if (searchNum < searchWidth) searchNum += searchlinemove;
             looptime += loopspan;
 
-            if ((searchline + searchlinemove) > (w * ScanRate[0])) {
-                if (searchline < (w * ScanRate[0])) {
-                    searchline += ((w * ScanRate[0]) - searchline);
+            if ((searchline + searchlinemove + searchNum) > (w * ScanRate[0])) {
+                if (searchline + searchNum < (w * ScanRate[0])) {
+                    searchline += ((w * ScanRate[0]) - (searchline + searchNum));
                 } else {
                     searchline = 0, searchNum = 0;
                 }
