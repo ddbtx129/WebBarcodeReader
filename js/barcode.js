@@ -143,10 +143,10 @@ barcode.addEventListener('click', () => {
 
             tranc = tranc + trancFlg;
 
-            if (((w - (w * ScanRate[0])) / 2) + searchWidth + searchline > ((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0])) {
-                searchline = 0;
-                searchNum = 0;
-            }
+            //if (((w - (w * ScanRate[0])) / 2) + searchWidth + searchline > ((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0])) {
+            //    searchline = 0;
+            //    searchNum = 0;
+            //}
 
             // 横線
             prev_ctx.beginPath();
