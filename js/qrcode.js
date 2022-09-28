@@ -296,9 +296,9 @@ qrcode.addEventListener('click', () => {
             if (searchNum < searchWidth) searchNum += searchlinemove;
             looptime += loopspan;
 
-            if (searchline + searchlinemove > m) {
-                if (searchline < m) {
-                    searchline += ((m - searchline) - 5);
+            if (searchline + searchlinemove + searchNum > m) {
+                if (searchline + searchNum < m) {
+                    searchline += (m - (searchline + searchNum));
                 } else {
                     searchline = 0, searchNum = 0;
                 }
