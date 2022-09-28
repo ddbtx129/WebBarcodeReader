@@ -143,7 +143,7 @@ barcode.addEventListener('click', () => {
 
             tranc = tranc + trancFlg;
 
-            //if (((w - (w * ScanRate[0])) / 2) + searchWidth + searchline > ((w - (w * ScanRate[0])) / 2) + (w * ScanRate[0])) {
+            //if (searchWidth + searchline > (w * ScanRate[0])) {
             //    searchline = 0;
             //    searchNum = 0;
             //}

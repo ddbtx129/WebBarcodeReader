@@ -104,7 +104,7 @@ qrcode.addEventListener('click', () => {
     function Scan(first) {
 
         if (loopflg && looptime >= maxtime) {
-            looptime = maxtime + loopspan;
+            looptime = maxtime + loopspan, searchline = 0, searchNum = 0;
             loopflg = false;
             scaning.disabled = false;
         }
@@ -152,10 +152,10 @@ qrcode.addEventListener('click', () => {
 
             tranc = tranc + trancFlg
 
-            if (x1 + 100 + searchline > x1 + m) {
-                searchline = 0;
-                searchNum = 0;
-            }
+            //if (x1 + 100 + searchline > x1 + m) {
+            //    searchline = 0;
+            //    searchNum = 0;
+            //}
 
             // 横線
             prev_ctx.beginPath();
@@ -287,11 +287,24 @@ qrcode.addEventListener('click', () => {
 
         if (loopflg) {
 
-            if (searchNum < searchWidth) {
-                searchNum = searchNum + searchlinemove;
+            //if (searchNum < searchWidth) {
+            //    searchNum = searchNum + searchlinemove;
+            //}
+            //looptime = looptime + loopspan;
+            //searchline = searchline + searchlinemove;
+
+            if (searchNum < searchWidth) searchNum += searchlinemove;
+            looptime += loopspan;
+
+            if (searchWidth + searchline + searchlinemove > m) {
+                if (searchWidth + searchline < m) {
+                    searchline += (m - (searchWidth + searchline));
+                } else {
+                    searchline = 0, searchNum = 0;
+                }
+            } else {
+                searchline += searchlinemove;
             }
-            looptime = looptime + loopspan;
-            searchline = searchline + searchlinemove;
         }
 
         id = setTimeout(Scan, loopspan, false);
