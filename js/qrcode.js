@@ -75,8 +75,8 @@ qrcode.addEventListener('click', () => {
             scanarea.style.display = 'none';
             barcode.style.display = "none";
             qrcode.style.display = "none";
-            codevalue.style.display = "inline";
-            reset.style.display = "inline";
+            codevalue.style.display = "flex";
+            reset.style.display = "flex";
             copyright.style.display = "inline";
 
             codevalue.value = err;
@@ -261,8 +261,8 @@ qrcode.addEventListener('click', () => {
 
                     displayreset();
 
-                    codevalue.style.display = "inline";
-                    reset.style.display = "inline";
+                    codevalue.style.display = "flex";
+                    reset.style.display = "flex";
                     copyright.style.display = "inline";
 
                     scanarea.style.display = 'none';
