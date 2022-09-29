@@ -39,12 +39,10 @@ div.scanarea {
 
 textarea {
     margin-top: 150px;
+    display: block;
     resize: none;
     font-size: xx-large;
     text-align: center;
-}
-btn-start {
-
 }
 
 #barImage {
@@ -85,7 +83,7 @@ btn-start {
     margin-top: 24px;
     top: 50%;
     left: 50%;
-    width: 120px;
+    width: 200px;
     height: 36px;
     font-size: x-large;
     border-width: 1px;
