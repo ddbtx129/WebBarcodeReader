@@ -6,7 +6,10 @@ window.addEventListener('load', (event) => {
         document.getElementById('codetext').style.marginTop = "150px";
 
         document.getElementById('barcode').style.marginTop = "220px";
+        document.getElementById('barcode').style.top = "30%";
+
         document.getElementById('qrcode').style.marginTop = "50px"
+        document.getElementById('qrcode').style.top = "50%"
 
         document.getElementById('turn').style.bottom = "80px"
         document.getElementById('turn').style.left = "30%"
@@ -22,7 +25,10 @@ window.addEventListener('load', (event) => {
         document.getElementById('codetext').style.marginTop = "30px";
 
         document.getElementById('barcode').style.marginTop = "25px";
+        document.getElementById('barcode').style.top = "30%";
+
         document.getElementById('qrcode').style.marginTop = "30px"
+        document.getElementById('qrcode').style.top = "50%"
 
         document.getElementById('turn').style.bottom = "200px"
         document.getElementById('turn').style.left = "60px"
