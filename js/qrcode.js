@@ -41,7 +41,7 @@ qrcode.addEventListener('click', () => {
     codevalue.value = "";
 
     codevalue.style.width = "360px";
-    codevalue.style.height = "216px";
+    codevalue.style.height = "200px";
     codevalue.style.textAlign = "left";
     codevalue.style.overflow = "scroll";
     codevalue.contentEditable = "false";
