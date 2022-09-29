@@ -173,8 +173,8 @@ barcode.addEventListener('click', () => {
             );
             // 色を定義
             g.addColorStop(0, 'rgb(255,255,255,0)');
-            g.addColorStop(0.4, 'rgb(255,255,255,0.2)');
-            g.addColorStop(1, 'rgb(255,255,255,0.3)');
+            g.addColorStop(0.6, 'rgb(255,255,255,0.2)');
+            g.addColorStop(1, 'rgb(255,255,255,0.5)');
             prev_ctx.fillStyle = g;
             prev_ctx.fillRect(
                 ((w - (w * ScanRate[0])) / 2) + searchline,
