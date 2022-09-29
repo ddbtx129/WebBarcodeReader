@@ -59,8 +59,8 @@ var turnButton = {
 
             document.getElementById('info').style.bottom = "2px"
 
-            document.getElementById('copyright').style.textAlign = "left"
-            document.getElementById('copyright').style.left = "20px"
+            document.getElementById('copyright').style.textAlign = "center"
+            document.getElementById('copyright').style.left = "0px"
 
         }
     }
