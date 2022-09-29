@@ -71,6 +71,7 @@ textarea {
     border-color: #FFF;
     border-radius: 10px;
 }
+/*
 #barcode {
     top: 30%;
 }
@@ -78,7 +79,7 @@ textarea {
 #qrcode {
     top: 50%;
 }
-
+*/
 .reset-button {
     margin-top: 24px;
     top: 50%;
