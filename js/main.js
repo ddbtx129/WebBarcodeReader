@@ -1,6 +1,6 @@
 ﻿
 window.addEventListener('load', (event) => {
-    if (window.innerWidth > window.innerHeight) {
+    if (window.innerWidth < window.innerHeight) {
 
         document.getElementById('code').style.marginTop = "150px";
         document.getElementById('codetext').style.marginTop = "150px";
