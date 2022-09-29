@@ -45,6 +45,7 @@ qrcode.addEventListener('click', () => {
     //codevalue.style.display = "none";
     codevalue.style.textAlign = "left";
     codevalue.style.overflow = "scroll";
+    codevalue.contentEditable = "false";
 
     video = document.createElement('video');
     video.setAttribute("autoplay", "");

@@ -46,6 +46,7 @@ barcode.addEventListener('click', () => {
     //codevalue.style.display = "none";
     codevalue.style.overflow = "hidden";
     codevalue.style.textAlign = "center";
+    codevalue.contentEditable = "true";
 
     //マイクはオフ, カメラの設定   背面カメラを希望する 640×480を希望する
     var options = { audio: false, video: { facingMode: "environment", width: { ideal: VideoSize[0] }, height: { ideal: VideoSize[1] } } };
