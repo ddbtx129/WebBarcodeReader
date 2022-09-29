@@ -17,6 +17,7 @@ barcode.addEventListener('click', () => {
 
     document.getElementById('info').innerHTML = "カメラにバーコードを写してください。";
 
+    codearea.style.display = "none"
     barcode.style.display = "none";
     qrcode.style.display = "none";
     turn.style.display = "none";
@@ -42,7 +43,7 @@ barcode.addEventListener('click', () => {
 
     codevalue.style.width = "300px";
     codevalue.style.height = "36px";
-    codevalue.style.display = "none";
+    //codevalue.style.display = "none";
     codevalue.style.overflow = "hidden";
     codevalue.style.textAlign = "center";
 
