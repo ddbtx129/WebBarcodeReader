@@ -19,6 +19,9 @@ window.addEventListener('load', (event) => {
 
         document.getElementById('info').style.bottom = "30px"
 
+        document.getElementById('copyright').style.textAlign = "center"
+        document.getElementById('copyright').style.left = "0px"
+
     } else {
 
         document.getElementById('code').style.marginTop = "25px";
@@ -37,6 +40,9 @@ window.addEventListener('load', (event) => {
         document.getElementById('scan').style.right = "60px"
 
         document.getElementById('info').style.bottom = "2px"
+
+        document.getElementById('copyright').style.textAlign = "left"
+        document.getElementById('copyright').style.left = "20px"
 
     }
 });

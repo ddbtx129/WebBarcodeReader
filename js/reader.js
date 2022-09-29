@@ -37,7 +37,9 @@ var turnButton = {
             document.getElementById('scan').style.bottom = "80px"
             document.getElementById('scan').style.left = "75%"
 
-            document.getElementById('info').style.bottom = "30px"
+            document.getElementById('copyright').style.textAlign = "center"
+            document.getElementById('copyright').style.left = "0px"
+
         } else {
 
             document.getElementById('code').style.marginTop = "25px";
@@ -56,6 +58,10 @@ var turnButton = {
             document.getElementById('scan').style.right = "60px"
 
             document.getElementById('info').style.bottom = "2px"
+
+            document.getElementById('copyright').style.textAlign = "left"
+            document.getElementById('copyright').style.left = "20px"
+
         }
     }
 };
