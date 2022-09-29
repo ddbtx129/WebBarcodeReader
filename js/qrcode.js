@@ -187,8 +187,8 @@ qrcode.addEventListener('click', () => {
             var g = prev_ctx.createLinearGradient(x1 + searchline, y1, x1 + searchNum + searchline, y1);
             // 色を定義
             g.addColorStop(0, 'rgb(255,255,255,0)');
-            g.addColorStop(0.4, 'rgb(255,255,255,0.2)');
-            g.addColorStop(1, 'rgb(255,255,255,0.3)');
+            g.addColorStop(0.6, 'rgb(255,255,255,0.3)');
+            g.addColorStop(1, 'rgb(255,255,255,0.5)');
             prev_ctx.fillStyle = g;
             prev_ctx.fillRect(x1 + searchline, y1, searchNum, m);
 
