@@ -38,9 +38,12 @@ div.scanarea {
 }
 
 textarea {
-    margin-top: 150px;
     resize: none;
     font-size: xx-large;
+    text-align: center;
+}
+
+#codetext {
     text-align: center;
 }
 
@@ -69,12 +72,10 @@ textarea {
     border-radius: 10px;
 }
 #barcode {
-    margin-top: 240px;
     top: 30%;
 }
 
 #qrcode {
-    margin-top: 50px;
     top: 50%;
 }
 
