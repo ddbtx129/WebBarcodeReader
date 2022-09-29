@@ -21,6 +21,13 @@ var searchline = 0, searchlinemove = 25, searchNum = 0, searchWidth = 100;
 var turnButton = {
     objArrangement: function () {
         if (window.innerWidth > window.innerHeight) {
+
+            document.getElementById('code').style.marginTop = "150px";
+            document.getElementById('codetext').style.marginTop = "150px";
+
+            document.getElementById('barcode').style.marginTop = "240px";
+            document.getElementById('qrcode').style.marginTop = "50px"
+
             document.getElementById('turn').style.bottom = "80px"
             document.getElementById('turn').style.left = "30%"
 
@@ -29,6 +36,13 @@ var turnButton = {
 
             document.getElementById('info').style.bottom = "30px"
         } else {
+
+            document.getElementById('code').style.marginTop = "50px";
+            document.getElementById('codetext').style.marginTop = "50px";
+
+            document.getElementById('barcode').style.marginTop = "50px";
+            document.getElementById('qrcode').style.marginTop = "50px"
+
             document.getElementById('turn').style.bottom = "200px"
             document.getElementById('turn').style.left = "60px"
 
