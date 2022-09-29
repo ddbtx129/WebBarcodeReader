@@ -49,11 +49,16 @@ div.scanarea {
 }
 
 textarea {
-    margin-top: 24px;
+    position: absolute;
+    top: 35%;
+    left: 50%;
     resize: none;
     font-size: xx-large;
     text-align: center;
     justify-content: center;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
 }
 btn-start {
 
@@ -64,8 +69,8 @@ button {
 }
 
 .scan-button {
-    margin-top: 48px;
-    margin-left: 48%;
+    position: absolute;
+    left: 50%;
     width: 96px;
     height: 96px;
     border-width: 1px;
@@ -78,10 +83,28 @@ button {
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
 }
+#barcode {
+    top: 30%;
+}
+
+#qrcode {
+    top: 50%;
+}
 
 .reset-button {
+    position: absolute;
     margin-top: 24px;
-    margin-left: 12px;
+    top: 50%;
+    left: 50%;
+    width: 120px;
+    height: 36px;
+    border-width: 1px;
+    border-color: #FFF;
+    border-radius: 10px;
+    justify-content: center;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
 }
 
 .scan {
