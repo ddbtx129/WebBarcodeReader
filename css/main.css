@@ -37,20 +37,8 @@ div.scanarea {
     background: rgba(0, 0, 0, 0.8);
 }
 
-.text {
-    position: fixed;
-    bottom: 1rem;
-    left: 0;
-    width: 100%;
-    margin-top: 5px;
-    font-size: larger;
-    color: #fff;
-    text-align: center;
-}
-
 textarea {
-    top: 35%;
-    left: 50%;
+    margin-top: 150px;
     resize: none;
     font-size: xx-large;
     text-align: center;
