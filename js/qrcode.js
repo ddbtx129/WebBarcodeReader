@@ -75,8 +75,8 @@ qrcode.addEventListener('click', () => {
             scanarea.style.display = 'none';
             barcode.style.display = "none";
             qrcode.style.display = "none";
-            codevalue.style.display = "flex";
-            reset.style.display = "flex";
+            codearea.style.display = "inline";
+            reset.style.display = "inline";
             copyright.style.display = "inline";
 
             codevalue.value = err;
@@ -92,12 +92,12 @@ qrcode.addEventListener('click', () => {
     turn.onclick = function () {
 
         displayreset();
-        barcode.style.display = "flex";
-        qrcode.style.display = "flex";
+        barcode.style.display = "inline";
+        qrcode.style.display = "inline";
         copyright.style.display = "inline";
 
         reset.style.display = "none";
-        codevalue.style.display = "none";
+        codearea.style.display = "none";
         scanarea.style.display = 'none';
     };
 
@@ -261,8 +261,8 @@ qrcode.addEventListener('click', () => {
 
                     displayreset();
 
-                    codevalue.style.display = "flex";
-                    reset.style.display = "flex";
+                    codearea.style.display = "inline";
+                    reset.style.display = "inline";
                     copyright.style.display = "inline";
 
                     scanarea.style.display = 'none';

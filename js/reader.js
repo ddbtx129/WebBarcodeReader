@@ -1,4 +1,5 @@
-﻿var codevalue = document.getElementById("code");
+﻿var codearea = document.getElementById("code");
+var codevalue = document.getElementById("codetext");
 var barcode = document.getElementById('barcode');
 var qrcode = document.getElementById('qrcode');
 var reset = document.getElementById('reset');
@@ -53,7 +54,7 @@ reset.addEventListener('click', () => {
     copyright.style.display = "inline";
 
     reset.style.display = "none";
-    codevalue.style.display = "none";
+    codearea.style.display = "none";
     scanarea.style.display = 'none';
 
     looptime = 0;
