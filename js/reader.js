@@ -22,8 +22,8 @@ var turnButton = {
     objArrangement: function () {
         if (window.innerWidth > window.innerHeight) {
 
-            document.getElementById('code').style.marginTop = "150px";
-            document.getElementById('codetext').style.marginTop = "150px";
+            document.getElementById('code').style.marginTop = "200px";
+            document.getElementById('codetext').style.marginTop = "200px";
 
             document.getElementById('barcode').style.marginTop = "220px";
             document.getElementById('barcode').style.top = "30%";
@@ -41,7 +41,7 @@ var turnButton = {
         } else {
 
             document.getElementById('code').style.marginTop = "25px";
-            document.getElementById('codetext').style.marginTop = "30px";
+            document.getElementById('codetext').style.marginTop = "25px";
 
             document.getElementById('barcode').style.marginTop = "25px";
             document.getElementById('barcode').style.top = "30%";
