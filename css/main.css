@@ -94,11 +94,9 @@ textarea {
 
 .scan {
     position: absolute;
-    bottom: 80px;
     width: 80px;
     font-size: larger;
     color: #000;
-    left: 75%;
     text-align: center;
     transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
@@ -107,12 +105,10 @@ textarea {
 
 .turn {
     position: absolute;
-    bottom: 80px;
     width: 80px;
     font-size: larger;
     color: #000;
     text-align: center;
-    left: 30%;
     transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
     -ms-transform: translateX(-50%);
