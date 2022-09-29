@@ -50,10 +50,10 @@ var turnButton = {
             document.getElementById('qrcode').style.top = "50%"
 
             document.getElementById('turn').style.bottom = "200px"
-            document.getElementById('turn').style.left = "60px"
+            document.getElementById('turn').style.right = "60px"
 
             document.getElementById('scan').style.bottom = "100px"
-            document.getElementById('scan').style.left = "60px"
+            document.getElementById('scan').style.right = "60px"
 
             document.getElementById('info').style.bottom = "2px"
         }
