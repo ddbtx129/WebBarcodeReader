@@ -42,7 +42,7 @@ barcode.addEventListener('click', () => {
     codevalue.value = "";
 
     codevalue.style.width = "300px";
-    codevalue.style.height = "36px";
+    codevalue.style.height = "42px";
     //codevalue.style.display = "none";
     codevalue.style.overflow = "hidden";
     codevalue.style.textAlign = "center";
