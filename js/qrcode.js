@@ -42,7 +42,6 @@ qrcode.addEventListener('click', () => {
 
     codevalue.style.width = "360px";
     codevalue.style.height = "216px";
-    //codevalue.style.display = "none";
     codevalue.style.textAlign = "left";
     codevalue.style.overflow = "scroll";
     codevalue.contentEditable = "false";
@@ -74,6 +73,7 @@ qrcode.addEventListener('click', () => {
         }
     ).catch( //許可されなかった場合
         function (err) {
+
             scanarea.style.display = 'none';
             barcode.style.display = "none";
             qrcode.style.display = "none";

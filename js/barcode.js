@@ -43,7 +43,6 @@ barcode.addEventListener('click', () => {
 
     codevalue.style.width = "300px";
     codevalue.style.height = "42px";
-    //codevalue.style.display = "none";
     codevalue.style.overflow = "hidden";
     codevalue.style.textAlign = "center";
     codevalue.contentEditable = "true";
@@ -64,6 +63,13 @@ barcode.addEventListener('click', () => {
         }
     ).catch( //許可されなかった場合
         function (err) {
+
+            codevalue.style.width = "360px";
+            codevalue.style.height = "216px";
+            codevalue.style.textAlign = "left";
+            codevalue.style.overflow = "scroll";
+            codevalue.contentEditable = "false";
+
             scanarea.style.display = 'none';
             barcode.style.display = "none";
             qrcode.style.display = "none";
@@ -144,11 +150,6 @@ barcode.addEventListener('click', () => {
         if (loopflg) {
 
             tranc = tranc + trancFlg;
-
-            //if (searchWidth + searchline > (w * ScanRate[0])) {
-            //    searchline = 0;
-            //    searchNum = 0;
-            //}
 
             // 横線
             prev_ctx.beginPath();
