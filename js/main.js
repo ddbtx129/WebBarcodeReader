@@ -5,7 +5,7 @@ window.addEventListener('load', (event) => {
         document.getElementById('code').style.marginTop = "150px";
         document.getElementById('codetext').style.marginTop = "150px";
 
-        document.getElementById('barcode').style.marginTop = "240px";
+        document.getElementById('barcode').style.marginTop = "220px";
         document.getElementById('qrcode').style.marginTop = "50px"
 
         document.getElementById('turn').style.bottom = "80px"
@@ -18,11 +18,11 @@ window.addEventListener('load', (event) => {
 
     } else {
 
-        document.getElementById('code').style.marginTop = "50px";
-        document.getElementById('codetext').style.marginTop = "50px";
+        document.getElementById('code').style.marginTop = "25px";
+        document.getElementById('codetext').style.marginTop = "30px";
 
-        document.getElementById('barcode').style.marginTop = "50px";
-        document.getElementById('qrcode').style.marginTop = "50px"
+        document.getElementById('barcode').style.marginTop = "25px";
+        document.getElementById('qrcode').style.marginTop = "30px"
 
         document.getElementById('turn').style.bottom = "200px"
         document.getElementById('turn').style.left = "60px"
