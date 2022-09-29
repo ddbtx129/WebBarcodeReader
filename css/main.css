@@ -49,50 +49,51 @@ div.scanarea {
 }
 
 textarea {
-    position: absolute;
     top: 35%;
     left: 50%;
     resize: none;
     font-size: xx-large;
     text-align: center;
-    justify-content: center;
-    transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
 }
 btn-start {
 
 }
 
-button {
-    font-size: x-large;
+#barImage {
+    background-image: url('../article/barcode_72.png');
+    display: inline-block;
+    margin-top: 2px;
+    width: 72px;
+    height: 72px;
+}
+
+#qrImage {
+    background-image: url('../article/qrcode_72.png');
+    display: inline-block;
+    margin-top: 2px;
+    width: 72px;
+    height: 72px;
 }
 
 .scan-button {
-    position: absolute;
     left: 50%;
     width: 96px;
     height: 96px;
     border-width: 1px;
     border-color: #FFF;
     border-radius: 10px;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
 }
 #barcode {
+    margin-top: 150px;
     top: 30%;
 }
 
 #qrcode {
+    margin-top: 50px;
     top: 50%;
 }
 
 .reset-button {
-    position: absolute;
     margin-top: 24px;
     top: 50%;
     left: 50%;
@@ -101,10 +102,6 @@ button {
     border-width: 1px;
     border-color: #FFF;
     border-radius: 10px;
-    justify-content: center;
-    transform: translateX(-50%);
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
 }
 
 .scan {
