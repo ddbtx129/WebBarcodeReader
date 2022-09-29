@@ -81,3 +81,7 @@ reset.addEventListener('click', () => {
     loopflg = false;
     scaning.disabled = false;
 });
+
+copyright.addEventListener('click', () => {
+    location.reload(true);
+});
