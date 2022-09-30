@@ -163,7 +163,7 @@ qrcode.addEventListener('click', () => {
             prev_ctx.beginPath();
             prev_ctx.strokeStyle = "rgb(255,0,0," + tranc + ")";
             prev_ctx.lineWidth = 2;
-            prev_ctx.setLineDash([2, 3]);
+            prev_ctx.setLineDash([]);
             prev_ctx.moveTo(x1 - 50, y1 + (m * 0.5));
             prev_ctx.lineTo((x1 + m + 50), y1 + (m * 0.5));
 
@@ -174,7 +174,7 @@ qrcode.addEventListener('click', () => {
             prev_ctx.beginPath();
             prev_ctx.strokeStyle = "rgb(255,0,0," + tranc + ")";
             prev_ctx.lineWidth = 2;
-            prev_ctx.setLineDash([2, 3]);
+            prev_ctx.setLineDash([]);
             prev_ctx.moveTo(x1 + (m * 0.5), y1 - 50);
             prev_ctx.lineTo(x1 + (m * 0.5), y1 + m + 50);
 
@@ -201,7 +201,7 @@ qrcode.addEventListener('click', () => {
             prev_ctx.beginPath();
             prev_ctx.strokeStyle = "rgb(255,255,255,0.75)";
             prev_ctx.lineWidth = 2;
-            prev_ctx.setLineDash([2, 2]);
+            prev_ctx.setLineDash([2, 3]);
             prev_ctx.moveTo(x1 - 50, y1 + (m * 0.5));
             prev_ctx.lineTo((x1 + m + 50), y1 + (m * 0.5));
 
@@ -212,7 +212,7 @@ qrcode.addEventListener('click', () => {
             prev_ctx.beginPath();
             prev_ctx.strokeStyle = "rgb(255,255,255,0.75)";
             prev_ctx.lineWidth = 2;
-            prev_ctx.setLineDash([2, 2]);
+            prev_ctx.setLineDash([2, 3]);
             prev_ctx.moveTo(x1 + (m * 0.5), y1 - 50);
             prev_ctx.lineTo(x1 + (m * 0.5), y1 + m + 50);
 
@@ -288,12 +288,6 @@ qrcode.addEventListener('click', () => {
         }
 
         if (loopflg) {
-
-            //if (searchNum < searchWidth) {
-            //    searchNum = searchNum + searchlinemove;
-            //}
-            //looptime = looptime + loopspan;
-            //searchline = searchline + searchlinemove;
 
             if (searchNum < searchWidth) searchNum += searchlinemove;
             looptime += loopspan;
