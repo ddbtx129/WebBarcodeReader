@@ -64,22 +64,23 @@ textarea {
 }
 
 .scan-button {
-    left: 50%;
+    position: absolute;
+    /*    left: 50%;*/
     width: 96px;
     height: 96px;
     border-width: 1px;
     border-color: #FFF;
     border-radius: 10px;
 }
-/*
+
 #barcode {
-    top: 30%;
+    right: 60%;
 }
 
 #qrcode {
-    top: 50%;
+    left: 60%;
 }
-*/
+
 .reset-button {
     margin-top: 16px;
     top: 45%;
