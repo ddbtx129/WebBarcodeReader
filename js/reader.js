@@ -25,11 +25,11 @@ var turnButton = {
             document.getElementById('code').style.marginTop = "200px";
             document.getElementById('codetext').style.marginTop = "200px";
 
-            document.getElementById('barcode').style.marginTop = "220px";
-            document.getElementById('barcode').style.top = "30%";
+            document.getElementById('barcode').style.marginTop = "0px";
+            document.getElementById('barcode').style.top = "40%";
 
-            document.getElementById('qrcode').style.marginTop = "50px"
-            document.getElementById('qrcode').style.top = "50%"
+            document.getElementById('qrcode').style.marginTop = "0px"
+            document.getElementById('qrcode').style.top = "40%"
 
             document.getElementById('turn').style.bottom = "80px"
             document.getElementById('turn').style.left = "30%"
@@ -45,11 +45,11 @@ var turnButton = {
             document.getElementById('code').style.marginTop = "25px";
             document.getElementById('codetext').style.marginTop = "25px";
 
-            document.getElementById('barcode').style.marginTop = "25px";
-            document.getElementById('barcode').style.top = "30%";
+            document.getElementById('barcode').style.marginTop = "0px";
+            document.getElementById('barcode').style.top = "40%";
 
-            document.getElementById('qrcode').style.marginTop = "30px"
-            document.getElementById('qrcode').style.top = "50%"
+            document.getElementById('qrcode').style.marginTop = "0px"
+            document.getElementById('qrcode').style.top = "40%"
 
             document.getElementById('turn').style.bottom = "200px"
             document.getElementById('turn').style.left = "92%"
