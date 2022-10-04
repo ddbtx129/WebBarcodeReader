@@ -1,5 +1,16 @@
-﻿
+﻿var fullscreen = 0;
+
 window.addEventListener('load', (event) => {
+
+    //if (document.fullscreenElement) {
+    //    document.exitFullscreen()
+    //} else {
+    //    document.body.requestFullscreen()
+    //}
+
+    //fullscreen = 1;
+    //document.getElementById('fullscreen').innerHTML = "全画面解除";
+
     if (window.innerWidth < window.innerHeight) {
 
         document.getElementById('code').style.marginTop = "200px";
@@ -46,3 +57,5 @@ window.addEventListener('load', (event) => {
 
     }
 });
+
+
