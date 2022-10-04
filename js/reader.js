@@ -9,7 +9,7 @@ var turn = document.getElementById('turn');
 var scaning = document.getElementById('scan');
 var copyright = document.getElementById('copyright');
 
-var fullscreenbutton = document.getElementById("fullscreen");
+//var fullscreenbutton = document.getElementById("fullscreen");
 
 var video, videostream, id, tmp, tmp_ctx, prev, prev_ctx, w, h, mw, mh, x1, y1;
 
@@ -90,55 +90,55 @@ reset.addEventListener('click', () => {
     scaning.disabled = false;
 });
 
-fullscreenbutton.addEventListener('click', () => {
+//fullscreenbutton.addEventListener('click', () => {
 
-    if (fullscreen == 0) {
-        // 全画面表示
-        // Chrome & Firefox v64以降
-        if (document.body.requestFullscreen) {
-            document.body.requestFullscreen();
+//    if (fullscreen == 0) {
+//        // 全画面表示
+//        // Chrome & Firefox v64以降
+//        if (document.body.requestFullscreen) {
+//            document.body.requestFullscreen();
 
-            // Firefox v63以前
-        } else if (document.body.mozRequestFullScreen) {
-            document.body.mozRequestFullScreen();
+//            // Firefox v63以前
+//        } else if (document.body.mozRequestFullScreen) {
+//            document.body.mozRequestFullScreen();
 
-            // Safari & Edge & Chrome v68以前
-        } else if (document.body.webkitRequestFullscreen) {
-            document.body.webkitRequestFullscreen();
+//            // Safari & Edge & Chrome v68以前
+//        } else if (document.body.webkitRequestFullscreen) {
+//            document.body.webkitRequestFullscreen();
 
-            // IE11
-        } else if (document.body.msRequestFullscreen) {
-            document.body.msRequestFullscreen();
-        }
+//            // IE11
+//        } else if (document.body.msRequestFullscreen) {
+//            document.body.msRequestFullscreen();
+//        }
 
-        fullscreen = 1;
-        fullscreenbutton.innerHTML = "全画面解除";
+//        fullscreen = 1;
+//        fullscreenbutton.innerHTML = "全画面解除";
 
-    } else if (fullscreen == 1) {
+//    } else if (fullscreen == 1) {
 
-        // 全画面表示解除
-        // Chrome & Firefox v64以降
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
+//        // 全画面表示解除
+//        // Chrome & Firefox v64以降
+//        if (document.exitFullscreen) {
+//            document.exitFullscreen();
 
-            // Firefox v63以前
-        } else if (document.mozCancelFullScreen) {
-            document.mozCancelFullScreen();
+//            // Firefox v63以前
+//        } else if (document.mozCancelFullScreen) {
+//            document.mozCancelFullScreen();
 
-            // Safari & Edge & Chrome v44以前
-        } else if (document.webkitCancelFullScreen) {
-            document.webkitCancelFullScreen();
+//            // Safari & Edge & Chrome v44以前
+//        } else if (document.webkitCancelFullScreen) {
+//            document.webkitCancelFullScreen();
 
-            // IE11
-        } else if (document.msExitFullscreen) {
-            document.msExitFullscreen();
-        }
+//            // IE11
+//        } else if (document.msExitFullscreen) {
+//            document.msExitFullscreen();
+//        }
 
-        fullscreen = 0;
-        fullscreenbutton.innerHTML = "全画面表示";
-    }
+//        fullscreen = 0;
+//        fullscreenbutton.innerHTML = "全画面表示";
+//    }
 
-});
+//});
 
 copyright.addEventListener('click', () => {
     location.reload(true);
