@@ -1,5 +1,4 @@
-﻿const { exit } = require("node:process");
-
+﻿
 barcode.addEventListener('click', () => {
 
     var VideoSize = new Array(720, 480);
