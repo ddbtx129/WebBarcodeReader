@@ -107,6 +107,9 @@ barcode.addEventListener('click', () => {
             looptime = maxtime + loopspan, searchline = 0, searchNum = 0;
             loopflg = false;
             scaning.disabled = false;
+
+            document.getElementById('info').innerHTML = "バーコードを写してください。" + "0 / " + String(scancount);
+            numval.innerHTML = "0 / " + String(scancount);
         }
 
         if (first) {
@@ -132,8 +135,8 @@ barcode.addEventListener('click', () => {
                 }
             }
 
-            scancount = Math.ceil((w * ScanRate[0]) / 32);
-
+            //scancount = Math.ceil((w * ScanRate[0]) / 32);
+            scancount = 10;
             document.getElementById('info').innerHTML = "バーコードを写してください。" + "0 / " + String(scancount);
             numval.innerHTML = "0 / " + String(scancount);
 
@@ -274,10 +277,13 @@ barcode.addEventListener('click', () => {
             }
         }
 
-        id = setTimeout(Scan, loopspan, flg);
+        if (DetectedCount < scancount)
+            id = setTimeout(Scan, loopspan, flg);
     }
 
     Quagga.onDetected(function (result) {
+
+        codevalue.value = "";
 
         //読み取り誤差のために、複数回連続で同じ値だった場合に成功とする
         if (DetectedCode == result.codeResult.code) {
@@ -285,6 +291,7 @@ barcode.addEventListener('click', () => {
         } else {
             looptime = 0;
             DetectedCount = 0;
+
             DetectedCode = result.codeResult.code;
         }
 
@@ -292,6 +299,7 @@ barcode.addEventListener('click', () => {
         numval.innerHTML = String(DetectedCount) + " / " + String(scancount);
 
         if (DetectedCount >= scancount) {
+
             codevalue.value = result.codeResult.code;
 
             displayreset();
@@ -304,8 +312,6 @@ barcode.addEventListener('click', () => {
             scanarea.style.display = 'none';
             barcode.style.display = "none";
             qrcode.style.display = "none";
-
-            return;
         }
     })
 
