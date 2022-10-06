@@ -16,6 +16,7 @@ barcode.addEventListener('click', () => {
     DetectedCode = "";
 
     document.getElementById('info').innerHTML = "バーコードを写してください。";
+    numval.innerHTML = "0 / 0";
 
     codearea.style.display = "none"
     barcode.style.display = "none";
@@ -134,6 +135,7 @@ barcode.addEventListener('click', () => {
             scancount = (w * ScanRate[0]) / 32;
 
             document.getElementById('info').innerHTML = "バーコードを写してください。" + "0 / " + String(scancount);
+            numval.innerHTML = "0 / " + String(scancount);
 
             //画面上の表示サイズ
             prev.style.width = (w * SizeRate) + "px";
@@ -287,12 +289,14 @@ barcode.addEventListener('click', () => {
         }
 
         document.getElementById('info').innerHTML = "バーコードを写してください。" + String(DetectedCount) + " / " + String(scancount);
+        numval.innerHTML = "0 / " + String(scancount);
 
         if (DetectedCount >= scancount) {
             codevalue.value = result.codeResult.code;
 
             displayreset();
 
+            scanval.style.display = "inline";
             codearea.style.display = "inline";
             reset.style.display = "inline";
             copyright.style.display = "inline";

@@ -7,6 +7,8 @@ var scanarea = document.getElementById('scanarea');
 var mask = document.getElementById('mask');
 var turn = document.getElementById('turn');
 var scaning = document.getElementById('scan');
+var scanval = document.getElementById('count');
+var numval = document.getElementById('numval');
 var copyright = document.getElementById('copyright');
 
 //var fullscreenbutton = document.getElementById("fullscreen");
@@ -39,9 +41,6 @@ var turnButton = {
             document.getElementById('scan').style.bottom = "80px"
             document.getElementById('scan').style.left = "75%"
 
-            document.getElementById('copyright').style.textAlign = "center"
-            document.getElementById('copyright').style.left = "0px"
-
         } else {
 
             document.getElementById('code').style.marginTop = "25px";
@@ -61,10 +60,13 @@ var turnButton = {
 
             document.getElementById('info').style.bottom = "2px"
 
-            document.getElementById('copyright').style.textAlign = "center"
-            document.getElementById('copyright').style.left = "0px"
-
         }
+
+        document.getElementById('count').style.textAlign = "center"
+        document.getElementById('count').style.left = "0px"
+
+        document.getElementById('copyright').style.textAlign = "center"
+        document.getElementById('copyright').style.left = "0px"
     }
 };
 
@@ -81,6 +83,7 @@ reset.addEventListener('click', () => {
     qrcode.style.display = "inline";
     copyright.style.display = "inline";
 
+    scanval.style.display = "none";
     reset.style.display = "none";
     codearea.style.display = "none";
     scanarea.style.display = 'none';

@@ -14,7 +14,7 @@ qrcode.addEventListener('click', () => {
     DetectedCount = 0;
     DetectedCode = "";
 
-    document.getElementById('info').innerHTML = "カメラにＱＲコードを写してください。";
+    document.getElementById('info').innerHTML = "ＱＲコードを写してください。";
 
     codearea.style.display = "none"
     barcode.style.display = "none";

@@ -30,9 +30,6 @@ window.addEventListener('load', (event) => {
 
         document.getElementById('info').style.bottom = "30px"
 
-        document.getElementById('copyright').style.textAlign = "center"
-        document.getElementById('copyright').style.left = "0px"
-
     } else {
 
         document.getElementById('code').style.marginTop = "25px";
@@ -51,11 +48,12 @@ window.addEventListener('load', (event) => {
         document.getElementById('scan').style.left = "92%"
 
         document.getElementById('info').style.bottom = "2px"
-
-        document.getElementById('copyright').style.textAlign = "center"
-        document.getElementById('copyright').style.left = "0px"
-
     }
-});
 
+    document.getElementById('count').style.textAlign = "center"
+    document.getElementById('count').style.left = "0px"
+
+    document.getElementById('copyright').style.textAlign = "center"
+    document.getElementById('copyright').style.left = "0px"
+});
 
