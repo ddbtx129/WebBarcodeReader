@@ -229,6 +229,12 @@ barcode.addEventListener('click', () => {
             0, 0,
             (w * ScanRate[0]), (w * ScanRate[1]));
 
+        if (tranc <= 0) {
+            trancFlg = 0.1;
+        } else if (tranc >= maxtranc) {
+            trancFlg = -0.1
+        }
+
         if (loopflg) {
             tmp.toBlob(function (blob) {
                 let reader = new FileReader();
@@ -253,15 +259,6 @@ barcode.addEventListener('click', () => {
                 }
                 reader.readAsDataURL(blob);
             });
-        }
-
-        if (tranc <= 0) {
-            trancFlg = 0.1;
-        } else if (tranc >= maxtranc) {
-            trancFlg = -0.1
-        }
-
-        if (loopflg) {
 
             if (searchNum < searchWidth) searchNum += searchlinemove;
             looptime += loopspan;
@@ -277,41 +274,43 @@ barcode.addEventListener('click', () => {
             }
         }
 
-        if (DetectedCount < scancount)
-            id = setTimeout(Scan, loopspan, flg);
+        id = setTimeout(Scan, loopspan, flg);
     }
 
     Quagga.onDetected(function (result) {
 
-        codevalue.value = "";
+        if (DetectedCount < scancount) {
 
-        //読み取り誤差のために、複数回連続で同じ値だった場合に成功とする
-        if (DetectedCode == result.codeResult.code) {
-            DetectedCount++;
-        } else {
-            looptime = 0;
-            DetectedCount = 0;
+            codevalue.value = "";
 
-            DetectedCode = result.codeResult.code;
-        }
+            //読み取り誤差のために、複数回連続で同じ値だった場合に成功とする
+            if (DetectedCode == result.codeResult.code) {
+                DetectedCount++;
+            } else {
+                looptime = 0;
+                DetectedCount = 0;
 
-        document.getElementById('info').innerHTML = "バーコードを写してください。" + String(DetectedCount) + " / " + String(scancount);
-        numval.innerHTML = String(DetectedCount) + " / " + String(scancount);
+                DetectedCode = result.codeResult.code;
+            }
 
-        if (DetectedCount >= scancount) {
+            document.getElementById('info').innerHTML = "バーコードを写してください。" + String(DetectedCount) + " / " + String(scancount);
+            numval.innerHTML = String(DetectedCount) + " / " + String(scancount);
 
-            codevalue.value = result.codeResult.code;
+            if (DetectedCount >= scancount) {
 
-            displayreset();
+                codevalue.value = result.codeResult.code;
 
-            scanval.style.display = "inline";
-            codearea.style.display = "inline";
-            reset.style.display = "inline";
-            copyright.style.display = "inline";
+                displayreset();
 
-            scanarea.style.display = 'none';
-            barcode.style.display = "none";
-            qrcode.style.display = "none";
+                scanval.style.display = "inline";
+                codearea.style.display = "inline";
+                reset.style.display = "inline";
+                copyright.style.display = "inline";
+
+                scanarea.style.display = 'none';
+                barcode.style.display = "none";
+                qrcode.style.display = "none";
+            }
         }
     })
 
