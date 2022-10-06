@@ -132,7 +132,7 @@ barcode.addEventListener('click', () => {
                 }
             }
 
-            scancount = (w * ScanRate[0]) / 32;
+            scancount = Math.ceil((w * ScanRate[0]) / 32);
 
             document.getElementById('info').innerHTML = "バーコードを写してください。" + "0 / " + String(scancount);
             numval.innerHTML = "0 / " + String(scancount);
@@ -289,7 +289,7 @@ barcode.addEventListener('click', () => {
         }
 
         document.getElementById('info').innerHTML = "バーコードを写してください。" + String(DetectedCount) + " / " + String(scancount);
-        numval.innerHTML = "0 / " + String(scancount);
+        numval.innerHTML = String(DetectedCount) + " / " + String(scancount);
 
         if (DetectedCount >= scancount) {
             codevalue.value = result.codeResult.code;
