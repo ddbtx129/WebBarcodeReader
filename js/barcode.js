@@ -1,4 +1,5 @@
-﻿
+﻿const { exit } = require("node:process");
+
 barcode.addEventListener('click', () => {
 
     var VideoSize = new Array(720, 480);
@@ -277,7 +278,37 @@ barcode.addEventListener('click', () => {
         id = setTimeout(Scan, loopspan, flg);
     }
 
-    Quagga.onDetected(function (result) {
+    function displayreset() {
+
+        //if (loopflg) {
+        //    Quagga.stop();
+        //}
+
+        clearTimeout(id);
+
+        const tracks = videostream.getVideoTracks();
+        for (let i = 0; i < tracks.length; i++) {
+            tracks[i].stop();
+        }
+
+        DetectedCode = '';
+        DetectedCount = 0;
+        video.remove();
+        tmp.remove();
+
+        looptime = maxtime + loopspan;
+        loopflg = false;
+        scaning.disabled = false;
+
+        tmp_ctx.clearRect(
+            ((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2),
+            (w * ScanRate[0]), (w * ScanRate[1]),
+            0, 0,
+            (w * ScanRate[0]), (w * ScanRate[1]));
+        prev_ctx.clearRect(0, 0, w, h);
+    }
+
+    Quagga.onDetected(function (result, e) {
 
         if (DetectedCount < scancount) {
 
@@ -310,37 +341,10 @@ barcode.addEventListener('click', () => {
                 scanarea.style.display = 'none';
                 barcode.style.display = "none";
                 qrcode.style.display = "none";
+
+                e.stopImmediatePropagation();
             }
         }
-    })
 
-    function displayreset() {
-
-        if (loopflg) {
-            Quagga.stop();
-        }
-
-        clearTimeout(id);
-
-        const tracks = videostream.getVideoTracks();
-        for (let i = 0; i < tracks.length; i++) {
-            tracks[i].stop();
-        }
-
-        DetectedCode = '';
-        DetectedCount = 0;
-        video.remove();
-        tmp.remove();
-
-        looptime = maxtime + loopspan;
-        loopflg = false;
-        scaning.disabled = false;
-
-        tmp_ctx.clearRect(
-            ((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2),
-            (w * ScanRate[0]), (w * ScanRate[1]),
-            0, 0,
-            (w * ScanRate[0]), (w * ScanRate[1]));
-        prev_ctx.clearRect(0, 0, w, h);
-    }
+    }, false);
 });
