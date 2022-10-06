@@ -136,7 +136,7 @@ barcode.addEventListener('click', () => {
             }
 
             //scancount = Math.ceil((w * ScanRate[0]) / 32);
-            scancount = 10;
+            scancount = 10 * 2;
             document.getElementById('info').innerHTML = "バーコードを写してください。" + "0 / " + String(scancount);
             numval.innerHTML = "0 / " + String(scancount);
 
