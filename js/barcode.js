@@ -15,7 +15,7 @@ barcode.addEventListener('click', () => {
     DetectedCount = 0;
     DetectedCode = "";
 
-    document.getElementById('info').innerHTML = "カメラにバーコードを写してください。";
+    document.getElementById('info').innerHTML = "バーコードを写してください。";
 
     codearea.style.display = "none"
     barcode.style.display = "none";
@@ -109,6 +109,7 @@ barcode.addEventListener('click', () => {
         }
 
         if (first) {
+
             //選択された幅高さ
             //w = video.videoWidth;
             //h = video.videoHeight;
@@ -131,6 +132,8 @@ barcode.addEventListener('click', () => {
             }
 
             scancount = (w * ScanRate[0]) / 32;
+
+            document.getElementById('info').innerHTML = "バーコードを写してください。" + "0 / " + String(scancount);
 
             //画面上の表示サイズ
             prev.style.width = (w * SizeRate) + "px";
@@ -282,6 +285,8 @@ barcode.addEventListener('click', () => {
             DetectedCount = 0;
             DetectedCode = result.codeResult.code;
         }
+
+        document.getElementById('info').innerHTML = "バーコードを写してください。" + String(DetectedCount) + " / " + String(scancount);
 
         if (DetectedCount >= scancount) {
             codevalue.value = result.codeResult.code;
