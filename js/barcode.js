@@ -354,7 +354,7 @@ barcode.addEventListener('click', () => {
                 DetectedCode = result.codeResult.code;
             }
 
-            document.getElementById('info').innerHTML = "バーコードを写してください。" + String(DetectedCount) + " / " + String(scancount);
+            document.getElementById('info').innerHTML = "バーコードを写してください。" + String(DetectedCount) + " / " + String(scancount) + "  format:" + result.codeResult.format;
             numval.innerHTML = String(DetectedCount) + " / " + String(scancount);
 
             if (DetectedCount >= scancount) {
