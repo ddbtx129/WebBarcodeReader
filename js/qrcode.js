@@ -1,8 +1,9 @@
 ﻿
 qrcode.addEventListener('click', () => {
 
-    var VideoSize = new Array(720, 480);
-    var SizeRate = 0.75;
+    var VideoSize = new Array(640, 480);
+    //var SizeRate = 0.75;
+    var SizeRate = 0.5;
 
     loopflg = false;
     loopspan = 50;

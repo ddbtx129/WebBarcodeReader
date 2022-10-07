@@ -1,9 +1,12 @@
 ﻿
 barcode.addEventListener('click', () => {
 
-    var VideoSize = new Array(720, 480);
-    var SizeRate = 0.75;
-    var ScanRate = new Array(0.75, 0.3);
+    //var VideoSize = new Array(720, 480);
+    var VideoSize = new Array(640, 480);
+    //var SizeRate = 0.75;
+    var SizeRate = 0.5;
+    //var ScanRate = new Array(0.75, 0.3);
+    var ScanRate = new Array(0.5, 0.2);
 
     loopflg = false;
     loopspan = 100;
@@ -49,11 +52,12 @@ barcode.addEventListener('click', () => {
     codevalue.contentEditable = "true";
 
     //マイクはオフ, カメラの設定   背面カメラを希望する 640×480を希望する
-    var options = { audio: false, video: { facingMode: "environment", width: { ideal: VideoSize[0] }, height: { ideal: VideoSize[1] } } };
+    //var options = { audio: false, video: { facingMode: "environment", width: { ideal: VideoSize[0] }, height: { ideal: VideoSize[1] } } };
+    //var options = { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": VideoSize[0] }, "height": { "ideal": VideoSize[1] } } };
 
     //カメラ使用の許可ダイアログが表示される
     navigator.mediaDevices.getUserMedia(
-        options
+        { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": VideoSize[0] }, "height": { "ideal": VideoSize[1] } } }
     ).then( //許可された場合
         function (stream) {
             videostream = stream;
@@ -236,6 +240,7 @@ barcode.addEventListener('click', () => {
         }
 
         if (loopflg) {
+
             tmp.toBlob(function (blob) {
                 let reader = new FileReader();
                 reader.onload = function () {
@@ -251,6 +256,7 @@ barcode.addEventListener('click', () => {
                                 "codabar_reader"
                             ]
                         },
+                        multiple: false,
                         locator: { patchSize: "large", halfSample: false },
                         locate: false,
                         src: reader.result,
@@ -259,8 +265,17 @@ barcode.addEventListener('click', () => {
                 }
                 reader.readAsDataURL(blob);
             });
+        }
 
+        if (tranc <= 0) {
+            trancFlg = 0.1;
+        } else if (tranc >= maxtranc) {
+            trancFlg = -0.1
+        }
+
+        if (loopflg) {
             if (searchNum < searchWidth) searchNum += searchlinemove;
+
             looptime += loopspan;
 
             if ((searchline + searchlinemove + searchNum) > (w * ScanRate[0])) {
@@ -307,11 +322,27 @@ barcode.addEventListener('click', () => {
         prev_ctx.clearRect(0, 0, w, h);
     }
 
+    function eanCheckDigit(barcodeStr) { // 引数は文字列
+        // 短縮用処理
+        barcodeStr = ('00000' + barcodeStr).slice(-13);
+        let evenNum = 0, oddNum = 0;
+        for (var i = 0; i < barcodeStr.length - 1; i++) {
+            if (i % 2 == 0) { // 「奇数」かどうか（0から始まるため、iの偶数と奇数が逆）
+                oddNum += parseInt(barcodeStr[i]);
+            } else {
+                evenNum += parseInt(barcodeStr[i]);
+            }
+        }
+        // 結果
+        return 10 - parseInt((evenNum * 3 + oddNum).toString().slice(-1)) === parseInt(barcodeStr.slice(-1));
+    }
+
     Quagga.onDetected(function (result, e) {
 
         if (DetectedCount < scancount) {
 
             codevalue.value = "";
+            console.log("format:" + result.codeResult.format);
 
             //読み取り誤差のために、複数回連続で同じ値だった場合に成功とする
             if (DetectedCode == result.codeResult.code) {
