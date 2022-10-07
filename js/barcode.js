@@ -3,8 +3,8 @@ barcode.addEventListener('click', () => {
 
     //var VideoSize = new Array(720, 480);
     var VideoSize = new Array(640, 480);
-    //var SizeRate = 0.75;
-    var SizeRate = 0.5;
+    var SizeRate = 0.75;
+    //var SizeRate = 0.5;
     //var ScanRate = new Array(0.75, 0.3);
     var ScanRate = new Array(0.5, 0.2);
 
