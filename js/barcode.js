@@ -6,7 +6,7 @@ barcode.addEventListener('click', () => {
     var SizeRate = 0.75;
     //var SizeRate = 0.5;
     //var ScanRate = new Array(0.75, 0.3);
-    var ScanRate = new Array(0.5, 0.2);
+    var ScanRate = new Array(0.75, 0.375);
 
     loopflg = false;
     loopspan = 100;
