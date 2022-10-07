@@ -292,57 +292,12 @@ barcode.addEventListener('click', () => {
         id = setTimeout(Scan, loopspan, flg);
     }
 
-    function displayreset() {
-
-        //if (loopflg) {
-        //    Quagga.stop();
-        //}
-
-        clearTimeout(id);
-
-        const tracks = videostream.getVideoTracks();
-        for (let i = 0; i < tracks.length; i++) {
-            tracks[i].stop();
-        }
-
-        DetectedCode = '';
-        DetectedCount = 0;
-        video.remove();
-        tmp.remove();
-
-        looptime = maxtime + loopspan;
-        loopflg = false;
-        scaning.disabled = false;
-
-        tmp_ctx.clearRect(
-            ((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2),
-            (w * ScanRate[0]), (w * ScanRate[1]),
-            0, 0,
-            (w * ScanRate[0]), (w * ScanRate[1]));
-        prev_ctx.clearRect(0, 0, w, h);
-    }
-
-    function eanCheckDigit(barcodeStr) { // 引数は文字列
-        // 短縮用処理
-        barcodeStr = ('00000' + barcodeStr).slice(-13);
-        let evenNum = 0, oddNum = 0;
-        for (var i = 0; i < barcodeStr.length - 1; i++) {
-            if (i % 2 == 0) { // 「奇数」かどうか（0から始まるため、iの偶数と奇数が逆）
-                oddNum += parseInt(barcodeStr[i]);
-            } else {
-                evenNum += parseInt(barcodeStr[i]);
-            }
-        }
-        // 結果
-        return 10 - parseInt((evenNum * 3 + oddNum).toString().slice(-1)) === parseInt(barcodeStr.slice(-1));
-    }
-
     Quagga.onDetected(function (result, e) {
 
         if (DetectedCount < scancount) {
 
-            codevalue.value = "";
-            console.log("format:" + result.codeResult.format);
+            //codevalue.value = "";
+            //console.log("format:" + result.codeResult.format);
 
             //読み取り誤差のために、複数回連続で同じ値だった場合に成功とする
             if (DetectedCode == result.codeResult.code) {
@@ -376,5 +331,50 @@ barcode.addEventListener('click', () => {
             }
         }
 
-    }, false);
+    }, false)
+
+    function eanCheckDigit(barcodeStr) { // 引数は文字列
+        // 短縮用処理
+        barcodeStr = ('00000' + barcodeStr).slice(-13);
+        let evenNum = 0, oddNum = 0;
+        for (var i = 0; i < barcodeStr.length - 1; i++) {
+            if (i % 2 == 0) { // 「奇数」かどうか（0から始まるため、iの偶数と奇数が逆）
+                oddNum += parseInt(barcodeStr[i]);
+            } else {
+                evenNum += parseInt(barcodeStr[i]);
+            }
+        }
+        // 結果
+        return 10 - parseInt((evenNum * 3 + oddNum).toString().slice(-1)) === parseInt(barcodeStr.slice(-1));
+    }
+
+    function displayreset() {
+
+        //if (loopflg) {
+        //    Quagga.stop();
+        //}
+
+        clearTimeout(id);
+
+        const tracks = videostream.getVideoTracks();
+        for (let i = 0; i < tracks.length; i++) {
+            tracks[i].stop();
+        }
+
+        DetectedCode = '';
+        DetectedCount = 0;
+        video.remove();
+        tmp.remove();
+
+        looptime = maxtime + loopspan;
+        loopflg = false;
+        scaning.disabled = false;
+
+        tmp_ctx.clearRect(
+            ((w - (w * ScanRate[0])) / 2), ((h - (w * ScanRate[1])) / 2),
+            (w * ScanRate[0]), (w * ScanRate[1]),
+            0, 0,
+            (w * ScanRate[0]), (w * ScanRate[1]));
+        prev_ctx.clearRect(0, 0, w, h);
+    }
 });
