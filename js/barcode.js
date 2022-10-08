@@ -114,7 +114,7 @@ barcode.addEventListener('click', () => {
             loopflg = false;
             scaning.disabled = false;
 
-            document.getElementById('info').innerHTML = "バーコードを写してください。" + "0 / " + String(scancount);
+            document.getElementById('info').innerHTML = "バーコードを写してください。";
             numval.innerHTML = "0 / " + String(scancount);
         }
 
@@ -143,7 +143,7 @@ barcode.addEventListener('click', () => {
 
             scancount = Math.ceil((w * ScanRate[0]) / 32);
             //scancount = 10 * 2;
-            document.getElementById('kind').innerHTML = "" + String(scancount);
+            document.getElementById('kind').innerHTML = "";
             document.getElementById('info').innerHTML = "バーコードを写してください。";
             numval.innerHTML = "0 / " + String(scancount);
 
@@ -310,7 +310,7 @@ barcode.addEventListener('click', () => {
                 DetectedFormat = result.codeResult.format
             }
 
-            document.getElementById('kind').innerHTML = String(DetectedCount) + " / " + String(scancount) + " Format：" + barcodeformat(result.codeResult.format);
+            document.getElementById('kind').innerHTML = " Code：" + DetectedCode + " Format：" + barcodeformat(DetectedFormat);
             document.getElementById('info').innerHTML = "バーコードを写してください。";
             numval.innerHTML = String(DetectedCount) + " / " + String(scancount);
 
