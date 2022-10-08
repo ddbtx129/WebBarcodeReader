@@ -17,7 +17,9 @@ barcode.addEventListener('click', () => {
 
     DetectedCount = 0;
     DetectedCode = "";
+    DetectedFormat = "";
 
+    document.getElementById('kind').innerHTML = "";
     document.getElementById('info').innerHTML = "バーコードを写してください。";
     numval.innerHTML = "0 / 0";
 
@@ -141,7 +143,8 @@ barcode.addEventListener('click', () => {
 
             //scancount = Math.ceil((w * ScanRate[0]) / 32);
             scancount = 10 * 2;
-            document.getElementById('info').innerHTML = "バーコードを写してください。" + "0 / " + String(scancount);
+            document.getElementById('kind').innerHTML = "0 / " + String(scancount);
+            document.getElementById('info').innerHTML = "バーコードを写してください。";
             numval.innerHTML = "0 / " + String(scancount);
 
             //画面上の表示サイズ
@@ -257,7 +260,7 @@ barcode.addEventListener('click', () => {
                             ]
                         },
                         multiple: false,
-                        locator: { patchSize: "large", halfSample: false },
+                        locator: { patchSize: "medium", halfSample: false },
                         locate: false,
                         src: reader.result,
                     };
@@ -296,23 +299,22 @@ barcode.addEventListener('click', () => {
 
         if (DetectedCount < scancount) {
 
-            //codevalue.value = "";
-            //console.log("format:" + result.codeResult.format);
-
             //読み取り誤差のために、複数回連続で同じ値だった場合に成功とする
-            if (DetectedCode == result.codeResult.code) {
+            if (DetectedCode == result.codeResult.code && DetectedFormat == result.codeResult.format) {
                 DetectedCount++;
             } else {
                 looptime = 0;
                 DetectedCount = 0;
 
-                DetectedCode = result.codeResult.code;
+                DetectedCode = result.codeResult.code, 
+                DetectedFormat = result.codeResult.format
             }
 
-            document.getElementById('info').innerHTML = "バーコードを写してください。" + String(DetectedCount) + " / " + String(scancount) + "  format:" + result.codeResult.format;
+            document.getElementById('kind').innerHTML = String(DetectedCount) + " / " + String(scancount) + "  format:" + barcodeformat(result.codeResult.format);
+            document.getElementById('info').innerHTML = "バーコードを写してください。";
             numval.innerHTML = String(DetectedCount) + " / " + String(scancount);
 
-            if (DetectedCount >= scancount) {
+            if (DetectedCount >= scancount && DetectedFormat == result.codeResult.format) {
 
                 codevalue.value = result.codeResult.code;
 
@@ -333,6 +335,28 @@ barcode.addEventListener('click', () => {
 
     }, false)
 
+    function barcodeformat(barcodeFormat) {
+
+        switch (barcodeFormat) {
+            case 'ean_13':
+                return 'EAN13(JAN 13)';
+                break;
+            case 'ean_8':
+                return 'EAN8(JAN 8)';
+                break;
+            case 'code_39':
+                return 'CODE39';
+                break;
+            case 'code_128':
+                return 'CODE128';
+                break;
+            case 'codabar':
+                return 'NW-7(CODABAR)';
+                break;
+        }
+
+    }
+
     function eanCheckDigit(barcodeStr) { // 引数は文字列
         // 短縮用処理
         barcodeStr = ('00000' + barcodeStr).slice(-13);
@@ -350,9 +374,9 @@ barcode.addEventListener('click', () => {
 
     function displayreset() {
 
-        //if (loopflg) {
-        //    Quagga.stop();
-        //}
+        if (loopflg) {
+            Quagga.stop();
+        }
 
         clearTimeout(id);
 

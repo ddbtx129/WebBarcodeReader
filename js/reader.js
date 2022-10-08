@@ -15,7 +15,7 @@ var copyright = document.getElementById('copyright');
 
 var video, videostream, id, tmp, tmp_ctx, prev, prev_ctx, w, h, mw, mh, x1, y1;
 
-var DetectedCount = 0, DetectedCode = "";
+var DetectedCount = 0, DetectedCode = "", DetectedFormat = "";
 
 var flg = false, loopflg = false, scancount = 5;
 var loopspan = 100, looptime = 0, maxtime = 10000;
