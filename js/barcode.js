@@ -357,19 +357,23 @@ barcode.addEventListener('click', () => {
 
     }
 
-    function eanCheckDigit(barcodeStr) { // 引数は文字列
-        // 短縮用処理
-        barcodeStr = ('00000' + barcodeStr).slice(-13);
-        let evenNum = 0, oddNum = 0;
-        for (var i = 0; i < barcodeStr.length - 1; i++) {
-            if (i % 2 == 0) { // 「奇数」かどうか（0から始まるため、iの偶数と奇数が逆）
-                oddNum += parseInt(barcodeStr[i]);
-            } else {
-                evenNum += parseInt(barcodeStr[i]);
+    function eanCheckDigit(barcodeStr, barcodeformat) { // 引数は文字列
+        if (barcodeformat == "ean_13") {
+            // 短縮用処理
+            barcodeStr = ('00000' + barcodeStr).slice(-13);
+            let evenNum = 0, oddNum = 0;
+            for (var i = 0; i < barcodeStr.length - 1; i++) {
+                if (i % 2 == 0) { // 「奇数」かどうか（0から始まるため、iの偶数と奇数が逆）
+                    oddNum += parseInt(barcodeStr[i]);
+                } else {
+                    evenNum += parseInt(barcodeStr[i]);
+                }
             }
+            // 結果
+            return 10 - parseInt((evenNum * 3 + oddNum).toString().slice(-1)) === parseInt(barcodeStr.slice(-1));
+        } else {
+            return true;
         }
-        // 結果
-        return 10 - parseInt((evenNum * 3 + oddNum).toString().slice(-1)) === parseInt(barcodeStr.slice(-1));
     }
 
     function displayreset() {
