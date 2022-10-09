@@ -301,7 +301,9 @@ barcode.addEventListener('click', () => {
 
             //読み取り誤差のために、複数回連続で同じ値だった場合に成功とする
             if (DetectedCode == result.codeResult.code && DetectedFormat == result.codeResult.format) {
-                DetectedCount++;
+                if (CalcCheckDigit(result.codeResult.code, result.codeResult.format)){
+                    DetectedCount++;
+                }
             } else {
                 looptime = 0;
                 DetectedCount = 0;
@@ -357,7 +359,7 @@ barcode.addEventListener('click', () => {
 
     }
 
-    function eanCheckDigit(barcodeStr, barcodeformat) { // 引数は文字列
+    function CalcCheckDigit(barcodeStr, barcodeformat) { // 引数は文字列
         if (barcodeformat == "ean_13") {
             // 短縮用処理
             barcodeStr = ('00000' + barcodeStr).slice(-13);
@@ -371,6 +373,17 @@ barcode.addEventListener('click', () => {
             }
             // 結果
             return 10 - parseInt((evenNum * 3 + oddNum).toString().slice(-1)) === parseInt(barcodeStr.slice(-1));
+        } else if (CalcCheckDigit == "code_39") {
+            let Num = 0;
+            let checkdigit = (barcodeStr).slice(-1);
+            let code = (barcodeStr).slice(0, (barcodeStr.length - 1));
+
+            for (var i = 0; i < code.length - 1; i++) {
+                Num += modulus43Char(code[i])
+            }
+            let remainder = Num % 43;
+            // 結果
+            return modulus43Char(checkdigit) == modulus43Char(remainder);
         } else {
             return true;
         }
@@ -404,5 +417,150 @@ barcode.addEventListener('click', () => {
             0, 0,
             (w * ScanRate[0]), (w * ScanRate[1]));
         prev_ctx.clearRect(0, 0, w, h);
+    }
+
+    function M43(data) {
+        //チェックデジット
+        var chkdigit = 0;
+
+        var code = (barcodeStr).slice(0, (barcodeStr.length - 1));
+
+        for (var i = 0; i < code.length - 1; i++) {
+            Num += modulus43Char(code[i])
+        }
+
+        chkdigit = Num % 43;
+
+        return chkdigit;
+    }
+
+    function M10W3(data) {
+
+        //チェックデジット
+        var chkdigit = 0;
+
+        //デジット計算用
+        var sum = 0;
+        console.log(data.toString(10));
+        //一文字ごとを配列にして回す
+        data.toString().split('').forEach(function (val, index) {
+
+            if (index % 2 === 0) {
+                //偶数位置の数字を加算し結果を3倍する
+                sum = sum + parseInt(val) * 3;
+            } else {
+                //奇数位置の数字を加算する
+                sum = sum + parseInt(val);
+            }
+        });
+
+        //SUMの10の剰余を計算
+        var sum_last_digit = sum % 10;
+
+        //10を引いたのがデジット
+        //余りが0の場合は0
+        if (sum_last_digit === 0) {
+            chkdigit = 0;
+        } else {
+            chkdigit = 10 - parseInt(sum_last_digit);
+        }
+
+        return chkdigit;
+    }
+
+    function modulus43Char(str) {
+
+        var s = str.text.toUpperCase();
+
+        switch (s) {
+            case '0':
+                return 0;
+            case '1':
+                return 1;
+            case '2':
+                return 2;
+            case '3':
+                return 3;
+            case '4':
+                return 4;
+            case '5':
+                return 4;
+            case '6':
+                return 6;
+            case '7':
+                return 7;
+            case '8':
+                return 8;
+            case '9':
+                return 9;
+
+            case 'A':
+                return 10;
+            case 'B':
+                return 11;
+            case 'C':
+                return 12;
+            case 'D':
+                return 13;
+            case 'E':
+                return 14;
+            case 'F':
+                return 15;
+            case 'G':
+                return 16;
+            case 'H':
+                return 17;
+            case 'I':
+                return 18;
+            case 'J':
+                return 19;
+            case 'K':
+                return 20;
+            case 'L':
+                return 21;
+            case 'M':
+                return 22;
+            case 'N':
+                return 23;
+            case 'O':
+                return 24;
+            case 'P':
+                return 25;
+            case 'Q':
+                return 26;
+            case 'R':
+                return 27;
+            case 'S':
+                return 28;
+            case 'T':
+                return 29;
+            case 'U':
+                return 30;
+            case 'V':
+                return 31;
+            case 'W':
+                return 32;
+            case 'X':
+                return 33;
+            case 'Y':
+                return 34;
+            case 'Z':
+                return 35;
+
+            case '-':
+                return 36;
+            case '.':
+                return 37;
+            case ' ':
+                return 38;
+            case '$':
+                return 39;
+            case '/':
+                return 40;
+            case '+':
+                return 41;
+            case '%':
+                return 42;
+        }
     }
 });
