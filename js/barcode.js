@@ -472,6 +472,56 @@ barcode.addEventListener('click', () => {
         return chkdigit;
     }
 
+    function code128(text) {
+        return startCode + text + modulo103(text) + stopCode;
+    }
+
+    function modulo103(text) {
+        let characters = text.split('');
+        let sum = 104;
+        $.each(characters, function (key, value) {
+            $.each(codeB, function (index, code) {
+                if (value == code) {
+                    sum += index * (key + 1)
+                    return false;
+                }
+            })
+        })
+        return codeB[sum % 103];
+    }
+
+    var startCode = 'Ì';
+    var stopCode = 'Î';
+
+    var codeB = {
+        0: ' ', 1: '!', 2: '"', 3: '#', 4: '$', 5: '%', 6: '&', 7: '\'', 8: '(', 9: ')', 10: '*',
+        11: '+', 12: ',', 13: '-', 14: '.', 15: '/', 16: '0', 17: '1', 18: '2', 19: '3',
+        20: '4', 21: '5', 22: '6', 23: '7', 24: '8', 25: '9', 26: ':', 27: ';', 28: '<',
+        29: '=', 30: '>', 31: '?', 32: '@', 33: 'A', 34: 'B', 35: 'C', 36: 'D', 37: 'E',
+        38: 'F', 39: 'G', 40: 'H', 41: 'I', 42: 'J', 43: 'K', 44: 'L', 45: 'M', 46: 'N',
+        47: 'O', 48: 'P', 49: 'Q', 50: 'R', 51: 'S', 52: 'T', 53: 'U', 54: 'V', 55: 'W',
+        56: 'X', 57: 'Y', 58: 'Z', 59: '[', 60: '\\\\', 61: ']', 62: '^', 63: '_', 64: '`',
+        65: 'a', 66: 'b', 67: 'c', 68: 'd', 69: 'e', 70: 'f', 71: 'g', 72: 'h', 73: 'i',
+        74: 'j', 75: 'k', 76: 'l', 77: 'm', 78: 'n', 79: 'o', 80: 'p', 81: 'q', 82: 'r',
+        83: 's', 84: 't', 85: 'u', 86: 'v', 87: 'w', 88: 'x', 89: 'y', 90: 'z', 91: '{',
+        92: '┘', 93: '}', 94: '~',
+    }
+
+    function modulus43Num(char) {
+
+        var chkdigit = 0;
+
+        chkdigit = {
+            0: '0', 1: '1', 2: '2', 3: '3', 4: '4', 5: '5', 6: '6', 7: '7', 8: '8', 9: '9',
+            10: 'A', 11: 'B', 12: 'C', 13: 'D', 14: 'E', 15: 'F', 16: 'G', 17: 'H', 18: 'I', 19: 'J',
+            20: 'K', 21: 'L', 22: 'M', 23: 'N', 24: 'O', 25: 'P', 26: 'Q', 27: 'R', 28: 'S', 29: 'T',
+            30: 'U', 31: 'V', 32: 'W', 33: 'X', 34: 'Y', 35: 'Z', 36: '-', 37: '.', 38: ' ', 39: '$',
+            40: '/', 41: '+', 42: '%'
+        }
+
+        return chkdigit[charNum];
+    }
+
     function modulus43Char(str) {
 
         var s = str.text.toUpperCase();
@@ -565,6 +615,8 @@ barcode.addEventListener('click', () => {
                 return 41;
             case '%':
                 return 42;
+            default:
+                return 0;
         }
     }
 });
