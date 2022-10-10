@@ -53,12 +53,9 @@ barcode.addEventListener('click', () => {
     codevalue.style.textAlign = "center";
     codevalue.contentEditable = "true";
 
-    //マイクはオフ, カメラの設定   背面カメラを希望する 640×480を希望する
-    //var options = { audio: false, video: { facingMode: "environment", width: { ideal: VideoSize[0] }, height: { ideal: VideoSize[1] } } };
-    //var options = { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": VideoSize[0] }, "height": { "ideal": VideoSize[1] } } };
-
     //カメラ使用の許可ダイアログが表示される
     navigator.mediaDevices.getUserMedia(
+        //マイクはオフ, カメラの設定   背面カメラを希望する 640×480推奨
         { "audio": false, "video": { "facingMode": "environment", "width": { "ideal": VideoSize[0] }, "height": { "ideal": VideoSize[1] } } }
     ).then( //許可された場合
         function (stream) {
@@ -301,20 +298,28 @@ barcode.addEventListener('click', () => {
 
             //読み取り誤差のために、複数回連続で同じ値だった場合に成功とする
             if (DetectedCode == result.codeResult.code && DetectedFormat == result.codeResult.format) {
-                if (CalcCheckDigit(result.codeResult.code, result.codeResult.format)){
+                if (CalcCheckDigit(result.codeResult.code, result.codeResult.format)) {
                     DetectedCount++;
+
+                    document.getElementById('kind').innerHTML = "識別エラー(CheckDigit) Format：" + barcodeformat(DetectedFormat);
+                    numval.innerHTML = String(DetectedCount) + " / " + String(scancount);
+                } else {
+                    looptime = 0;
+                    DetectedCount = 0;
+
+                    document.getElementById('kind').innerHTML = "Code：" + "Format：" + barcodeformat(DetectedFormat);
+                    numval.innerHTML = "0 / " + String(scancount);
                 }
             } else {
                 looptime = 0;
                 DetectedCount = 0;
 
+                document.getElementById('kind').innerHTML = "";
+                numval.innerHTML = "0 / " + String(scancount);
+
                 DetectedCode = result.codeResult.code, 
                 DetectedFormat = result.codeResult.format
             }
-
-            document.getElementById('kind').innerHTML = " Code：" + DetectedCode + " Format：" + barcodeformat(DetectedFormat);
-            document.getElementById('info').innerHTML = "バーコードを写してください。";
-            numval.innerHTML = String(DetectedCount) + " / " + String(scancount);
 
             if (DetectedCount >= scancount && DetectedFormat == result.codeResult.format) {
 
@@ -356,7 +361,6 @@ barcode.addEventListener('click', () => {
                 return 'NW-7(CODABAR)';
                 break;
         }
-
     }
 
     function CalcCheckDigit(barcodeStr, barcodeformat) { // 引数は文字列
