@@ -301,13 +301,13 @@ barcode.addEventListener('click', () => {
                 if (CalcCheckDigit(result.codeResult.code, result.codeResult.format)) {
                     DetectedCount++;
 
-                    document.getElementById('kind').innerHTML = "識別エラー(CheckDigit) Format：" + barcodeformat(DetectedFormat);
+                    document.getElementById('kind').innerHTML = "CODE：" + DetectedCode + " FORMAT：" + barcodeformat(DetectedFormat);
                     numval.innerHTML = String(DetectedCount) + " / " + String(scancount);
                 } else {
                     looptime = 0;
                     DetectedCount = 0;
 
-                    document.getElementById('kind').innerHTML = "Code：" + "Format：" + barcodeformat(DetectedFormat);
+                    document.getElementById('kind').innerHTML = "識別エラー(CheckDigit) FORMAT：" + barcodeformat(DetectedFormat);
                     numval.innerHTML = "0 / " + String(scancount);
                 }
             } else {
